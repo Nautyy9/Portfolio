@@ -201,7 +201,7 @@ height: 100vh;
   width: 400px;
   height: 400px;
   position: absolute;
-  background: url(assets/IMG-20190701-WA0001_-_Copy-removebg-preview.png);
+  background: url(../public/assets/IMG-20190701-WA0001_-_Copy-removebg-preview.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
