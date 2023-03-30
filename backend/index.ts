@@ -6,7 +6,7 @@ import {appRouter} from './router/index'
 import cors from 'cors'
 import {createContext} from "./context/index"
 
-app.use(cors({origin : 'http://127.0.0.1:5173'}))
+app.use(cors({origin : ['http://127.0.0.1:5173', 'https://nitinsfolio.netlify.app']}))
 
 app.use('/trpc', createExpressMiddleware({
     router : appRouter
