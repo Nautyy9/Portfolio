@@ -4,7 +4,7 @@ import {AiOutlineInstagram,  AiFillGithub } from 'react-icons/ai'
 import {BsWhatsapp} from 'react-icons/bs'
 import {FaLinkedinIn} from 'react-icons/fa'
 import {createTRPCProxyClient,httpBatchLink, loggerLink} from '@trpc/client'
-import type {appRouterType} from '../../backend/types'
+import type {appRouterType} from 'types-for-frontend/types'
 import Confetti from 'react-confetti'
 
 
@@ -13,7 +13,7 @@ const client = createTRPCProxyClient<appRouterType>({
   links: [
     loggerLink(),
     httpBatchLink({
-      url : "https://nitins-folio-a2h5.onrender.com/trpc",
+      url : "http://localhost:3000/trpc",
     }),
   ]
 })
@@ -39,7 +39,6 @@ const msgRef = useRef<HTMLTextAreaElement>(null!);
 
 const onSubmit =  async (e:  React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('shishi');
     
     setFormDetials( (prev: any) => ({
         ...prev,
@@ -59,7 +58,6 @@ const onSubmit =  async (e:  React.FormEvent<HTMLFormElement>) => {
       subject: subRef.current?.value!,
       message: msgRef.current?.value!
     })
-    console.log(result)
     if(!!result) {
       setShowConfetti(result)
     }
@@ -72,7 +70,6 @@ useEffect(() =>{
     else {setHideLine(false)}
 
     addEventListener("resize", () =>{
-      console.log(innerHeight, innerWidth)
       if(window.innerWidth <= 1780) {
         // console.log('yes');
           setHideLine(true)
@@ -107,7 +104,6 @@ useEffect(() =>{
 // return () => controller.abort();
 
 // },[onSubmit])
-console.log(showConfetti)
   return (
     <div style={{fontFamily: 'Ignazio'}} className=' sm:h-[1080px]  bg-[#171717]  shadow-lg contact'>
       <div className="grid grid-flow-row xl:grid-flow-col w-full h-full xl:grid-cols-3 relative m-auto  xs:mb-0 gap-y-20 xl:gap-y-0 justify-self-center mx-auto ">
