@@ -13,7 +13,7 @@ const client = createTRPCProxyClient<appRouterType>({
   links: [
     loggerLink(),
     httpBatchLink({
-      url : "http://localhost:3000/trpc",
+      url : "https://nitins-folio-a2h5.onrender.com/trpc",
     }),
   ]
 })
