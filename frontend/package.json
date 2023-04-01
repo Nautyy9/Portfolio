@@ -20,6 +20,7 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.6.1",
     "react-scroll": "^1.8.9",
+    "sweetalert2": "^11.7.3",
     "types-for-frontend": "^1.0.0",
     "vanilla-tilt": "^1.8.0",
     "zod": "^3.21.4"

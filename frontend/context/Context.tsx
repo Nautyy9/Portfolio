@@ -197,9 +197,7 @@ function Context({children}: ChildrenType ) {
         }
       })
 
-      useEffect(() => {
-        alert('please refresh the page when heading for responsive design')
-      }, [])
+    
 
       const value  = {
         menuRef,

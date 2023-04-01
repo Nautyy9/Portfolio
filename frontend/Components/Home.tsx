@@ -2,7 +2,7 @@ import gsap, { Back, Power4 } from 'gsap';
 import  { useEffect,  useId } from 'react'
 import { BsArrow90DegRight } from 'react-icons/bs'
 import { Link } from 'react-scroll';
-
+import Swal from 'sweetalert2'
 
 function Home() {
   const id = useId();
@@ -12,8 +12,24 @@ function Home() {
   const text = 'nitinnautiyal-webdeveloper/designer'
   const roundText = text.split("")
   // const suii = useNavigation()
-  
   useEffect(() => {
+    window.onblur = () =>{
+      Swal.fire(
+        {
+          icon: 'info',
+          title: 'Please Refresh The page',
+          color: '#716add',
+          backdrop : 'rgb(223, 211, 195, 0.4)'
+        }).then(() =>{
+          window.location.reload()
+        })
+    }
+    return () =>{
+    }
+  }, [])
+
+  useEffect(() => {
+
     // const text = document.querySelector('.who');
     const tl = gsap.timeline()
     tl.set('#my-image', { opacity: 0, visibility: 'hidden' })
@@ -32,11 +48,6 @@ function Home() {
     tl.to('.who', { opacity: 1, ease: Power4.easeOut, duration: 1, visibility: 'visible' })
   }, [])
 
-  // useEffect(() =>{
-  //   window.addEventListener("resize", (e) => {
-  //     console.log(innerHeight, innerWidth)
-  //   })
-  // })
 
   const setImages = () => {
     const text = document.querySelector('.who');
@@ -54,14 +65,6 @@ function Home() {
     tl.fromTo('.suii', { opacity: 0, visibility: 'hidden' }, { opacity: 1, duration: 1, stagger: .2, ease: Power4.easeOut, visibility: 'visible' })
     tl.to('.name', { opacity: 1, scale: 1, visibility: 'visible', duration: 2, ease: Power4.easeOut, }, '-=7')
 
-    // let name = document.querySelector(`.img_div`)
-
-
-    // name.forEach((val, id) =>{
-    //   tl.fromTo(val, {opacity: 0, scale: 1, x: 0, y: 100, rotate: 0 }, { opacity:1,ease:'back', duration: .3, x: 1020, y:-120,height: '50%', width: 50 , transformOrigin: '0 100', rotateZ: (id*5)}, '-=.6')
-    // })
-
-    // myImage_ref.current.style.visibility = 'visible'
   }
 
   function animateSpring(name: string) {
