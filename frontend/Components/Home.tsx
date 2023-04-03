@@ -12,21 +12,6 @@ function Home() {
   const text = 'nitinnautiyal-webdeveloper/designer'
   const roundText = text.split("")
   // const suii = useNavigation()
-  useEffect(() => {
-    window.onblur = () =>{
-      Swal.fire(
-        {
-          icon: 'info',
-          title: 'Please Refresh The page',
-          color: '#716add',
-          backdrop : 'rgb(223, 211, 195, 0.4)'
-        }).then(() =>{
-          window.location.reload()
-        })
-    }
-    return () =>{
-    }
-  }, [])
 
   useEffect(() => {
 
@@ -35,7 +20,6 @@ function Home() {
     tl.set('#my-image', { opacity: 0, visibility: 'hidden' })
     tl.set('.name', { visibility: 'hidden', opacity: 0 })
     tl.from('.who', { opacity: 0, visibility: 'hidden' })
-    tl.from('#tree-image', { opacity: 0, visibility: 'hidden' })
     if (window.innerWidth > 768) {
       tl.fromTo(['.bg_text4', '.bg_text3', '.bg_text2', '.bg_text1'], { y: -1000, x: 0 }, { y: 0, x: 0, stagger: .2, ease: Power4.easeOut, duration: 1, })
       tl.fromTo(['.bg_text1', '.bg_text2', '.bg_text3', '.bg_text4'], { letterSpacing: 0 }, { letterSpacing: 10, stagger: .2, ease: Back.easeInOut, duration: .8, })
@@ -44,7 +28,6 @@ function Home() {
     tl.fromTo('.shade_text1', { x: 0, y: -100, opacity: 0 }, { x: 0, opacity: 1, y: 0, duration: 1, ease: Power4.easeOut }, '-=1.2')
     tl.fromTo('.h_name', { opacity: 0, scale: 1, x: 0, y: 100 }, { opacity: 1, stagger: .1, repeatRefresh: false, ease: 'back', duration: .3, x: 0, y: 0 }, '-=.6')
     tl.fromTo('.h_surname', { opacity: 0, scale: 1, x: 0, y: 100 }, { opacity: 1, stagger: .1, ease: 'back', duration: .3, x: 0, y: 0 }, '-=.2')
-    tl.to('#tree-image', { opacity: 1, ease: Power4.easeOut, zIndex: 10, visibility: 'visible' })
     tl.to('.who', { opacity: 1, ease: Power4.easeOut, duration: 1, visibility: 'visible' })
   }, [])
 
@@ -61,6 +44,7 @@ function Home() {
     tl.fromTo('.h_name', { opacity: 1, scale: 1, x: 0, y: 0 }, { opacity: 0, stagger: .1, scale: 0, ease: 'back', duration: .2, x: 0, y: 0 }, '-=.3')
     tl.fromTo('.h_surname', { opacity: 1, scale: 1, x: 0, y: 0 }, { opacity: 0, stagger: .1, scale: 0, ease: 'back', duration: .2, x: 0, y: 0 }, '-=.3')
     tl.fromTo(['.bg_text5', '.bg_text4', '.bg_text3', '.bg_text2', '.bg_text1'], { x: 0 }, { stagger: .3, x: 2000 })
+    tl.to('.bg_text',{display: 'none'})
     tl.fromTo('#my-image', { opacity: 0, visibility: 'hidden' }, { opacity: 1, duration: 1, ease: Power4.easeOut, visibility: 'visible' })
     tl.fromTo('.suii', { opacity: 0, visibility: 'hidden' }, { opacity: 1, duration: 1, stagger: .2, ease: Power4.easeOut, visibility: 'visible' })
     tl.to('.name', { opacity: 1, scale: 1, visibility: 'visible', duration: 2, ease: Power4.easeOut, }, '-=7')

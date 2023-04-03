@@ -54,20 +54,20 @@ function Header() {
         <div className=" flex md:justify-end mx-3 gap-2 xl:gap-5 " data-animation='to-top'>
 
           <div className="h-5 ">
-            <a  target='_blank' href='https://www.linkedin.com/in/nitin-nautiyal-75a67619a/'><FaLinkedinIn aria-hidden='true' className='h-5 w-6  bg-transparent '></FaLinkedinIn></a>
+            <a  target='_blank' href='https://www.linkedin.com/in/nitin-nautiyal-75a67619a/'><FaLinkedinIn aria-hidden='true' className='h-5 hover:text-blue-600 w-6  bg-transparent '></FaLinkedinIn></a>
             {/* <a  target='_blank' href='https://www.linkedin.com/in/nitin-nautiyal-75a67619a/'><FaLinkedinIn aria-hidden='true' className='h-5 w-6  bg-transparent'></FaLinkedinIn></a> */}
           </div>
           <div className="h-5 overflow-hidden">
-            <a  target='_blank' href='https://github.com/Nautyy9/'><AiFillGithub aria-hidden='true' className='h-5 w-6 bg-transparent '></AiFillGithub></a>
-            <a  target='_blank' href='https://github.com/Nautyy9/'><AiFillGithub aria-hidden='true' className='h-5 w-6 bg-transparent'></AiFillGithub></a>
+            <a  target='_blank' href='https://github.com/Nautyy9/'><AiFillGithub aria-hidden='true' className='h-5 w-6 hover:text-gray-600 bg-transparent '></AiFillGithub></a>
+            <a  target='_blank' href='https://github.com/Nautyy9/'><AiFillGithub aria-hidden='true' className='h-5 w-6 hover:text-gray-600 bg-transparent'></AiFillGithub></a>
           </div>
           <div className="h-5 overflow-hidden">
-            <a target='_blank' href='https://wa.me/919990989306'><BsWhatsapp className='h-5 w-6  bg-transparent ' aria-hidden='true'></BsWhatsapp></a>
-            <a target='_blank' href='https://wa.me/919990989306'><BsWhatsapp className='h-5 w-6  bg-transparent' aria-hidden='true'></BsWhatsapp></a>
+            <a target='_blank' href='https://wa.me/919990989306'><BsWhatsapp className='h-5 w-6  hover:text-green-700 bg-transparent ' aria-hidden='true'></BsWhatsapp></a>
+            <a target='_blank' href='https://wa.me/919990989306'><BsWhatsapp className='h-5 w-6  hover:text-green-700 bg-transparent' aria-hidden='true'></BsWhatsapp></a>
           </div>
           <div className="h-5 overflow-hidden ">
-            <a target="_blank" href='https://www.instagram.com/nautyy9/'><AiOutlineInstagram aria-hidden='true' className='h-5 w-6  bg-transparent  '></AiOutlineInstagram></a>
-            <a target="_blank" href='https://www.instagram.com/nautyy9/'><AiOutlineInstagram aria-hidden='true' className='h-5 w-6  bg-transparent '></AiOutlineInstagram></a>
+            <a target="_blank" href='https://www.instagram.com/nautyy9/'><AiOutlineInstagram aria-hidden='true' className='h-5 w-5 hover:text-white rounded-lg insta bg-transparent  '></AiOutlineInstagram></a>
+            <a target="_blank" href='https://www.instagram.com/nautyy9/'><AiOutlineInstagram aria-hidden='true' className='h-5 w-5 hover:text-white rounded-lg insta bg-transparent '></AiOutlineInstagram></a>
           </div>
         </div>
       </div>
