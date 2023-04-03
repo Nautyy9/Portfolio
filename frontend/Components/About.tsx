@@ -22,7 +22,7 @@ function About() {
     <div style={{boxShadow: '0px -4px 4px  rgba(0,0,0,0.15), 4px 0px 4px  rgba(0,0,0,0.15),0px 4px 4px rgba(0,0,0,0.15), -4px 0px 4px  rgba(0,0,0,0.15)' }} className='about bg-[#f5e4bc] text-[#292823] relative flex lg:h-[1080px] '>
       <div className="  grid grid-flow-row lg:grid-flow-col xl+:grid-cols-2">
         <div className="col-span-1  flex justify-end"  style={{fontFamily: 'Coconat'}}>
-          <div className="flex  flex-col  justify-center  items-start lg:items-center gap-y-4 w-5/6 xs:3/4 xl:w-4/5 mx-auto">
+          <div className="flex  flex-col  justify-center  items-start lg:items-center gap-y-4 w-5/6 xs:3/4 xl:w-4/5 mx-auto lg:mx-0">
 
           <h1 className='text-[28px] text-lg xs:text-xl lg+:text-2xl  underline lg:no-underline xs:font-semibold mb-4 mt-20 xs:w-3/4 lg:w-auto '>Specializing in refined digital web experiences with a focus on animated, responsive, and interactive content.</h1> 
           <h2 className='text-sm text-[18px] xs:text-lg lg+:text-xl xs:w-11/12 lg:w-auto' style={{fontFamily: 'Coconat'}}>Partnering with agencies and brands that value design and development integrity.</h2> 
