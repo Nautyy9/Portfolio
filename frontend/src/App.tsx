@@ -12,6 +12,7 @@ function App() {
       Swal.fire(
         {
           icon: 'warning',
+          
           width: '80%',
           background: '#171717',
           title: 'Please Refresh The Page',

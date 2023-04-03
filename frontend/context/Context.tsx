@@ -53,7 +53,6 @@ function Context({children}: ChildrenType ) {
         var distFromTop = work_ref.current.offsetTop+50;
         var scrollDistance = distFromTop + horizontalLength -windowWidth-100;
         // console.log(windowWidth, horizontalLength, distFromTop, scrollDistance);
-         
         work_ref.current.style.height =horizontalLength+ "px";
         if(cleanup){
         window.onscroll = (e: any) =>{
@@ -77,10 +76,10 @@ function Context({children}: ChildrenType ) {
 
           }
           if(innerHeight < 880 &&  innerWidth<=495  ){
-            horizontalLength  = scrolldiv_ref.current.scrollWidth 
-            distFromTop = work_ref.current.offsetTop ;
+            horizontalLength  = scrolldiv_ref.current.scrollWidth + 600
+            distFromTop = work_ref.current.offsetTop + 50;
 
-          work_ref.current.style.height =horizontalLength+500+ "px";
+          work_ref.current.style.height =horizontalLength+500+"px";
 
           }
           // if(window.innerWidth<=768){

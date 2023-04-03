@@ -508,7 +508,7 @@ height: 100vh;
 
 .insta:hover{
   transition: all 0.3s linear;
-  background:  radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf);
+  background:  radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf,);
 }
 
 
