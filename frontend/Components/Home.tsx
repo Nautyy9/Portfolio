@@ -121,10 +121,10 @@ function Home() {
           <div className="bg_text3 " style={{ textShadow: '2px 2px 2px black' }}>DANCER</div>
           <div className="bg_text4 " style={{ textShadow: '2px 2px 2px black' }}>FOOTBALLER</div>
         </div>
-        <div style={{ fontFamily: 'Coconat' }} className="font-semibold tracking-tight flex flex-col absolute left-[5.5%] w-4/5 h-[90%] top-[60%] text-[24px] translate-y-[-50%] xs:h-auto  xs:top-[23%]  sm:w-5/6 sm:top-[24%] text-[20px] xss:text-[25px]  xs:text-[25px] sm:text-3xl md:text-4xl md:w-1/2 md:tracking-normal md:top-[30%] md+:w-[32%] md+:top-[45%] md+:tracking-widest lg:w-1/3 text-[#f5e4bc] name">
+        <div style={{ fontFamily: 'Coconat' }} className="font-semibold tracking-tight flex flex-col absolute left-[5.5%] w-4/5 h-[90%] top-[60%]  translate-y-[-50%] xs:h-auto  xs:top-[23%]  sm:w-5/6 sm:top-[24%] text-[20px] xss:text-[25px]  xs:text-[25px] sm:text-3xl md:text-4xl md:w-1/2 md:tracking-normal md:top-[30%] md+:w-[32%] md+:top-[45%] md+:tracking-widest lg:w-1/3 text-[#f5e4bc] name">
           Hey there, I am Nitin Nautiyal, Freelancer & Front-End Developer
           <p className='text-gray-500 text-base tracking-tighter xss:text-lg sm:text-xl mt-3 sm:mt-6  font-bold font-[Georgia, Times New Roman, Times, sans-serif] xss:tracking-wide '>I love creating beautiful user experiences.</p>
-          <Link to='contact' spy={true} smooth={true} offset={-100} duration={1000} className='text-base font-semibold text-[#f4805b] border-2 border-[#f4805b] rounded-full flex justify-center items-start overflow-hidden tracking-tight absolute hover:animate-pulse hover:scale-105 duration-300 ease-in w-max h-10 py-2 px-5 bottom-0 mb-12 xs:mb-0  left-[50%] translate-x-[-50%] xs:left-0 xs:translate-x-0 xs:bottom-[-30%] sm:bottom-[-40%] md:bottom-[-20%] md:tracking-normal md:mt-10 xl:bottom-[-40%]   '>Get in touch
+          <Link to='contact' spy={true} smooth={true} offset={-100} duration={1000} className='text-base font-semibold text-[#f4805b] border-2 border-[#f4805b] rounded-full flex justify-center items-start overflow-hidden tracking-tight absolute hover:animate-pulse hover:scale-105 duration-300 ease-in w-max h-10 py-2 px-5 bottom-0  xs:mb-0  left-[50%] translate-x-[-50%] xs:left-0 xs:translate-x-0 xs:bottom-[-30%] sm:bottom-[-40%] md:bottom-[-20%] md:tracking-normal md:mt-10 xl:bottom-[-40%]   '>Get in touch
             <BsArrow90DegRight className='h-5 w-5  ml-3 mt-1  rotate-90 my-auto'></BsArrow90DegRight>
           </Link>
         </div>
