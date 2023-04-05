@@ -15,7 +15,7 @@ function App() {
           
           width: '80%',
           background: '#171717',
-          title: 'Refreshing the page for better responsice design',
+          title: 'Refreshing the page for better responsive design',
           confirmButtonColor : '#f4805b',
           color: 'rgb(223, 211, 195)',
           backdrop : 'rgb(223, 211, 195, 0.4)'
