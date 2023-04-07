@@ -42,15 +42,15 @@ function Header() {
           </div>
           <span className='border-r-2  h-8 my-auto border-[#3333] hidden md:flex md:mx-auto '></span>
         </div>
-        <div className='hidden md:flex lg:justify-start text-sm font-semibold  tracking-tight  md:gap-3 lg:gap-5 xl:gap-10  col-span-1 md:col-span-2 ml-3 xl:col-span-3'>
-          <Link to='home' spy={true} smooth={true} offset={-64} duration={1000} className="hover:scale-110 transition-all  hover:bg-black/30  rounded-lg ease-in-out py-1.5  px-3 text-lg ">Home</Link>
-          <Link to='about' spy={true} smooth={true} offset={-64} duration={1000} className="hover:scale-110 transition-all  hover:bg-black/30  rounded-lg ease-in-out py-1.5  px-3 text-lg ">About Me</Link>
-          <Link to='skills' spy={true} smooth={true} offset={-64} duration={1000} className="hover:scale-110 transition-all  hover:bg-black/30  rounded-lg ease-in-out py-1.5  px-3 text-lg ">Skills</Link>
-          <Link to='work' spy={true} smooth={true} offset={-64} duration={1000} className="hover:scale-110 transition-all  hover:bg-black/30  rounded-lg ease-in-out py-1.5  px-3 text-lg ">Work</Link>
-          <Link to='contact' spy={true} smooth={true} offset={-64} duration={1000} className="hover:scale-110 transition-all  hover:bg-black/30  rounded-lg ease-in-out py-1.5  px-3 text-lg ">Contact</Link>
+        <div className='hidden md:flex lg:justify-start text-sm font-semibold  tracking-tighter md:gap-3  lg:gap-5  xl:gap-10  col-span-1 md:col-span-2 ml-3 xl:col-span-3'>
+          <Link to='home' spy={true} smooth={true} offset={-64} duration={1000} className="hover:scale-110 transition-all  hover:bg-black/30  rounded-lg ease-in-out py-1.5  px-3 text-base ">Home</Link>
+          <Link to='about' spy={true} smooth={true} offset={-64} duration={1000} className="hover:scale-110 transition-all  whitespace-nowrap hover:bg-black/30 rounded-lg ease-in-out py-1.5  px-3 text-base ">About Me</Link>
+          <Link to='skills' spy={true} smooth={true} offset={-64} duration={1000} className="hover:scale-110 transition-all  hover:bg-black/30 rounded-lg ease-in-out py-1.5  px-3 text-base ">Skills</Link>
+          <Link to='work' spy={true} smooth={true} offset={-64} duration={1000} className="hover:scale-110 transition-all  hover:bg-black/30 rounded-lg ease-in-out py-1.5  px-3 text-base ">Work</Link>
+          <Link to='contact' spy={true} smooth={true} offset={-64} duration={1000} className="hover:scale-110 transition-all  hover:bg-black/30 rounded-lg ease-in-out py-1.5  px-3 text-base ">Contact</Link>
           </div>
         <div className="hidden md:flex justify-end mx-3 col-span-1 ml-10 mr-7" >
-          <div className=" flex md:justify-end mx-3 gap-2 xl:gap-5 " data-animation='to-top'>
+          <div className=" flex md:justify-end mx-3 gap-2 md:gap-3 lg:gap-5 " data-animation='to-top'>
 
             <div className="h-5 ">
               <a target='_blank' href='https://www.linkedin.com/in/nitin-nautiyal-75a67619a/'><FaLinkedinIn aria-hidden='true' className='h-6 transition-colors duration-300 hover:text-blue-600 w-6  bg-transparent '></FaLinkedinIn></a>
