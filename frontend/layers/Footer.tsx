@@ -25,13 +25,13 @@ function Footer() {
         </div>
       <div className="flex flex-col md:flex-row justify-around items-center gap-y-5 md:gap-y-2 md:items-end font-medium xl:gap-x-20   my-5 sm:my-2  ">
         <div className="flex gap-x-10 text-2xl">
-          <Link to='skills' spy={true} smooth={true} offset={-64} duration={1000} className='  hover:bg-black/20 transition-colors duration-200 rounded-lg py-2 px-3'>Skills</Link>
-          <Link to='work' spy={true} smooth={true} offset={-64} duration={1000} className=' hover:bg-black/20 transition-colors duration-200 rounded-lg py-2 px-3'>Work</Link>
+          <Link to='skills' spy={true} smooth={true} offset={-64} duration={1000} className=' hover:scale-110 rounded-lg hover:bg-black/30 border-[#171717]/70 transition-all ease-in-out py-2 px-3'>Skills</Link>
+          <Link to='work' spy={true} smooth={true} offset={-64} duration={1000} className='hover:scale-110 rounded-lg hover:bg-black/30 border-[#171717]/70 transition-all ease-in-out py-2 px-3'>Work</Link>
         </div>
         <Link to='home' spy={true} smooth={true} offset={-64} duration={1000} className='text-4xl border-y-2 border-[#171717] '>Nitin's Folio</Link>
         <div className="flex gap-x-10 text-2xl">
-          <Link to='about' spy={true} smooth={true} offset={-64} duration={1000} className=' hover:bg-black/20 transition-colors duration-200 rounded-lg py-2 px-3'>About Me</Link>
-          <Link to='contact' spy={true} smooth={true} offset={-64} duration={1000} className=' hover:bg-black/20 transition-colors duration-200 rounded-lg py-2 px-3'>Contact</Link>
+          <Link to='about' spy={true} smooth={true} offset={-64} duration={1000} className='hover:scale-110 rounded-lg hover:bg-black/30 border-[#171717]/70 transition-all ease-in-out py-2 px-3'>About Me</Link>
+          <Link to='contact' spy={true} smooth={true} offset={-64} duration={1000} className='hover:scale-110 rounded-lg hover:bg-black/30 border-[#171717]/70 transition-all ease-in-out py-2 px-3'>Contact</Link>
         </div>
       </div>
     </div>

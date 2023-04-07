@@ -536,9 +536,9 @@ function Skills() {
         </div>
       </div>
       <div className="h-full absolute right-5  top-0 hidden xs+:flex justify-center text-2xl  my-[-100px] md+:my-auto items-center text-white tracking-wider">
-        <button className="rotate-[180deg] xl:bg-[#f5e4bc] xl:p-2 xl:text-black break:text-white xl:py-4 break:bg-transparent">
+        <button className="rotate-[180deg] -mt-80 break:mt-0 xl:p-2 text-white xl:py-4 bg-transparent">
           { sections.map((section, id) => (
-            <h1 key={id} className='   sec_part hover:scale-125 transition duration-200'>{section}</h1> 
+            <h1 key={id} className='sec_part hover:scale-125 transition duration-200'>{section}</h1> 
           ))
 }
         </button>  

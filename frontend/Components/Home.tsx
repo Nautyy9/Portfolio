@@ -54,11 +54,10 @@ function Home() {
   function animateSpring(name: string) {
     const tl = gsap.timeline();
   }
-
   return (
       <div className='home shadow-md z-10  bg-[#171717] text-[#dfd3c3] overflow-hidden'>
         <div className="">
-          <div style={{ fontFamily: 'Coconat' }} className="text-[#f4805b]/40 flex flex-col z-20 text-[16px]  ml-4 xs:ml-0 xs:left-[10%] font-semibold absolute top-[47.2%] translate-y-[-60%]">
+          <div style={{ fontFamily: 'Coconat' }} className="text-[#f4805b]/40 flex flex-col z-20 text-[16px]   xs:ml-0 left-[7%]  lg:left-[10%] font-semibold absolute  top-[44.7%] md:top-[44.2%] translate-y-[-60%]">
             <div className=" flex mt-2">
               {
                 Fname?.map((name, id) =>
@@ -81,14 +80,16 @@ function Home() {
                 )
               }
             </div>
-            <div className=" text-[#dfd3c3] flex cursor-help relative max-w-max who top-10">
-              <p className='relative  xs:text-xl md:text-2xl ml-2 ' >
-                WHO?
-              </p>
-              <button onClick={setImages} className='border-b-2 rounded-md border-[#f4805b] px-6 md:px-9   hover:py-3 hover:px-10 md:hover:py-4 md:hover:px-12 absolute  my-auto bottom-1/2 left-[4px] hover:translate-y-[14px] hover:translate-x-[-8px] duration-500 hover:border-x-2 hover:border-t-2  ml-1'></button>
+            <div className=" text-[#dfd3c3] flex cursor-help relative max-w-max who top-12  xs:top-20">
+              
+              <div onClick={setImages} className='absolute transition-all ease-in-out duration-400  line-through  px-3 py-1 decoration-[#f4805b] hover:decoration-transparent bottom-1/2  hover:border-[3px] border-[#f4805b]  '>
+                <p className=' xs:text-xl md:text-2xl  ' >
+                  WHO?
+                </p>
+              </div>
             </div>
           </div>
-          <div className="text-[#dfd3c3] font-semibold ml-4 xs:ml-0 xs:left-[10%]  gap-y-2 text-4xl mt-1 xs:mt-0 xs:text-6xl md:text-8xl  flex flex-col -z-1 absolute top-[44.9%] md:top-[45%] translate-y-[-60%]">
+          <div className="text-[#dfd3c3] font-semibold  xs:ml-0 left-[7%] lg:left-[10%] gap-y-2 text-4xl mt-1 xs:mt-0 xs:text-6xl md:text-8xl  flex flex-col -z-1 absolute top-[44.9%] md:top-[45%] translate-y-[-60%]">
             <div className='shade_text1'>nitin</div>
             <div className='shade_text2'>nautiyal</div>
           </div>
@@ -124,7 +125,7 @@ function Home() {
         <div style={{ fontFamily: 'Coconat' }} className="font-semibold tracking-tight flex flex-col absolute left-[5.5%] w-4/5 h-[90%] top-[60%]  translate-y-[-50%] xs:h-auto  xs:top-[23%]  sm:w-5/6 sm:top-[24%] text-[18px] xss:text-[20px]  xs:text-[25px] sm:text-3xl md:text-4xl md:w-1/2 md:tracking-normal md:top-[30%] md+:w-[32%] md+:top-[45%] md+:tracking-widest lg:w-1/3 text-[#f5e4bc] name">
           Hey there, I am Nitin Nautiyal, Freelancer & Front-End Developer
           <p className='text-gray-500 text-base tracking-tighter xss:text-lg sm:text-xl mt-3 sm:mt-6  font-bold font-[Georgia, Times New Roman, Times, sans-serif] xss:tracking-wide '>I love creating beautiful user experiences.</p>
-          <Link to='contact' spy={true} smooth={true} offset={-100} duration={1000} className='text-base font-semibold text-[#f4805b] border-2 border-[#f4805b] rounded-full flex justify-center items-start overflow-hidden tracking-tight absolute hover:animate-pulse hover:scale-105 duration-300 ease-in w-max h-10 py-2 px-5 bottom-0 mb-10  xss:mb-2 xs:mb-0 left-[50%] translate-x-[-50%] xs:left-0 xs:translate-x-0 xs:bottom-[-30%] sm:bottom-[-40%] md:bottom-[-20%] md:tracking-normal md:mt-10 xl:bottom-[-40%]   '>Get in touch
+          <Link to='contact' spy={true} smooth={true} offset={100} duration={1000} className='text-base font-semibold text-[#f4805b] border-2 border-[#f4805b] rounded-full flex justify-center items-start overflow-hidden tracking-tight absolute hover:animate-pulse hover:scale-105 duration-300 ease-in w-max h-10 py-2 px-5  mb-10  xss:mb-2 xs:mb-0 left-[50%] translate-x-[-50%] xs:left-0 xs:translate-x-0 bottom-0 xss:bottom-10  xs:bottom-[-30%] sm:bottom-[-40%] md:bottom-[-20%] md:tracking-normal md:mt-10 xl:bottom-[-40%]   '>Get in touch
             <BsArrow90DegRight className='h-5 w-5  ml-3 mt-1  rotate-90 my-auto'></BsArrow90DegRight>
           </Link>
         </div>
