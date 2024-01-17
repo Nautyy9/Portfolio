@@ -1,0 +1,11 @@
+Model Information:
+* title:	Steel Cube
+* source:	https://sketchfab.com/3d-models/steel-cube-e808f1c113c0418889f172e755dded6d
+* author:	d880 (https://sketchfab.com/distance880)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Steel Cube" (https://sketchfab.com/3d-models/steel-cube-e808f1c113c0418889f172e755dded6d) by d880 (https://sketchfab.com/distance880) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Very Useful Scroll
+* source:	https://sketchfab.com/3d-models/very-useful-scroll-904b4dc475674678bbf4f5a33d513c24
+* author:	Incg5764 (https://sketchfab.com/incg5764)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Very Useful Scroll" (https://sketchfab.com/3d-models/very-useful-scroll-904b4dc475674678bbf4f5a33d513c24) by Incg5764 (https://sketchfab.com/incg5764) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
