@@ -1,8 +1,8 @@
 import React, { MutableRefObject, useEffect } from "react";
 
 type refArray = {
-  modalRef: React.MutableRefObject<HTMLDialogElement>;
-  activeImg: React.MutableRefObject<HTMLImageElement>;
+  modalRef: React.MutableRefObject<HTMLDialogElement | null>;
+  activeImg: React.MutableRefObject<HTMLImageElement | null>;
 };
 
 function DialogComponent({ modalRef, activeImg }: refArray) {
@@ -19,21 +19,21 @@ function DialogComponent({ modalRef, activeImg }: refArray) {
           e.clientY < dialogDim.top ||
           e.clientY > dialogDim.bottom
         ) {
-          modalRef.current!.close();
+          modalRef?.current?.close();
         }
       }}
     >
       <img
-        className=" absolute inset-0 m-auto h-4/5 w-5/6 object-cover"
+        className=" absolute inset-0 m-auto w-full h-full xs:h-4/5 xs:w-5/6 object-cover"
         ref={activeImg}
         autoFocus={false}
-        src={activeImg.current?.src}
+        src={activeImg?.current?.src}
         alt="modal_image"
       ></img>
       <button
         autoFocus={false}
-        className="absolute top-2 right-3  rounded-full text-black border-4 border-y-black border-x-[#f5e4bc]  font-medium  py-2 px-4"
-        onClick={() => modalRef.current.close()}
+        className="absolute top-2  right-3 bg-red-600 text-white  rounded-full border-4 border-y-black border-x-white  font-medium  py-.5 px-2 xs:py-2 xs:px-4"
+        onClick={() => modalRef?.current?.close()}
       >
         <span className=" font-bold text-center text-xl  ">X</span>
       </button>
@@ -41,4 +41,4 @@ function DialogComponent({ modalRef, activeImg }: refArray) {
   );
 }
 
-export default React.forwardRef(DialogComponent);
+export default DialogComponent;

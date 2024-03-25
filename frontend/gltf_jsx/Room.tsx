@@ -2074,4 +2074,4 @@ function Room({ roomRef, ...props }: roomType) {
 }
 
 useGLTF.preload("/../static/wizards_room/final_room.glb");
-export default React.forwardRef(Room);
+export default Room;

@@ -1,10 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
 module.exports = {
   content: [
     "./src/**/*.{html,js,ts,tsx}",
     "./Components/**/*.{html,js,ts,tsx}",
     "./layers/**/*.{html,js,ts,tsx}",
+    "./utils/**/*.{html,js,ts,tsx}",
   ],
   theme: {
     extend: {
@@ -58,8 +62,18 @@ module.exports = {
       },
       fontFamily: {
         Neue: ["BebasNeue"],
+        bluu: ["BluuNext"],
       },
-      keyframes: {
+      animation: {
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+      },
+    },
+    keyframes: {
+      scroll: {
+        to: {
+          transform: "translate(calc(-50% - 0.5rem))",
+        },
         rubberBand: {
           from: {
             transform: "scale3d(1,1,1)",
@@ -122,5 +136,15 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [addVariablesForColors, require("tailwindcss-animate")],
 };
+
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+  addBase({
+    ":root": newVars,
+  });
+}

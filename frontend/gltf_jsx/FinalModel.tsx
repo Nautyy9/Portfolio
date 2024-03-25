@@ -4,9 +4,19 @@ Command: npx gltfjsx@6.1.4 static/wizards_room/MODEL.glb -o Character.tsx -T -t 
 */
 
 import * as THREE from "three";
-import React, { useRef } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { useGLTF, useAnimations, useFBX, useScroll } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import { useFrame } from "@react-three/fiber";
+import { useStore } from "../stateManager/valtio";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -118,15 +128,195 @@ type ActionName =
   | "SKILL"
   | "WORK";
 type GLTFActions = Record<ActionName, THREE.AnimationAction>;
+type MageType = JSX.IntrinsicElements["group"];
 
-export function Model(props: JSX.IntrinsicElements["group"]) {
-  const group = useRef<THREE.Group>(null);
+const faceMat = new THREE.MeshStandardMaterial({ color: 0xe8beac });
+const eyesMesh = new THREE.MeshStandardMaterial({
+  color: 0x000000,
+  roughness: 10,
+  metalness: 10,
+});
+
+export default function FinalModel({ ...props }: MageType) {
+  const mageRef = useRef<THREE.Group | null>(null);
+  // const [activeAnim, setActiveAnim] = useState<string>("BALL");
+  const store = useStore();
+  const activeAnim = useMemo(() => store.activeAnim, [store.activeAnim]);
+  const prevAnim = useMemo(() => store.prevAnim, [store.prevAnim]);
+
   const { nodes, materials, animations } = useGLTF(
-    "../MODEL-transformed.glb"
+    "/../MODEL-transformed.glb"
   ) as GLTFResult;
-  const { actions } = useAnimations<THREE.AnimationClip>(animations, group);
+  const { actions } = useAnimations<THREE.AnimationClip>(animations, mageRef);
+  console.log(activeAnim);
+  const scroll = useScroll();
+  const tl = useRef<GSAPTimeline | null>(null);
+  const postl = useRef<GSAPTimeline | null>(null);
+  useEffect(() => {
+    console.log(actions);
+    if (activeAnim && scroll.offset > 0) {
+      actions[activeAnim]!.syncWith(actions[prevAnim]!);
+      actions[activeAnim]!.fadeOut(0.5).reset().fadeIn(0).play().paused = true;
+      // if (activeAnim === "FLYING") {
+      //   actions[activeAnim]!.fadeOut(0.5).reset().play();
+      // } else {
+      // }
+    } else {
+      actions[activeAnim]!.fadeIn(0.5).setDuration(10).play();
+    }
+
+    return () => {
+      actions[activeAnim]?.fadeOut(0.5).reset().stop();
+
+      // if (tl.current) {
+      //   tl.current.clear();
+      //   tl.current = null;
+      // }
+
+      // if (postl.current) {
+      //   postl.current.clear();
+      //   postl.current = null;
+      // }
+    };
+  }, [activeAnim]);
+  useGSAP(
+    () => {
+      postl.current = gsap.timeline();
+      tl.current = gsap.timeline();
+      if (tl.current && mageRef.current) {
+        gsap.from(mageRef.current.position, {
+          x: -70,
+          y: -15,
+          duration: 5,
+          ease: "power4.out",
+          overwrite: "auto",
+        });
+        postl.current.to(
+          mageRef.current.position,
+          {
+            y: -15,
+            duration: 2,
+            overwrite: "auto",
+            ease: "power1.in",
+          },
+          "+=5"
+        );
+        tl.current.to(
+          mageRef.current.scale,
+          {
+            duration: 10,
+            x: 3,
+            y: 3,
+            z: 3,
+            // ease: "sine.inOut",
+          },
+          "+=1"
+        );
+        tl.current.to(
+          mageRef.current.position,
+          {
+            duration: 10,
+            ease: "power1.out",
+            x: Math.PI / 2,
+            overwrite: "auto",
+          },
+          6
+        );
+        tl.current
+          .to(
+            mageRef.current.position,
+            {
+              duration: 10,
+              y: -100,
+              overwrite: "auto",
+            },
+            2
+          )
+          .to(
+            mageRef.current.scale,
+            {
+              duration: 6,
+              x: 8,
+              y: 8,
+              z: 8,
+              ease: "sine.inOut",
+              overwrite: "auto",
+            },
+            "-=14"
+          )
+          .to(
+            mageRef.current.position,
+            {
+              duration: 10,
+              y: -150,
+              overwrite: "auto",
+            },
+            10
+          );
+        // tl.current.to(
+        //   mageRef.current.position,
+        //   {
+        //     duration: 8,
+        //     y: -200,
+        //     overwrite: "auto",
+        //   },
+        //   "<"
+        // );
+      }
+    },
+    { scope: mageRef }
+  );
+
+  useFrame((state, delta) => {
+    // console.log(scroll.offset);
+    // console.log(mageRef.current?.position);
+    // console.log(mageRef.current?.scale);
+    // console.log(tl.current?.duration());
+    // console.log(scroll.offset);
+    // console.log(mageRef.current?.position.y);
+    if (tl.current && postl.current) {
+      // console.log(scroll.offset);
+      tl.current.seek(scroll.offset * tl.current.duration() * 0.7);
+      // console.log(scroll.offset * postl.current.duration() * 0.7);
+      // console.log(scroll.offset * postl.current.duration() * 30);
+
+      postl.current.seek(scroll.offset * postl.current.duration() * 30);
+    }
+    if (!scroll.offset) {
+      store.activeAnim = "BALL";
+      store.prevAnim = "JUMP";
+    }
+    if (scroll.offset > 0 && scroll.offset <= 0.08) {
+      store.prevAnim = "BALL";
+      // console.log(scroll.offset);
+      // console.log(actions[activeAnim]!.getClip().duration );
+      store.activeAnim = "JUMP";
+      actions[activeAnim]!.time =
+        actions[activeAnim]!.getClip().duration * scroll.offset * 5;
+    }
+    // if (scroll.offset > 0.03 && scroll.offset <= 0.07) {
+    //   actions[activeAnim]!.time =
+    //     actions[activeAnim]!.getClip().duration * scroll.offset * 5;
+    // }
+    if (scroll.offset > 0.08 && scroll.offset <= 0.5) {
+      // console.log("flying");
+      store.prevAnim = "JUMP";
+      store.activeAnim = "FLYING";
+      actions[activeAnim]!.syncWith(actions["JUMP"]!);
+      // console.log(actions[activeAnim]!);
+      // actions[activeAnim]!.time =
+      //   actions[activeAnim]!.getClip().duration * scroll.offset * 5;
+    }
+    if (scroll.offset >= 0.55) {
+      // console.log("idle");
+      store.activeAnim = "IDLE";
+      actions[activeAnim]!.time =
+        actions[activeAnim]!.getClip().duration * scroll.offset * 5;
+    }
+  });
+
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={mageRef} {...props} dispose={null}>
       <group name="Scene">
         <group name="Armature001" position={[0, 1.04, 0]} scale={0.01}>
           <primitive object={nodes.mixamorigHips} />
@@ -385,7 +575,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
           <skinnedMesh
             name="Object_49001"
             geometry={nodes.Object_49001.geometry}
-            material={materials["lambert28.001"]}
+            material={eyesMesh}
             skeleton={nodes.Object_49001.skeleton}
           />
           <skinnedMesh
@@ -565,7 +755,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
           <skinnedMesh
             name="Object_76001"
             geometry={nodes.Object_76001.geometry}
-            material={materials.lambert10}
+            material={faceMat}
             skeleton={nodes.Object_76001.skeleton}
           />
           <skinnedMesh
@@ -623,3 +813,64 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
 }
 
 useGLTF.preload("/../MODEL-transformed.glb");
+
+function switchAnimations({
+  mageRef,
+  track,
+
+  activeAnim,
+}: {
+  mageRef: React.MutableRefObject<THREE.Group | null>;
+  track: THREE.AnimationAction;
+  activeAnim: string;
+}) {
+  switch (activeAnim) {
+    case "JUMP":
+      // console.log("i");
+      // track.repetitions = 1;
+      track.reset().fadeOut(0.5).fadeIn(0.5).play().paused = true;
+      // track.reset().fadeOut(0.5).setDuration(3).fadeIn(0.5).play();
+      break;
+    case "FLYING":
+      // console.log("flying");
+      // track.repetitions = Infinity;
+
+      // console.log(track.getClip());
+      track.reset().fadeOut(0.5).fadeIn(0.5).play().paused = true;
+
+      // track.reset().fadeOut(0.5).setDuration(2).fadeIn(0.5).play();
+      break;
+    case "BALL":
+      // console.log("f");
+      track.setDuration(10).fadeIn(0.5).play();
+      track.repetitions = Infinity;
+      break;
+    case "SKILL":
+      // console.log("i");
+
+      track.reset().setDuration(5).fadeIn(0.5).play();
+      break;
+    case "WORK":
+      // console.log("i");
+
+      break;
+    case "CONTACT":
+      // console.log("n");
+      break;
+    case "attack":
+      // console.log("h");
+      break;
+    case "IDLE":
+      track.repetitions = Infinity;
+      track.reset().setDuration(5).fadeIn(0.5).play();
+      break;
+    case "LOOKBACK":
+      track.repetitions = Infinity;
+      track.reset().setDuration(5).fadeIn(0.5).play();
+      break;
+
+    default:
+      // console.log("e");
+      track.fadeOut(0.5).stop();
+  }
+}

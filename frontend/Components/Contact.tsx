@@ -40,7 +40,7 @@ function Contact() {
   const emailRef = useRef<HTMLInputElement>(null!);
   const subRef = useRef<HTMLInputElement>(null!);
   const msgRef = useRef<HTMLTextAreaElement>(null!);
-
+  const contactRef = useRef<HTMLDivElement>(null);
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -68,6 +68,7 @@ function Contact() {
   };
 
   useEffect(() => {
+    console.log(contactRef.current?.offsetHeight);
     if (window.innerWidth <= 1780) {
       setHideLine(true);
     } else {
@@ -112,7 +113,9 @@ function Contact() {
   return (
     <div
       style={{ fontFamily: "Ignazio" }}
-      className=" sm:h-[1080px]  bg-[#171717]  shadow-lg contact"
+      ref={contactRef}
+      id="contact"
+      className="min-h-[1280px]  md+:min-h-[1080px] h-screen  bg-[#171717]  shadow-lg contact"
     >
       <div className="grid grid-flow-row xl:grid-flow-col w-full h-full xl:grid-cols-3 relative m-auto  xs:mb-0 gap-y-20 xl:gap-y-0 justify-self-center mx-auto ">
         <div className="col-span-1 flex w-full relative left-20 xss:left-[90px] xs:left-36 xs+:left-28 sm:left-0 flex-col  sm:flex-row sm:absolute top-20  xl:relative  xl:top-[10%] xl:-translate-y-[70%]  m-auto xl:flex-col  gap-y-10 xl:gap-y-60 mb-10 xs:mb-0">
@@ -167,8 +170,8 @@ function Contact() {
           </div>
         </div>
         <div
-          className={`col-span-2 h-max xl:h-4/5  m-auto xl:m-0 xl:translate-y-[-50%] xl:top-[50%]  grid grid-flow-row md:grid-flow-col md:grid-cols-3 relative w-full xss:w-4/5 md:w-11/12 lg+:w-5/6 xl:w-full  xl+:w-11/12   ${
-            showConfetti ? "bg-[#171717]" : "bg-gray-900/40"
+          className={`z-30 col-span-2 h-max xl:h-4/5  m-auto xl:m-0 xl:translate-y-[-50%] xl:top-[50%]  grid grid-flow-row md:grid-flow-col md:grid-cols-3 relative w-full xss:w-4/5 md:w-11/12 lg+:w-5/6 xl:w-full  xl+:w-11/12   ${
+            showConfetti ? "bg-[#171717]" : "bg-gray-900/70"
           } mb-10 mx-auto`}
         >
           {!showConfetti ? (
@@ -284,7 +287,7 @@ function Contact() {
                   <input
                     type="submit"
                     value="Submit"
-                    className="text-[#f4805b] border-2 border-[#f4805b] text-xl py-2 px-4  flex self-start sm:ml-[8%] mb-10  "
+                    className="cursor-pointer hover:scale-110 hover:animate-pulse duration-300  text-[#f4805b] border-2 border-[#f4805b] text-xl py-2 px-4  flex self-start sm:ml-[8%] mb-10  "
                   />
                 </form>
               </div>

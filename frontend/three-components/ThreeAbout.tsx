@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from "react";
 import { Mage } from "../gltf_jsx";
 import { Html, useGLTF } from "@react-three/drei";
-import "./about.css";
+
 function ThreeAbout() {
   const humanModel = useGLTF("../static/Animations/human.glb");
   const [active, setActive] = useState<boolean>(true);

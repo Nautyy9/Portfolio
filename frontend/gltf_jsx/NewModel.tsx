@@ -122,16 +122,18 @@ type ActionName =
   | "WORK";
 type GLTFActions = Record<ActionName, THREE.AnimationAction>;
 
-export default function NewModel(props: JSX.IntrinsicElements["group"]) {
+export default function NewModel({ ...props }: JSX.IntrinsicElements["group"]) {
   const mageRef = useRef<THREE.Group | null>(null);
   const { nodes, materials, animations } = useGLTF(
-    "/../MODEL-transformed.glb"
+    "../MODEL-transformed.glb"
   ) as GLTFResult;
   const { actions } = useAnimations<THREE.AnimationClip>(animations, mageRef);
   console.log(animations, actions);
   const scroll = useScroll();
   const tl = useRef<GSAPTimeline | null>(null);
   const postl = useRef<GSAPTimeline | null>(null);
+  const [activeAnim, setActiveAnim] = useState<string>("");
+
   useGSAP(
     () => {
       postl.current = gsap.timeline();
@@ -226,7 +228,6 @@ export default function NewModel(props: JSX.IntrinsicElements["group"]) {
     },
     { scope: mageRef }
   );
-  const [activeAnim, setActiveAnim] = useState<string>("");
 
   useFrame((state, delta) => {
     // console.log(activeAnim);

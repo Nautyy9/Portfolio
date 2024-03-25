@@ -1,79 +1,68 @@
-import gsap, { Back, Power4 } from "gsap";
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { BsArrow90DegRight } from "react-icons/bs";
 import { Link } from "react-scroll";
 import { IoCubeOutline } from "react-icons/io5";
 import ThreeHome from "../cube/CubeCanvas";
-import { useGSAP } from "@gsap/react";
+import {
+  AnimatePresence,
+  animate,
+  motion,
+  useAnimate,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
+import gsap, { Elastic } from "gsap";
+
+const textVar = {
+  hidden: {
+    scale: 0,
+  },
+  visible: {
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.5,
+      delayChildren: 0.2,
+      type: "spring",
+    },
+  },
+};
+
+const innerText = {
+  hidden: {
+    scale: 0,
+    opacity: 0,
+  },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: "spring",
+    },
+  },
+};
+
+const coords = {
+  x: 0,
+  y: 0,
+};
+
+let h = 0;
+let w = 0;
+
 function Home() {
   const id = useId();
   const Fname = ["n", "i", "t", "i", "n"];
   const Lname = ["n", "a", "u", "t", "i", "y", "a", "l"];
-  const sections = ["S", "e", "c", "t", "i", "o", "n", "🙃", "1"];
+  const backText = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLDivElement>(null);
+  // const sections = ["S", "e", "c", "t", "i", "o", "n", "🙃", "1"];
   const text = "nitinnautiyal-webdeveloper/designer";
   const roundText = text.split("");
   // const suii = useNavigation()
   const CubeRef = useRef<HTMLDivElement | null>(null);
   const miniCube = useRef<HTMLDivElement | null>(null);
-  useGSAP(() => {
-    // const text = document.querySelector('.who');
-
-    const tl = gsap.timeline();
-    tl.set("#my-image", { opacity: 0, visibility: "hidden" });
-    tl.set(".name", { visibility: "hidden", opacity: 0 });
-    tl.from(".who", { opacity: 0, visibility: "hidden" });
-    if (window.innerWidth > 768) {
-      tl.fromTo(
-        [".bg_text4", ".bg_text3", ".bg_text2", ".bg_text1"],
-        { y: -1000, x: 0 },
-        { y: 0, x: 0, stagger: 0.2, ease: Power4.easeOut, duration: 1 }
-      );
-      tl.fromTo(
-        [".bg_text1", ".bg_text2", ".bg_text3", ".bg_text4"],
-        { letterSpacing: 0 },
-        { letterSpacing: 10, stagger: 0.2, ease: Back.easeInOut, duration: 0.8 }
-      );
-    }
-    tl.fromTo(
-      ".shade_text2",
-      { x: 0, y: -200, opacity: 0 },
-      { x: 0, opacity: 1, y: 0, duration: 1, ease: Power4.easeOut },
-      "-=.1"
-    );
-    tl.fromTo(
-      ".shade_text1",
-      { x: 0, y: -100, opacity: 0 },
-      { x: 0, opacity: 1, y: 0, duration: 1, ease: Power4.easeOut },
-      "-=1.2"
-    );
-    tl.fromTo(
-      ".h_name",
-      { opacity: 0, scale: 1, x: 0, y: 100 },
-      {
-        opacity: 1,
-        stagger: 0.1,
-        repeatRefresh: false,
-        ease: "back",
-        duration: 0.3,
-        x: 0,
-        y: 0,
-      },
-      "-=.6"
-    );
-    tl.fromTo(
-      ".h_surname",
-      { opacity: 0, scale: 1, x: 0, y: 100 },
-      { opacity: 1, stagger: 0.1, ease: "back", duration: 0.3, x: 0, y: 0 },
-      "-=.2"
-    );
-    tl.to(".who", {
-      opacity: 1,
-      ease: Power4.easeOut,
-      duration: 1,
-      visibility: "visible",
-    });
-  }, []);
-
+  const [showText, setShowText] = useState(false);
   const setImages = () => {
     const text = document.querySelector(".who");
     // const name = document.querySelector('.name');
@@ -81,140 +70,160 @@ function Home() {
     miniCube.current?.classList.remove("xl:hidden");
     CubeRef.current?.classList.add("hidden");
     text!.classList.add("hidden");
-    const tl = gsap.timeline();
-
-    tl.fromTo(
-      "#tree-image",
-      { opacity: 1, visibility: "visible" },
-      { opacity: 0, duration: 0.15, ease: Power4.easeOut, visibility: "hidden" }
-    );
-    tl.fromTo(
-      [".shade_text1", ".shade_text2"],
-      { opacity: 1, scale: 1, x: 0, y: 0 },
-      {
-        opacity: 0,
-        stagger: 0.1,
-        scale: 0,
-        ease: "back",
-        duration: 0.2,
-        x: 0,
-        y: 0,
-        visibility: "hidden",
-      },
-      "-=.3"
-    );
-    tl.fromTo(
-      ".h_name",
-      { opacity: 1, scale: 1, x: 0, y: 0 },
-      {
-        opacity: 0,
-        stagger: 0.1,
-        scale: 0,
-        ease: "back",
-        duration: 0.2,
-        x: 0,
-        y: 0,
-      },
-      "-=.3"
-    );
-    tl.fromTo(
-      ".h_surname",
-      { opacity: 1, scale: 1, x: 0, y: 0 },
-      {
-        opacity: 0,
-        stagger: 0.1,
-        scale: 0,
-        ease: "back",
-        duration: 0.2,
-        x: 0,
-        y: 0,
-      },
-      "-=.3"
-    );
-    tl.fromTo(
-      [".bg_text5", ".bg_text4", ".bg_text3", ".bg_text2", ".bg_text1"],
-      { x: 0 },
-      { stagger: 0.3, x: 2000 }
-    );
-    tl.to(".bg_text", { display: "none" });
-    tl.fromTo(
-      "#my-image",
-      { opacity: 0, visibility: "hidden" },
-      { opacity: 1, duration: 1, ease: Power4.easeOut, visibility: "visible" }
-    );
-    tl.fromTo(
-      ".suii",
-      { opacity: 0, visibility: "hidden" },
-      {
-        opacity: 1,
-        duration: 1,
-        stagger: 0.2,
-        ease: Power4.easeOut,
-        visibility: "visible",
-      }
-    );
-    tl.to(
-      ".name",
-      {
-        opacity: 1,
-        scale: 1,
-        visibility: "visible",
-        duration: 2,
-        ease: Power4.easeOut,
-      },
-      "-=7"
-    );
   };
 
-  function animateSpring(name: string) {
-    const tl = gsap.timeline();
+  const [scope, animate] = useAnimate();
+  const pathRef = useRef<SVGPathElement>(null);
+  const lineDivRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    // window.onpointermove = (e) => {
+    //   console.log(e.clientY);
+    // };
+    if (!lineDivRef.current) return;
+    lineDivRef.current.onmousemove = (e) => {
+      // console.log(lineDivRef.current?.getBoundingClientRect());
+      updateWidth(e.offsetY + 25);
+    };
+    lineDivRef.current.onmouseout = (e) => {
+      if (!pathRef.current) return;
+      gsap.to(pathRef.current, {
+        attr: { d: "M-10,80 Q60,80 100,80" },
+        ease: Elastic.easeOut.config(2, 0.4),
+      });
+    };
+  });
+
+  function updateWidth(val: number) {
+    if (!pathRef.current) return;
+
+    pathRef.current.setAttribute("d", `M-10,80 Q60 ${val}  100,80`);
   }
+
+  // useEffect(() => {
+  //   if (!nameRef.current) return;
+  //   if (showText) {
+  //     nameRef.current.classList.add("hidden");
+  //   } else {
+  //     nameRef.current.classList.remove("hidden");
+  //   }
+  // });
+  // const controls = useAnimation();
+
+  // const springX = useTransform(
+  //   x,
+  //   [160, 80, 160, 20, 120, 100, 90, 100, 80], // Adjust the range based on your requirement
+  //   [160, 80, 160, 20, 120, 100, 90, 100, 80] // Adjust the displacement based on your requirement
+  // );
+
+  // const handleDragEnd = () => {
+  //   controls.start({
+  //     x: 0,
+  //     transition: { type: "spring", stiffness: 500, damping: 30 },
+  //   });
+  // };
+
+  // function showText() {
+  //   if (!backText.current) return;
+  //   if (!nameRef.current) return;
+  //   nameRef.current.classList.add("hidden");
+  //   backText.current.classList.remove("hidden");
+  //   backText.current.classList.add("flex");
+  //   backText.current.classList.remove("");
+  // }
+  // console.log(showText);
   return (
-    <div className="home shadow-md z-10  bg-[#171717] text-[#dfd3c3] overflow-hidden">
-      <div className="">
-        <div
-          style={{ fontFamily: "Coconat" }}
-          className="text-[#f4805b]/40 flex flex-col z-20 text-[16px]   xs:ml-0 left-[7%] lg:left-[9%]   font-semibold absolute  top-[44.7%] md:top-[44.2%] translate-y-[-60%]"
-        >
-          <div className=" flex mt-2">
-            {Fname?.map((name, id) => (
-              <h3
-                key={`${id}-h-fname-${id}`}
-                className="drop-shadow-md text-4xl xs:text-6xl md:text-8xl  h_name cursor-pointer hover:animate-rubberBand"
-                onPointerOver={() => animateSpring(name)}
+    <motion.div
+      style={{
+        fontFamily: "Bluu",
+      }}
+      id="home"
+      className="relative bg-[#121212] inset-0 home min-h-[850px] h-screen shadow-md font-bold z-10  text-[#dfd3c3] overflow-hidden"
+    >
+      <AnimatePresence mode="popLayout">
+        {!showText && (
+          <motion.div
+            ref={nameRef}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{ opacity: 1 }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{ type: "spring" }}
+            className=" z-40 relative h-full w-11/12 md:w-5/6  mx-auto  "
+          >
+            <div className=" text-[#f4805b]/40  left-0 w-full z-20 text-[16px] pt-11 font-bold absolute top-1/2 -translate-y-1/2 ">
+              <div className="flex mt-2 ">
+                {Fname?.map((name, id) => (
+                  <h1
+                    key={`${id}-h-fname-${id}`}
+                    className=" pl-[5px] md:pl-0 drop-shadow-md text-7xl md:text-9xl h_name cursor-pointer hover:animate-rubberBand"
+                  >
+                    {name}
+                  </h1>
+                ))}
+              </div>
+              <div className="flex ">
+                {Lname?.map((name, id) => (
+                  <h1
+                    key={`${id}-h-lname-${id}`}
+                    className=" pl-[6px] md:pl-0  text-7xl md:text-9xl mt-2 h_surname hover:animate-rubberBand"
+                  >
+                    {name}
+                  </h1>
+                ))}
+              </div>
+              <div
+                onClick={() => setShowText((prev) => !prev)}
+                className=" cursor-pointer  duration-300  text-[#dfd3c3] flex  relative max-w-max top-0"
               >
-                {name}
-              </h3>
-            ))}
-          </div>
-          <div className="flex">
-            {Lname?.map((name, id) => (
-              <h3
-                key={`${id}-h-lname-${id}`}
-                className=" text-4xl xs:text-6xl md:text-8xl mt-2 h_surname hover:animate-rubberBand"
-              >
-                {name}
-              </h3>
-            ))}
-          </div>
-          <div className=" text-[#dfd3c3] flex cursor-help relative max-w-max who top-12  xs:top-20">
-            <div
-              onClick={setImages}
-              // aria-disabled={threeCube ? "false" : "true"}
-              className="absolute transition-all ease-in-out duration-400  line-through  px-3 py-1 decoration-[#f4805b] hover:decoration-transparent bottom-1/2  hover:border-[3px] border-[#f4805b]  "
-            >
-              <p className=" xs:text-xl md:text-2xl  ">WHO?</p>
+                <div
+                  ref={lineDivRef}
+                  onClick={setImages}
+                  style={{
+                    fontFamily: "CG",
+                  }}
+                  className=" relative  transition-all ease-in-out px-3 py-1 "
+                >
+                  <svg
+                    preserveAspectRatio="xMidYMid center"
+                    stroke="#f4805b"
+                    strokeWidth={2}
+                    strokeLinecap="square"
+                    fill="none"
+                    style={{
+                      // backgroundColor: "orange",
+                      height: "100px",
+                      marginTop: "20px",
+                      width: "100%",
+                      marginBlock: "auto",
+                      position: "absolute",
+                      left: "0",
+                      bottom: 0,
+                      // top: "-50%",
+                      // transform: "translateY(-50%)",
+                    }}
+                  >
+                    <path ref={pathRef} d="M10,80 Q190,80 290,80">
+                      {" "}
+                    </path>
+                  </svg>
+
+                  <h6 className=" text-xl  xs:text-2xl">WHO?</h6>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="text-[#dfd3c3] font-semibold  xs:ml-0 left-[7%] lg:left-[9%]  gap-y-2 text-4xl mt-1 xs:mt-0 xs:text-6xl md:text-8xl  flex flex-col -z-1 absolute top-[44.9%] md:top-[45%] translate-y-[-60%]">
-          <div className="shade_text1">nitin</div>
-          <div className="shade_text2">nautiyal</div>
-        </div>
-      </div>
+            <div className="text-[#dfd3c3] tracking-widest md:tracking-normal font-semibold  gap-y-2  mt-1 xs:mt-0 text-7xl md:text-9xl  flex flex-col -z-1 absolute top-1/2 -translate-y-1/2">
+              <div className="shade_text1">nitin</div>
+              <div className="shade_text2">nautiyal</div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div
-        className="flex cursor-pointer animate-pulse transition hover:scale-125 duration-300 xl:hidden absolute bottom-5 right-5"
+        className="z-50 flex cursor-pointer animate-pulse transition hover:scale-125 duration-300 xl:hidden absolute bottom-5 right-5"
         ref={miniCube}
         onClick={() => {
           window.location.href = "/three-js";
@@ -237,21 +246,29 @@ function Home() {
         </button>
       </div> */}
 
-      <div className="h-full w-full  relative flex justify-end img_div -mx-10 z-10">
-        {/* <img src="assets/1325107.svg" alt="tree" className='h-full  bg-gradient-to-t from-[#5C4033]  to-[#2d411b] absolute right-0' id='tree-image' ref={treeImage_ref} /> */}
-        <div className="round_img backdrop-blur-[10px]" id="my-image"></div>
-        <div className="round_text" id="my-image">
-          {roundText.map((char: string, i: number) => (
-            <span
-              key={i}
-              className="suii text-[#f9d5ca]"
-              style={{ transform: `rotate(${i * 10}deg)` }}
-            >
-              {char}
-            </span>
-          ))}
-        </div>
-      </div>
+      {showText && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          exit={{ opacity: 0 }}
+          className=" flex justify-end img_div -mx-5 min-[400px]:-mx-10 "
+        >
+          {/* <img src="assets/1325107.svg" alt="tree" className='h-full  bg-gradient-to-t from-[#5C4033]  to-[#2d411b] absolute right-0' id='tree-image' ref={treeImage_ref} /> */}
+          <div className="round_img " id="my-image"></div>
+          <div className="round_text" id="my-image">
+            {roundText.map((char: string, i: number) => (
+              <span
+                key={i}
+                className=" text-[#f9d5ca]"
+                style={{ transform: `rotate(${i * 10}deg)` }}
+              >
+                {char}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      )}
       {/* 
       <div className="bg_text absolute h-screen hidden text-opacity-40  xl:gap-y-28 xl:flex flex-col mix-blend-soft-light justify-end text-right  blur-[1px]  top-[45%]   text-8xl w-full  left-0">
         <div className="bg_text1 " style={{ textShadow: "2px 2px 2px black" }}>
@@ -267,28 +284,45 @@ function Home() {
           FOOTBALLER
         </div>
       </div> */}
-      <div
-        style={{ fontFamily: "Coconat" }}
-        className="font-semibold tracking-tight flex flex-col absolute left-[5.5%] w-4/5 h-[90%] top-[60%]  translate-y-[-50%] xs:h-auto  xs:top-[23%]  sm:w-5/6 sm:top-[24%] text-[18px] xss:text-[20px]  xs:text-[25px] sm:text-3xl md:text-3xl md:w-1/2 md:tracking-normal md:top-[30%] md+:w-[32%] md+:top-[45%] md+:tracking-widest lg:w-1/3 text-[#f5e4bc] name"
-      >
-        Hey there, I am Nitin Nautiyal, Freelancer & Front-End Developer
-        <p className="text-gray-500 text-base tracking-tighter xss:text-lg sm:text-xl mt-3 sm:mt-6  font-bold font-[Georgia, Times New Roman, Times, sans-serif] xss:tracking-wide ">
-          I love creating beautiful user experiences.
-        </p>
-        <Link
-          to="contact"
-          spy={true}
-          smooth={true}
-          offset={100}
-          duration={1000}
-          className="text-base font-semibold text-[#f4805b] border-2 border-[#f4805b]  flex justify-center items-start overflow-hidden tracking-tight absolute hover:animate-pulse hover:scale-105 duration-300 ease-in w-max h-10 py-2 px-5  mb-10  xss:mb-2 xs:mb-0 left-[50%] translate-x-[-50%] xs:left-0 xs:translate-x-0 bottom-0 xss:bottom-10  xs:bottom-[-30%] sm:bottom-[-40%] md:bottom-[-20%] md:tracking-normal md:mt-10 xl:bottom-[-40%]   "
+      {/* <div className="w-full sm:w-11/12  md:w-5/6  mx-auto  "> */}
+
+      {showText && (
+        <motion.div
+          style={{ fontFamily: "CG" }}
+          ref={backText}
+          className="md+:flex name z-40 absolute top-[40%] md:top-1/2 -translate-y-1/2 lg:top-0 items-center  lg:translate-y-0  mx-auto text-clip xss:text-center md:text-left   w-11/12 md:w-5/6 inset-0 font-semibold tracking-tight  text-[18px] xss:text-[20px]  xs:text-[25px] sm:text-3xl md:text-3xl md:tracking-normal  md+:tracking-widest  text-[#f5e4bc] "
         >
-          Get in touch
-          <BsArrow90DegRight className="h-5 w-5  ml-3 mt-1  rotate-90 my-auto"></BsArrow90DegRight>
-        </Link>
-      </div>
-      <ThreeHome cubeRef={CubeRef} />
-    </div>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={textVar}
+            className="md:w-1/2 md+:w-1/2  flex flex-col gap-y-5 "
+          >
+            <motion.h2 variants={innerText} className="">
+              Hey there, I am Nitin Nautiyal, Freelancer & Front-End Developer
+            </motion.h2>
+            <motion.h3 variants={innerText} className="text-gray-200  ">
+              I love creating beautiful user experiences.
+            </motion.h3>
+            <motion.div variants={innerText} className="w-max mx-auto md:mx-0 ">
+              <Link
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={100}
+                duration={1000}
+                className=" text-base font-semibold text-[#f4805b] border-2 border-[#f4805b] flex self-center md:self-start py-2 px-5 cursor-pointer hover:animate-pulse hover:scale-110 duration-300 transition ease-in-out "
+              >
+                Get in touch
+                <BsArrow90DegRight className="h-5 w-5  ml-3 mt-1  rotate-90 my-auto"></BsArrow90DegRight>
+              </Link>
+            </motion.div>
+          </motion.div>
+          {/* </div> */}
+        </motion.div>
+      )}
+      {/* <ThreeHome cubeRef={CubeRef} /> */}
+    </motion.div>
   );
 }
 

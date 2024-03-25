@@ -1,13 +1,18 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
 import "./three.css";
 import { Leva, useControls } from "leva";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { OrbitControls, Stars } from "@react-three/drei";
 
 function ThreeApp() {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/home");
+  }, [pathname]);
   // const bg_texture = useLoader(THREE.TextureLoader, "assets/bg_4.jpeg");
   const dlRef = useRef<THREE.DirectionalLight>(null!);
   // useHelper(dlRef, THREE.DirectionalLightHelper, 1);
@@ -19,7 +24,6 @@ function ThreeApp() {
     near: { value: 1, min: 1, max: 1000 },
     far: { value: 1, min: 1, max: 1000 },
   });
-
   return (
     <>
       <div className="three-app">

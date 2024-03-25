@@ -9,7 +9,8 @@ import {
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
-import { Room, Carpet, Mage, NewModel } from "../gltf_jsx/index";
+import { Room, Carpet, Mage, FinalModel } from "../gltf_jsx/index";
+import { GiCoinsPile } from "react-icons/gi";
 
 function ThreeHome() {
   const scroll = useScroll();
@@ -22,25 +23,28 @@ function ThreeHome() {
 
   const [sparkle, setSparkle] = useState<boolean>(true);
   const ballref = useRef<THREE.Mesh | null>(null);
-  const ballModel = useFBX("/static/wizards_room/last_one.fbx");
+  // const ballModel = useFBX("/static/wizards_room/last_one.fbx");
 
-  const { animations: ballAnim } = ballModel;
-  const { actions: ballAction } = useAnimations<THREE.AnimationClip>(
-    ballAnim,
-    sparkleRef
-  );
+  // const { animations: ballAnim } = ballModel;
+  // const { actions: ballAction } = useAnimations<THREE.AnimationClip>(
+  // ballAnim,
+  //   ballref
+  // );
 
-  useEffect(() => {
-    console.log(ballAction["SphereAction"]);
-    if (ballAction["SphereAction"])
-      ballAction["SphereAction"].reset().setDuration(15).fadeIn(0.5).play();
+  // useEffect(() => {
+  //   if (ballAction["SphereAction"]) {
+  //     console.log(ballAction);
+  //     ballAction["SphereAction"].reset().setDuration(15).fadeIn(0.5).play();
+  //   }
 
-    // return () => {
-    // ballAction["SphereAction"]!.reset().fadeOut(0.5).stop();
-    // };
-  });
+  //   return () => {
+  //     ballAction["SphereAction"]!.reset().fadeOut(0.5).stop();
+  //   };
+  // });
 
   useFrame((state, delta) => {
+    const position = ballref.current?.position;
+    // console.log(position);
     // console.log(scroll.offset, tl.current.duration())
     if (scroll.offset > 0) {
       setSparkle(false);
@@ -64,16 +68,19 @@ function ThreeHome() {
           position={[-25, -10, 0]}
           rotation={[-Math.PI * 0.55, 0, 1]}
         />
-        
-        
+
         <mesh
-        rotation-y={Math.PI / 2}
-        ref={ballref}
-        position={[-26, -10, 0]}
-        scale={0.09}
-        >
-        <primitive object={ballModel} />
-      </mesh> */}
+          rotation-y={Math.PI / 2}
+          ref={ballref}
+          position={[-26, -10, 0]}
+          scale={0.09}
+        ></mesh> */}
+        {/* <primitive
+          object={ballModel}
+          position={[-22, 3, 10]}
+          scale={10}
+          ref={ballref}
+        /> */}
         <Carpet scale={5} rotation-y={Math.PI / 2} position={[-24, -13, 3]} />
         {sparkle && (
           <Sparkles
@@ -87,11 +94,11 @@ function ThreeHome() {
             speed={1}
           />
         )}
-        <NewModel
+        <FinalModel
           scale={10}
-          position={[-25, -12.3, 0]}
+          position={[-25, -12, 0]}
           rotation={[0, 0.5, 0]}
-        ></NewModel>
+        />
       </Suspense>
 
       {/* <Suspense fallback={null}>
@@ -107,8 +114,8 @@ function ThreeHome() {
           scale={[30, -30, 40]}
           speed={0.8}
           size={50}
-          position={[20, 5, 5]}
-          count={25}
+          position={[20, 0, 5]}
+          count={20}
           // onWheel={(e) => console.log(e)}
         />
       </Suspense> */}
