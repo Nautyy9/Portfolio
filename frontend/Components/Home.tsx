@@ -2,7 +2,6 @@ import { useEffect, useId, useRef, useState } from "react";
 import { BsArrow90DegRight } from "react-icons/bs";
 import { Link } from "react-scroll";
 import { IoCubeOutline } from "react-icons/io5";
-import ThreeHome from "../cube/CubeCanvas";
 import {
   AnimatePresence,
   animate,

@@ -396,12 +396,23 @@ function Room({ roomRef, ...props }: roomType) {
         tl.current.to(
           broomRef.current.position,
           {
-            duration: 5,
-            x: -1.924838,
+            duration: 3,
+            x: -2.5,
             y: 0.708041,
-            z: -2.279369,
+            z: -0.2,
           },
           "-=8.5"
+        );
+        tl.current.to(
+          broomRef.current.position,
+          {
+            duration: 8,
+            x: -3.2,
+            y: 0.5,
+            z: -2.4,
+            overwrite: "auto",
+          },
+          "<"
         );
       }
     },
@@ -444,7 +455,22 @@ function Room({ roomRef, ...props }: roomType) {
   }, [actions, names]);
 
   useFrame((state, delta) => {
-    // console.log(broomRef.current?.position);
+    // console.log(scroll.offset, broomRef.current?.position);
+
+    if (scroll.offset > 0.72 && broomRef.current) {
+      // console.log(Math.sin((scroll.offset * -delta * 100) / 10));
+      if (broomRef.current.rotation.y <= scroll.offset) {
+        broomRef.current.rotation.y = scroll.offset * -30;
+      } else {
+        broomRef.current.rotation.y += -delta;
+      }
+    } else if (scroll.offset <= 0.78 && broomRef.current) {
+      if (broomRef.current.rotation.y < 0) {
+        broomRef.current.rotation.y = scroll.offset * 30;
+      } else {
+        broomRef.current.rotation.y = 0;
+      }
+    }
     if (tl.current) tl.current.seek(scroll.offset * tl.current.duration());
   });
   return (

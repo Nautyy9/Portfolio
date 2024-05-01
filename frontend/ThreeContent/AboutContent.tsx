@@ -2,15 +2,12 @@ import React from "react";
 
 function AboutContent() {
   return (
-    <div
-      style={{
-        position: "absolute",
-        top: "200vh",
-        color: "white",
-        width: "100%",
-      }}
-    >
-      <div className="about_content">AboutContent</div>
+    <div className="relative ">
+      <img
+        src="../public/assets/up_bg_2.jpg"
+        alt="bg_2"
+        className="w-dvw h-dvh "
+      ></img>
     </div>
   );
 }

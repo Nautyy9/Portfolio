@@ -4,27 +4,8 @@ import Footer from "../layers/Footer";
 import { Home, About, Skills, Work, Contact } from "../Components/index";
 import Loading from "./Loading";
 import "./loading.css";
-import Swal from "sweetalert2";
 import "./index.css";
 function App() {
-  // useEffect(() => {
-  //   window.onresize = () => {
-  //     Swal.fire({
-  //       icon: "warning",
-
-  //       width: "80%",
-  //       background: "#171717",
-  //       title: "Refreshing the page for better responsive design",
-  //       confirmButtonColor: "#f4805b",
-  //       color: "rgb(223, 211, 195)",
-  //       backdrop: "rgb(223, 211, 195, 0.4)",
-  //     }).then(() => {
-  //       window.location.reload();
-  //     });
-  //   };
-  //   return () => {};
-  // }, []);
-
   return (
     <>
       <Suspense fallback={<Loading />}>

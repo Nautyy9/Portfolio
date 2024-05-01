@@ -81,7 +81,7 @@ function ThreeHome() {
           scale={10}
           ref={ballref}
         /> */}
-        <Carpet scale={5} rotation-y={Math.PI / 2} position={[-24, -13, 3]} />
+        <Carpet scale={5} rotation-y={Math.PI / 2} position={[-24, -15, 3]} />
         {sparkle && (
           <Sparkles
             count={1}
@@ -101,7 +101,7 @@ function ThreeHome() {
         />
       </Suspense>
 
-      {/* <Suspense fallback={null}>
+      <Suspense fallback={null}>
         <Room
           roomRef={roomRef}
           scale={[8, 8, 8]}
@@ -109,7 +109,7 @@ function ThreeHome() {
           rotation-z={0.6}
           rotation-x={-Math.PI * 0.5}
         />
-        <Sparkles
+        {/* <Sparkles
           color={"hotpink"}
           scale={[30, -30, 40]}
           speed={0.8}
@@ -117,8 +117,8 @@ function ThreeHome() {
           position={[20, 0, 5]}
           count={20}
           // onWheel={(e) => console.log(e)}
-        />
-      </Suspense> */}
+        /> */}
+      </Suspense>
     </>
   );
 }

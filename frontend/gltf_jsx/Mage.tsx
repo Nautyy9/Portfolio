@@ -839,9 +839,9 @@ function Animations({
 }): animationsFuncType {
   const handRef = useRef<THREE.Object3D<THREE.Event> | null>();
 
-  useFrame((state, delta) => {
-    // console.log(handRef.current?.position);
-  });
+  // useFrame((state, delta) => {
+  //   // console.log(handRef.current?.position);
+  // });
 
   const { actions: workAction } = useAnimations<THREE.AnimationClip>(
     workAnimation,

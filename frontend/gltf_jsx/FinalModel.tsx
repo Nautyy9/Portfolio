@@ -148,18 +148,37 @@ export default function FinalModel({ ...props }: MageType) {
     "/../MODEL-transformed.glb"
   ) as GLTFResult;
   const { actions } = useAnimations<THREE.AnimationClip>(animations, mageRef);
-  console.log(activeAnim);
+  // const { animations: flyingAnimation } = useFBX(
+  //   "../static/Animations/flying.fbx"
+  // );
+  // const { actions: FlyingAction } = useAnimations<THREE.AnimationClip>(
+  //   flyingAnimation,
+  //   mageRef
+  // );
+  // console.log(FlyingAction);
   const scroll = useScroll();
   const tl = useRef<GSAPTimeline | null>(null);
   const postl = useRef<GSAPTimeline | null>(null);
   useEffect(() => {
-    console.log(actions);
+    if (mageRef.current) {
+      if (activeAnim === "FLYING") mageRef.current.position.y = -5;
+      else if (activeAnim === "JUMP") {
+        mageRef.current.position.y = -14;
+        mageRef.current.scale.x = 10;
+        mageRef.current.scale.y = 10;
+        mageRef.current.scale.z = 10;
+      }
+    }
     if (activeAnim && scroll.offset > 0) {
       actions[activeAnim]!.syncWith(actions[prevAnim]!);
       actions[activeAnim]!.fadeOut(0.5).reset().fadeIn(0).play().paused = true;
-      // if (activeAnim === "FLYING") {
-      //   actions[activeAnim]!.fadeOut(0.5).reset().play();
-      // } else {
+      if (activeAnim === "FLYING") {
+        actions[activeAnim]!.fadeOut(0.5).reset().fadeIn(0).play().paused =
+          false;
+        actions[activeAnim]!.repetitions = Infinity;
+        actions[activeAnim]!.fadeOut(0.5).reset().play();
+      }
+      // else {
       // }
     } else {
       actions[activeAnim]!.fadeIn(0.5).setDuration(10).play();
@@ -191,6 +210,18 @@ export default function FinalModel({ ...props }: MageType) {
           ease: "power4.out",
           overwrite: "auto",
         });
+        // tl.current.to(
+        //   mageRef.current.scale,
+        //   {
+        //     x: 10,
+        //     y: 10,
+        //     z: 10,
+        //     duration: 0.1,
+        //     // overwrite: "auto",
+        //   },
+        //   0
+        // );
+        //* posttl contols the bounce rebound effect
         postl.current.to(
           mageRef.current.position,
           {
@@ -201,17 +232,18 @@ export default function FinalModel({ ...props }: MageType) {
           },
           "+=5"
         );
-        tl.current.to(
-          mageRef.current.scale,
-          {
-            duration: 10,
-            x: 3,
-            y: 3,
-            z: 3,
-            // ease: "sine.inOut",
-          },
-          "+=1"
-        );
+        // tl.current.to(
+        //   mageRef.current.scale,
+        //   {
+        //     duration: 10,
+        //     x: 3,
+        //     y: 3,
+        //     z: 3,
+        //     ease: "sine.inOut",
+        //     overwrite: "auto",
+        //   },
+        //   1
+        // );
         tl.current.to(
           mageRef.current.position,
           {
@@ -220,7 +252,7 @@ export default function FinalModel({ ...props }: MageType) {
             x: Math.PI / 2,
             overwrite: "auto",
           },
-          6
+          1
         );
         tl.current
           .to(
@@ -230,29 +262,29 @@ export default function FinalModel({ ...props }: MageType) {
               y: -100,
               overwrite: "auto",
             },
-            2
+            0.85
           )
           .to(
             mageRef.current.scale,
             {
               duration: 6,
-              x: 8,
-              y: 8,
-              z: 8,
+              x: 6,
+              y: 6,
+              z: 6,
               ease: "sine.inOut",
               overwrite: "auto",
             },
-            "-=14"
-          )
-          .to(
-            mageRef.current.position,
-            {
-              duration: 10,
-              y: -150,
-              overwrite: "auto",
-            },
-            10
+            1
           );
+        // .to(
+        //   mageRef.current.position,
+        //   {
+        //     duration: 10,
+        //     y: -150,
+        //     overwrite: "auto",
+        //   },
+        //   10
+        // );
         // tl.current.to(
         //   mageRef.current.position,
         //   {
@@ -298,21 +330,21 @@ export default function FinalModel({ ...props }: MageType) {
     //   actions[activeAnim]!.time =
     //     actions[activeAnim]!.getClip().duration * scroll.offset * 5;
     // }
-    if (scroll.offset > 0.08 && scroll.offset <= 0.5) {
+    if (scroll.offset > 0.08 && scroll.offset <= 1) {
       // console.log("flying");
       store.prevAnim = "JUMP";
       store.activeAnim = "FLYING";
-      actions[activeAnim]!.syncWith(actions["JUMP"]!);
+      // actions[activeAnim]!.syncWith(actions["JUMP"]!);
       // console.log(actions[activeAnim]!);
       // actions[activeAnim]!.time =
-      //   actions[activeAnim]!.getClip().duration * scroll.offset * 5;
+      //   actions[activeAnim]!.getClip().duration * scroll.offset * 1;
     }
-    if (scroll.offset >= 0.55) {
-      // console.log("idle");
-      store.activeAnim = "IDLE";
-      actions[activeAnim]!.time =
-        actions[activeAnim]!.getClip().duration * scroll.offset * 5;
-    }
+    // if (scroll.offset >= 0.55) {
+    //   // console.log("idle");
+    //   store.activeAnim = "IDLE";
+    //   actions[activeAnim]!.time =
+    //     actions[activeAnim]!.getClip().duration * scroll.offset * 5;
+    // }
   });
 
   return (
