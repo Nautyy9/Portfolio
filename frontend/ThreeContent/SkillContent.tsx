@@ -1,8 +1,7 @@
 import React, { Suspense } from "react";
 
-import { Svg as logo } from "@react-three/drei";
-import CssLogo from "../public/assets/css.svg";
-import { CssSvg } from "../Assets/index";
+// import { Svg as logo } from "@react-three/drei";
+// import CssLogo from "../public/assets/css.svg";
 
 const icon = {
   hidden: {
