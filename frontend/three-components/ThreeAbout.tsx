@@ -3,24 +3,22 @@ import { Mage } from "../gltf_jsx";
 import { Html, useGLTF } from "@react-three/drei";
 
 function ThreeAbout() {
-  const humanModel = useGLTF("../static/Animations/human.glb");
+  const humanModel = useGLTF("/static/Animations/human.glb");
   const [active, setActive] = useState<boolean>(true);
   // const scroll1 = useGLTF(
-  //   "../static/mage_assets/hand_painted_-_scroll/scene.gltf"
+  //   "/static/mage_assets/hand_painted_-_scroll/scene.gltf"
   // );
-  // const decor = useGLTF("../static/mage_assets/fantasy_decor_props/scene.gltf");
+  // const decor = useGLTF("/static/mage_assets/fantasy_decor_props/scene.gltf");
   // const scroll2 = useGLTF(
-  //   "../static/mage_assets/hand_painted_-_scroll/scene.gltf"
+  //   "/static/mage_assets/hand_painted_-_scroll/scene.gltf"
   // );
   // * scroll2 === scroll1
 
   const scroll3 = useGLTF(
-    "../static/mage_assets/magic_scroll_and_pen_with_feather/scene.gltf"
+    "/static/mage_assets/magic_scroll_and_pen_with_feather/scene.gltf"
   );
 
-  const scroll4 = useGLTF(
-    "../static/mage_assets/very_useful_scroll/scene.gltf"
-  );
+  const scroll4 = useGLTF("/static/mage_assets/very_useful_scroll/scene.gltf");
   return (
     <>
       {/* <directionalLight intensity={1} />

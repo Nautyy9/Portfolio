@@ -15,7 +15,10 @@ function SkillUtils() {
             <span className="h-2 my-auto mx-10 w-40  bg-[#dfd3c3] shadow-inner"></span>
           </h1>
         ) : (
-          <h1 className="text-5xl text-center flex   justify-center drop-shadow-sm">
+          <h1
+            key={i}
+            className="text-5xl text-center flex   justify-center drop-shadow-sm"
+          >
             SKILLS
             <AiOutlineArrowDown className="h-10 border-4  border-[#f4805b]  rounded-full my-auto mx-10 w-10 px-1  text-[#f4805b] shadow-inner"></AiOutlineArrowDown>
           </h1>
@@ -50,7 +53,10 @@ function ScrollElem({
             <AiOutlineArrowDown className="h-10 w-10 border-4 border-[#f4805b] rounded-full m-auto mx-10 px-1 py-1  text-[#f4805b] shadow-inner"></AiOutlineArrowDown>
           </h1>
         ) : (
-          <h1 className="text-5xl text-center flex  m-auto justify-center drop-shadow-sm">
+          <h1
+            key={i}
+            className="text-5xl text-center flex  m-auto justify-center drop-shadow-sm"
+          >
             {content}
             <span className="h-2 my-auto mx-10 w-40  bg-[#dfd3c3] shadow-inner"></span>
           </h1>

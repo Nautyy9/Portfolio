@@ -135,7 +135,7 @@ function Mage({ ...props }: MageType) {
     nodes,
     materials,
     animations: workAnimation,
-  } = useGLTF("/../static/Animations/MODEL.glb") as GLTFResult;
+  } = useGLTF("/static/Animations/MODEL.glb") as GLTFResult;
   const mageRef = useRef<THREE.Group | null>(null);
   const scroll = useScroll();
   const actionName_2 = "mixamo.com";
@@ -826,7 +826,7 @@ function Mage({ ...props }: MageType) {
   );
 }
 
-useGLTF.preload("/../static/Animations/MODEL.glb");
+useGLTF.preload("/static/Animations/MODEL.glb");
 
 export default Mage;
 

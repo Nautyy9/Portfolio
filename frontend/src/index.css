@@ -208,15 +208,20 @@ body {
 }
 #home {
   background: black;
-  background-image: url(assets/grainy.svg);
+  background-image: url(https://utfs.io/f/40a302e3-1364-463a-aff3-527879d8252f-kh09eq.svg);
 }
 #contact {
   background: black;
-  background-image: url(assets/grainy.svg);
+  background-image: url(https://utfs.io/f/40a302e3-1364-463a-aff3-527879d8252f-kh09eq.svg);
 }
 #skills {
   background: black;
-  background-image: url(assets/grainy.svg);
+  background-image: url(https://utfs.io/f/40a302e3-1364-463a-aff3-527879d8252f-kh09eq.svg);
+}
+
+#header_dropdown {
+  background-color: var(--primary);
+  background-image: var(--image_light);
 }
 .skills {
   font-family: "Coconat";
@@ -237,6 +242,8 @@ body {
 /* .icons  a:hover  {
   transform: translateY(100%);
 } */
+
+
 
 .header_link > button::after {
   position: relative;

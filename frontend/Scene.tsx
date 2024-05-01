@@ -7,29 +7,37 @@ Source: https://sketchfab.com/3d-models/magic-scroll-and-pen-with-feather-8f383d
 Title: Magic scroll and pen with feather
 */
 
-import * as THREE from 'three'
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
+import * as THREE from "three";
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
   nodes: {
-    defaultMaterial: THREE.Mesh
-  }
+    defaultMaterial: THREE.Mesh;
+  };
   materials: {
-    ['1001']: THREE.MeshStandardMaterial
-  }
-}
+    ["1001"]: THREE.MeshStandardMaterial;
+  };
+};
 
-export function Model(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/../static/mage_assets/magic_scroll_and_pen_with_feather/scene.gltf') as GLTFResult
+export function Model(props: JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF(
+    "/static/mage_assets/magic_scroll_and_pen_with_feather/scene.gltf"
+  ) as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.defaultMaterial.geometry} material={materials['1001']} rotation={[Math.PI / 2, 0, 0]} />
+        <mesh
+          geometry={nodes.defaultMaterial.geometry}
+          material={materials["1001"]}
+          rotation={[Math.PI / 2, 0, 0]}
+        />
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/../static/mage_assets/magic_scroll_and_pen_with_feather/scene.gltf')
+useGLTF.preload(
+  "/static/mage_assets/magic_scroll_and_pen_with_feather/scene.gltf"
+);

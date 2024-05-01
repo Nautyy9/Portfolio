@@ -309,7 +309,7 @@ const no_pages = 3;
 
 function Room({ roomRef, ...props }: roomType) {
   const { nodes, materials, animations } = useGLTF(
-    "/../static/wizards_room/final_room.glb"
+    "/static/wizards_room/final_room.glb"
   ) as GLTFResult;
   const { actions } = useAnimations<THREE.AnimationClip>(animations, roomRef);
   const broomRef = useRef<THREE.Mesh | null>(null!);
@@ -2099,5 +2099,5 @@ function Room({ roomRef, ...props }: roomType) {
   );
 }
 
-useGLTF.preload("/../static/wizards_room/final_room.glb");
+useGLTF.preload("/static/wizards_room/final_room.glb");
 export default Room;

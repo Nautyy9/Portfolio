@@ -236,7 +236,7 @@ const glassMat = new THREE.MeshPhysicalMaterial({
 
 export function House(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(
-    "/../static/wizards_room/house.glb"
+    "/static/wizards_room/house.glb"
   ) as GLTFResult;
   return (
     <group {...props} dispose={null}>
@@ -1347,4 +1347,4 @@ export function House(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/../static/wizards_room/house.glb");
+useGLTF.preload("/static/wizards_room/house.glb");

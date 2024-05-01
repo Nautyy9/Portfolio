@@ -196,9 +196,17 @@ function Header() {
         </div>
       </div>
       {!toggleMenu && (
-        <div className=" anim border-t-2 border-[#171717] shadow-black mt-14 xs:mt-16 h-max flex flex-col xs:flex-row justify-center xs:justify-around items-center xs:items-start bg-[#f5e4bc] text-[#292823] header fixed z-50 top-0 w-screen text-shade-dark  ">
+        <div
+          id="header_dropdown"
+          className=" anim border-t-2 border-[#171717] shadow-black mt-14 xs:mt-16 h-max flex flex-col xs:flex-row justify-center xs:justify-around items-center xs:items-start bg-[#f5e4bc] text-[#292823] header fixed z-50 top-0 w-screen text-shade-dark  "
+        >
           <div className="routes flex flex-col my-5">
-            <h1 className="border-b-2 border-black ">Route</h1>
+            <h2
+              style={{ fontFamily: "Bluu" }}
+              className="text-5xl border-b-2 border-black "
+            >
+              Route
+            </h2>
             <div className="flex flex-col items-start mt-3 gap-2">
               <div className="flex xs:flex-col gap-2 gap-x-5 ">
                 <GotoRouteSmall
@@ -207,7 +215,7 @@ function Header() {
                   menuRef={menuRef}
                   setToggle={setToggleMenu}
                   icon={
-                    <AiFillHome className="border border-[#171717] h-8 w-8 p-2 mr-1"></AiFillHome>
+                    <AiFillHome className="border border-[#171717] h-8 w-8 p-[3px] mr-1"></AiFillHome>
                   }
                 />
                 <GotoRouteSmall
@@ -216,7 +224,7 @@ function Header() {
                   menuRef={menuRef}
                   setToggle={setToggleMenu}
                   icon={
-                    <SiAboutdotme className=" border border-[#171717] h-8 w-8 p-1  mr-1"></SiAboutdotme>
+                    <SiAboutdotme className=" border border-[#171717] h-8 w-8 p-[4px]  mr-1"></SiAboutdotme>
                   }
                 />
               </div>
@@ -227,7 +235,7 @@ function Header() {
                   menuRef={menuRef}
                   setToggle={setToggleMenu}
                   icon={
-                    <GiSkills className="border border-[#171717] h-8 w-8 p-1 mr-1"></GiSkills>
+                    <GiSkills className="border border-[#171717] h-8 w-8 p-[4px] mr-1"></GiSkills>
                   }
                 />
                 <GotoRouteSmall
@@ -236,7 +244,7 @@ function Header() {
                   menuRef={menuRef}
                   setToggle={setToggleMenu}
                   icon={
-                    <GrPersonalComputer className="border border-[#171717] h-8 w-8 p-1 mr-1"></GrPersonalComputer>
+                    <GrPersonalComputer className="border border-[#171717] h-8 w-8 p-[3px] mr-1"></GrPersonalComputer>
                   }
                 />
               </div>
@@ -246,13 +254,18 @@ function Header() {
                 menuRef={menuRef}
                 setToggle={setToggleMenu}
                 icon={
-                  <AiOutlineContacts className="border border-[#171717] h-8 w-8 p-1 mr-1"></AiOutlineContacts>
+                  <AiOutlineContacts className="border border-[#171717] h-8 w-8 p-[2px] mr-1"></AiOutlineContacts>
                 }
               />
             </div>
           </div>
           <div className=" handles flex flex-col  my-5  ">
-            <h1 className="border-b-2 border-black">Handles</h1>
+            <h2
+              style={{ fontFamily: "Bluu" }}
+              className="text-5xl border-b-2 border-black"
+            >
+              Handles
+            </h2>
             <div className="flex xs:flex-col mt-3 gap-2 items-start ">
               <div className="flex flex-col gap-2 ">
                 <a
@@ -262,7 +275,7 @@ function Header() {
                 >
                   <FaLinkedinIn
                     aria-hidden="true"
-                    className=" mr-1 border border-[#171717] h-8 w-8 p-1  bg-transparent "
+                    className=" mr-1 border border-[#171717] h-8 w-8 p-[3px]  bg-transparent "
                   ></FaLinkedinIn>
                   LinkedIn
                 </a>
@@ -273,7 +286,7 @@ function Header() {
                 >
                   <AiFillGithub
                     aria-hidden="true"
-                    className="mr-1 border border-[#171717] h-8 w-8 p-1 bg-transparent "
+                    className="mr-1 border border-[#171717] h-8 w-8 p-[2px] bg-transparent "
                   ></AiFillGithub>
                   Github
                 </a>
@@ -285,7 +298,7 @@ function Header() {
                   className="flex justify-self-start text-center text-[19px]"
                 >
                   <BsWhatsapp
-                    className="mr-1 border border-[#171717] h-8 w-8 p-1  bg-transparent "
+                    className="mr-1 border border-[#171717] h-8 w-8 p-[4px]  bg-transparent "
                     aria-hidden="true"
                   ></BsWhatsapp>
                   Whatsapp
@@ -297,7 +310,7 @@ function Header() {
                 >
                   <AiOutlineInstagram
                     aria-hidden="true"
-                    className="mr-1 border border-[#171717] h-8 w-8 p-1  bg-transparent "
+                    className="mr-1 border border-[#171717] h-8 w-8 p-[1px]  bg-transparent "
                   ></AiOutlineInstagram>
                   Instagram
                 </a>

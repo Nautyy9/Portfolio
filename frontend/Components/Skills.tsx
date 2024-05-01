@@ -174,6 +174,7 @@ function Skills() {
         {frontMap.map((val, i) => {
           return (
             <motion.div
+              key={Math.random() * 100 + i}
               variants={cardVar}
               initial="hidden"
               whileInView="animate"
@@ -193,6 +194,7 @@ function Skills() {
         {backMap.map((val, i) => {
           return (
             <motion.div
+              key={i + Math.random() * 100}
               className=""
               variants={cardVar}
               initial="hidden"
@@ -212,6 +214,7 @@ function Skills() {
         {utilityMap.map((val, i) => {
           return (
             <motion.div
+              key={i + Math.random() * 100}
               className=""
               variants={cardVar}
               initial="hidden"
@@ -231,6 +234,7 @@ function Skills() {
         {dbMap.map((val, i) => {
           return (
             <motion.div
+              key={Math.random() * 100}
               className=""
               variants={cardVar}
               initial="hidden"
@@ -245,7 +249,7 @@ function Skills() {
       </div>
       <div className=" md:hidden flex flex-col gap-y-20 my-20">
         <div className="flex w-full justify-center relative items-center gap-x-5">
-          <div className="cursor-pointer flex w-[60%] justify-end items-center gap-x-5">
+          <div className="cursor-pointer flex w-[50%] justify-end items-center gap-x-5">
             <h3 className="">Skills</h3>
             <div
               className={` h-6 outline  outline-2  ${
@@ -286,87 +290,6 @@ function Skills() {
           <MongoSvg className={"h-32 w-32 object-fill"} />
           <SanitySvg className={"h-32 w-32 object-fill"} />
         </div>
-        {/* <motion.img
-            src="../public/assets/html.svg"
-            alt="css_svg"
-            className="h-32 w-32 object-fill"
-          />
-          <motion.img
-            src="../public/assets/css.svg"
-            alt="css_svg"
-            className="h-32 w-32 object-fill"
-          />
-          <motion.img
-            src="../public/assets/js.svg"
-            alt="css_svg"
-            className="h-32 w-32 object-fill"
-          />
-          <motion.img
-            src="../public/assets/react.svg"
-            alt="css_svg"
-            className="h-32 w-32 object-fill"
-          />
-          <motion.img
-            src="../public/assets/threejs.svg"
-            alt="css_svg"
-            className="h-32 w-32 object-fill"
-          />
-          <motion.img
-            src="../public/assets/next.svg"
-            alt="css_svg"
-            className="h-32 w-32 object-fill"
-          />
-        </div>
-        <motion.img
-          src="../public/assets/typescript.svg"
-          alt="css_svg"
-          className="h-32 w-32 object-fill"
-        />
-        <motion.img
-          src="../public/assets/trpc.svg"
-          alt="css_svg"
-          className="h-32 w-32 object-fill"
-        />
-        <motion.img
-          src="../public/assets/socket.svg"
-          alt="css_svg"
-          className="h-32 w-32 object-fill"
-        />
-        <motion.img
-          src="../public/assets/sanity.svg"
-          alt="css_svg"
-          className="h-32 w-32 object-fill"
-        />
-        <motion.img
-          src="../public/assets/redux.svg"
-          alt="css_svg"
-          className="h-32 w-32 object-fill"
-        />
-        <motion.img
-          src="../public/assets/prisma.svg"
-          alt="css_svg"
-          className="h-32 w-32 object-fill"
-        />
-        <motion.img
-          src="../public/assets/node.svg"
-          alt="css_svg"
-          className="h-32 w-32 object-fill"
-        />
-        <motion.img
-          src="../public/assets/mongodb.svg"
-          alt="css_svg"
-          className="h-32 w-32 object-fill"
-        />
-        <motion.img
-          src="../public/assets/firebase.svg"
-          alt="css_svg"
-          className="h-32 w-32 object-fill"
-        /> */}
-        {/* <motion.img
-          src="../public/assets/git.svg"
-          alt="css_svg"
-          className="h-32 w-32 object-fill"
-        /> */}
       </div>
     </div>
   );

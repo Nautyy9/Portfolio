@@ -149,7 +149,7 @@ export default function FinalModel({ ...props }: MageType) {
   ) as GLTFResult;
   const { actions } = useAnimations<THREE.AnimationClip>(animations, mageRef);
   // const { animations: flyingAnimation } = useFBX(
-  //   "../static/Animations/flying.fbx"
+  //   "/static/Animations/flying.fbx"
   // );
   // const { actions: FlyingAction } = useAnimations<THREE.AnimationClip>(
   //   flyingAnimation,

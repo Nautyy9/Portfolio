@@ -135,14 +135,14 @@ function Home() {
               opacity: 0,
             }}
             transition={{ type: "spring" }}
-            className=" z-50 relative h-full w-11/12 md:w-5/6  mx-auto  "
+            className="  relative h-full w-11/12 md:w-5/6  mx-auto  "
           >
-            <div className=" text-[#f4805b]/40  left-0 w-full z-20 text-[16px] pt-11 font-bold absolute top-1/2 -translate-y-1/2 ">
+            <div className=" text-[#f4805b]/40  left-0 w-full  text-[16px] pt-11 font-bold absolute top-1/2 -translate-y-1/2 ">
               <div className="flex mt-2 ">
                 {Fname?.map((name, id) => (
                   <h1
                     key={`${id}-h-fname-${id}`}
-                    className="z-50  pl-[5px] md:pl-0 drop-shadow-md text-7xl md:text-9xl h_name cursor-pointer hover:animate-rubberBand"
+                    className="  pl-[5px] md:pl-0 drop-shadow-md text-7xl md:text-9xl h_name cursor-pointer hover:animate-rubberBand"
                   >
                     {name}
                   </h1>
@@ -152,7 +152,7 @@ function Home() {
                 {Lname?.map((name, id) => (
                   <h1
                     key={`${id}-h-lname-${id}`}
-                    className="z-50 pl-[6px] md:pl-0  text-7xl md:text-9xl mt-2 h_surname hover:animate-rubberBand"
+                    className=" pl-[6px] md:pl-0  text-7xl md:text-9xl mt-2 h_surname hover:animate-rubberBand"
                   >
                     {name}
                   </h1>
@@ -168,15 +168,16 @@ function Home() {
                   style={{
                     fontFamily: "CG",
                   }}
-                  className=" relative  transition-all ease-in-out px-3 py-1 "
+                  className=" relative z-50  transition-all ease-in-out px-3 py-1 "
                 >
                   <svg
-                    preserveAspectRatio="xMidYMid center"
+                    preserveAspectRatio="xMidYMid "
                     stroke="#f4805b"
                     strokeWidth={2}
                     strokeLinecap="square"
                     fill="none"
                     style={{
+                      zIndex: 100,
                       // backgroundColor: "orange",
                       height: "100px",
                       marginTop: "20px",
@@ -194,11 +195,11 @@ function Home() {
                     </path>
                   </svg>
 
-                  <h6 className=" text-xl  xs:text-2xl">WHO?</h6>
+                  <h6 className="z-50 text-xl  xs:text-2xl">WHO?</h6>
                 </div>
               </div>
             </div>
-            <div className="text-[#dfd3c3] tracking-widest md:tracking-normal font-semibold  gap-y-2  mt-1 xs:mt-0 text-7xl md:text-9xl  flex flex-col -z-1 absolute top-1/2 -translate-y-1/2">
+            <div className="pointer-events-none text-[#dfd3c3] tracking-widest md:tracking-normal font-semibold  gap-y-2  mt-1 xs:mt-0 text-7xl md:text-9xl  flex flex-col -z-1 absolute top-1/2 -translate-y-1/2">
               <div className="shade_text1">nitin</div>
               <div className="shade_text2">nautiyal</div>
             </div>

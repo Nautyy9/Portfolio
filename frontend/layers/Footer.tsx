@@ -25,7 +25,7 @@ function Footer() {
               <BsArrowUpRight className="hidden sm:inline-block h-10 w-10 my-auto" />
             </Link>
           </div>
-          <div className="flex gap-x-4 sm:gap-x-10 md:gap-x-20 lg:gap-x-32 items-center my-auto justify-center border-y-2 border-[#171717]">
+          <div className="flex gap-x-4 xss:gap-x-8 xs:gap-x-10 md:gap-x-16 lg:gap-24 xl:gap-x-32 items-center my-auto justify-center border-y-2 border-[#171717]">
             <a target="_blank" href="https://github.com/Nautyy9/">
               <AiFillGithub className="hover:scale-125  h-7 w-7  sm:h-11 sm:w-11  text-[#171717] hover:text-gray-700 transition-colors duration-200 ease-in" />
             </a>

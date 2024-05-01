@@ -33,7 +33,7 @@ type GLTFActions = Record<ActionName, THREE.AnimationAction>;
 function Carpet(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group | null>(null);
   const { nodes, materials, animations } = useGLTF(
-    "/../static/wizards_room/flying_carpet/scene.gltf"
+    "/static/wizards_room/flying_carpet/scene.gltf"
   ) as GLTFResult;
   const { actions } = useAnimations<THREE.AnimationClip>(animations, group);
   const tl = useRef<GSAPTimeline | null>(null);
@@ -132,5 +132,5 @@ function Carpet(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/../static/wizards_room/flying_carpet/scene.gltf");
+useGLTF.preload("/static/wizards_room/flying_carpet/scene.gltf");
 export default Carpet;
