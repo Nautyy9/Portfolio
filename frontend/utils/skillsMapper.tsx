@@ -2,31 +2,39 @@ import React from "react";
 import { ImageElem } from "./SkillUtils";
 
 const frontMap = [
-  <ImageElem className="object-cover" src="assets/html.png" content="HTML" />,
+  <ImageElem
+    className="object-cover"
+    src="https://utfs.io/f/ff41f5e0-c0b8-4c2c-9a1f-9d17852cdfe7-1wvcb.png"
+    content="HTML"
+  />,
 
-  <ImageElem className="object-contain" src="assets/css.png" content="CSS" />,
+  <ImageElem
+    className="object-contain"
+    src="https://utfs.io/f/c8bebf6d-9266-4e1f-9665-59e46932f8be-248z.png"
+    content="CSS"
+  />,
 
   <ImageElem
     className="object-cover"
-    src="assets/js.png"
+    src="https://utfs.io/f/aab05137-d7d3-4f13-9c48-151880248491-2mh.png"
     content="JAVA SCRIPT"
   />,
 
   <ImageElem
     className="object-contain"
-    src="assets/react.png"
+    src="https://utfs.io/f/2d88e177-f17f-4bf6-90f3-9f0c5e4e98df-1sj3pb.png"
     content="REACTJS"
   />,
 
   <ImageElem
     className="object-contain"
-    src="assets/threejs.png"
+    src="https://utfs.io/f/038cec89-1b11-4d1b-b804-9f2cc4671a92-m4kjo9.png"
     content="THREE.JS"
   />,
 
   <ImageElem
     className="object-cover"
-    src="assets/nextjs.png"
+    src="https://utfs.io/f/c83c8e1d-6f7d-4b65-a14d-bafcbd01ba84-hcfblw.png"
     content="NEXT.JS"
   />,
 ];
@@ -35,57 +43,57 @@ const backMap = [
 
   <ImageElem
     className="object-contain"
-    src="assets/express.png"
+    src="https://utfs.io/f/70038ef7-edf4-446a-9252-ea23035c4eac-lnbyxc.png"
     content="EXPRESS.JS"
   />,
 
   <ImageElem
     className="object-contain"
-    src="assets/node.png"
+    src="https://utfs.io/f/ec0564db-c885-4498-a330-8cf3b673b531-20lc2.png"
     content="NODEJS"
   />,
 ];
 const utilityMap = [
   <ImageElem
     className="object-cover"
-    src="assets/ts.png"
+    src="https://utfs.io/f/01aa90f6-8b92-473a-8dee-d895683b02c2-2v3.png"
     content="TYPESCRIPT"
   />,
 
   <ImageElem
     className="object-contain"
-    src="assets/socketio.png"
+    src="https://utfs.io/f/f54654bd-05f1-46fd-84c7-6d6ff76d5ccc-k93pax.png"
     content="SOCKET.IO"
   />,
 
   <ImageElem
     className="object-contain"
-    src="assets/react-query.png"
+    src="https://utfs.io/f/18001b39-d45f-4749-8a60-2fff262e6768-nes9ve.png"
     content="REACT QUERY"
   />,
 ];
 const dbMap = [
   <ImageElem
     className="object-contain"
-    src="assets/prisma.jpeg"
+    src="https://utfs.io/f/45ede622-fc15-4d43-b7df-cb538b8a51e9-g7gclc.jpeg"
     content="PRISMA"
   />,
 
   <ImageElem
     className="object-contain"
-    src="assets/mongo.png"
+    src="https://utfs.io/f/54e5235a-cf53-4198-a6c3-3697cec87bff-1pysc4.png"
     content="MONGODB"
   />,
 
   <ImageElem
     className="object-contain"
-    src="assets/sanity.webp"
+    src="https://utfs.io/f/ce28b8a3-5002-46c8-bd95-b9394d0ab61c-f1kzsi.webp"
     content="SANITY"
   />,
 
   <ImageElem
     className="object-contain"
-    src="assets/firebase.png"
+    src="https://utfs.io/f/66f4919f-9308-4d21-985a-fd8165ec51bc-9bekft.png"
     content="FIREBASE"
   />,
 ];

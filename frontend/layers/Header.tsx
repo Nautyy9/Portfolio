@@ -132,7 +132,7 @@ function Header() {
           >
             <motion.img
               variants={nameVar}
-              src="assets/logo.png"
+              src="https://utfs.io/f/656b25e1-68be-4358-a697-bf593d578da9-1zbfv.png"
               alt="port_img"
               className="h-9 xs:mr-2  object-contain "
             />

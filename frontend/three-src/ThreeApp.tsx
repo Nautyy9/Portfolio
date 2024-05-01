@@ -13,7 +13,7 @@ function ThreeApp() {
   useEffect(() => {
     navigate("/home");
   }, [pathname]);
-  // const bg_texture = useLoader(THREE.TextureLoader, "assets/bg_4.jpeg");
+  // const bg_texture = useLoader(THREE.TextureLoader, "https://utfs.io/f/e5ace38f-8203-45ef-9e62-52a8a81ada04-3yb9d1.jpg");
   // const dlRef = useRef<THREE.DirectionalLight>(null!);
   // useHelper(dlRef, THREE.DirectionalLightHelper, 1);
   // const { color } = useControls("background", {

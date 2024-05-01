@@ -134,20 +134,22 @@ function Work() {
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src = "/assets/finserve_2.png";
+                            activeImg.current.src =
+                              "https://utfs.io/f/4fc36f64-29c3-4160-99e8-77799825edb7-hasoev.png";
                           modalRef.current!.showModal();
                         }}
-                        src="/assets/finserve_2.png"
+                        src="https://utfs.io/f/4fc36f64-29c3-4160-99e8-77799825edb7-hasoev.png"
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample1"
                       />
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current!.src = "/assets/finserve_1.png";
+                            activeImg.current!.src =
+                              "https://utfs.io/f/88a9be46-cd8d-401a-9837-8ae12f34f292-hasoew.png";
                           modalRef?.current!.showModal();
                         }}
-                        src="/assets/finserve_1.png"
+                        src="https://utfs.io/f/88a9be46-cd8d-401a-9837-8ae12f34f292-hasoew.png"
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72 lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
@@ -166,7 +168,7 @@ function Work() {
                       }`}
                     >
                       <img
-                        src="/assets/finserve_1.png"
+                        src="https://utfs.io/f/ed19e93d-f8f8-4956-9ef7-98db20f77f0f-hasoeu.png"
                         className="h-full md+:hover:scale-125  transition-transform duration-200 ease-in-out z-50  w-full object-cover bg-contain"
                         alt="project-1"
                       />
@@ -212,20 +214,22 @@ function Work() {
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src = "/assets/scrap2.png";
+                            activeImg.current.src =
+                              "https://utfs.io/f/5478c008-4dc5-4892-883e-d6dc849c52b0-f0f0qn.png";
                           modalRef.current!.showModal();
                         }}
-                        src="/assets/scrap2.png"
+                        src="https://utfs.io/f/5478c008-4dc5-4892-883e-d6dc849c52b0-f0f0qn.png"
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample1"
                       />
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src = "/assets/scrap3.png";
+                            activeImg.current.src =
+                              "https://utfs.io/f/71c48ae6-b239-46e8-946e-1990b3bc9eb3-f0f0qm.png";
                           modalRef.current!.showModal();
                         }}
-                        src="/assets/scrap3.png"
+                        src="https://utfs.io/f/71c48ae6-b239-46e8-946e-1990b3bc9eb3-f0f0qm.png"
                         className="h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
@@ -244,7 +248,7 @@ function Work() {
                       }`}
                     >
                       <img
-                        src="/assets/scrap_1.png"
+                        src="https://utfs.io/f/c091e905-81d1-438e-a5fb-6922208c820e-vuus03.png"
                         className="h-full md+:hover:scale-125 z-50 transition-transform duration-200 ease-in-out w-full object-cover justify-self-end bg-contain"
                         alt="project-1"
                       />
@@ -300,20 +304,22 @@ function Work() {
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src = "/assets/profile1.png";
+                            activeImg.current.src =
+                              "https://utfs.io/f/ec489663-6b56-4c94-9db7-078e8b7a6f68-gkpzko.png";
                           modalRef.current!.showModal();
                         }}
-                        src="/assets/profile1.png"
+                        src="https://utfs.io/f/ec489663-6b56-4c94-9db7-078e8b7a6f68-gkpzko.png"
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample1"
                       />
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src = "/assets/profile2.png";
+                            activeImg.current.src =
+                              "https://utfs.io/f/609b967f-aab5-403c-9392-de4e02deb969-gkpzkn.png";
                           modalRef.current!.showModal();
                         }}
-                        src="/assets/profile2.png"
+                        src="https://utfs.io/f/609b967f-aab5-403c-9392-de4e02deb969-gkpzkn.png"
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
@@ -335,12 +341,12 @@ function Work() {
                       }`}
                     >
                       <img
-                        src="/assets/profile3.png"
+                        src="https://utfs.io/f/2123d365-ffe8-4c59-afbb-c33210c35783-gkpzkm.png"
                         className="my-3  bg-cover  md+:hover:scale-125 transition-transform duration-200 ease-in-out   w-full  h-[300px] "
                         alt="project-1"
                       />
                       <img
-                        src="/assets/profile4.png"
+                        src="https://utfs.io/f/c8825790-3c50-4a89-92c3-ac7862c5478b-gkpzkl.png"
                         className="hidden md+:block my-3 h-[300px] w-full   md+:hover:scale-125 transition-transform duration-200 ease-in-out    bg-cover"
                         alt="project-1"
                       />
@@ -400,7 +406,7 @@ function Work() {
                       }`}
                   >
                     <img
-                      src="/assets/market.png"
+                      src="https://utfs.io/f/aac69e3b-09ed-4b26-a023-87c3d651b64a-hvs538.png"
                       className="z-50 h-full  md+:hover:scale-125 transition-transform duration-200 ease-in-out   w-full object-cover bg-contain"
                       alt="project-1"
                     />

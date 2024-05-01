@@ -4,7 +4,7 @@ function HomeContent() {
     <div className="relative text-white w-dvw ">
       {/* <div className="flex flex-col gap-y-5 w-1/2"> */}
       <img
-        src="../public/assets/up_bg_1.jpg"
+        src="https://utfs.io/f/e5ace38f-8203-45ef-9e62-52a8a81ada04-3yb9d1.jpg"
         alt="bg_1"
         className="w-dvw h-dvh "
       ></img>

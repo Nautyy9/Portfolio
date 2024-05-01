@@ -98,7 +98,7 @@ function About() {
                   download="nitin_resume.pdf"
                 >
                   <img
-                    src="/assets/s1.png"
+                    src="https://utfs.io/f/19e4656f-8030-4bd5-95f4-fda9776656d2-2se.png"
                     className="text-white object-fill bg-cover absolute h-full w-full"
                     alt="img"
                   />
