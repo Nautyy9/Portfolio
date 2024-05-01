@@ -9,7 +9,11 @@ function About() {
   useEffect(() => {
     setHover(false);
     card_ref.current.onpointerover = () => {
-      setHover(true);
+      if (window.innerWidth < 900) {
+        setHover(false);
+      } else {
+        setHover(true);
+      }
     };
     card_ref.current.onpointerout = () => {
       setHover(false);
@@ -25,7 +29,7 @@ function About() {
           "0px -4px 4px  rgba(0,0,0,0.15), 4px 0px 4px  rgba(0,0,0,0.15),0px 4px 4px rgba(0,0,0,0.15), -4px 0px 4px  rgba(0,0,0,0.15)",
       }}
       id="about"
-      className="about  bg-[#f5e4bc] text-[#292823] relative flex lg:h-[1080px] "
+      className="about bg-[#f5e4bc] text-[#292823] relative flex lg:h-[1080px] "
     >
       <div className="my-10 w-full xss:w-11/12 mx-auto lg:w-5/6   flex flex-col md+:flex-row">
         <div className="flex w-full">
@@ -83,12 +87,12 @@ function About() {
             style={{ fontFamily: "Ignazio" }}
             className={
               hover
-                ? "border-2 border-[#171717] card cursor-pointer duration-500 ease-in px-6 md:px-0 min-[1700px]:px-6 pb-14 h-full xss:h-[550px] xs:h-[600px]  md:h-[735px]   min-[300px]:w-11/12 xs:w-5/6 sm:w-2/3 md+:w-full  min-[1100px]:w-11/12 xl:w-4/5 min-[1500px]:w-2/3 bg-white opacity-90 flex flex-col    rotate-45 shadow-lg shadow-gray-600 drop-shadow-md"
-                : "relative px-6 md:px-0 min-[1700px]:px-6 pb-14 h-full xss:h-[550px] xs:h-[600px]  md:h-[735px]   min-[300px]:w-11/12 xs:w-5/6 sm:w-2/3 md+:w-full  min-[1100px]:w-11/12 xl:w-4/5 min-[1500px]:w-2/3 card cursor-pointer transition-colors duration-500 ease-in bg-black/90 flex flex-col  rotate-45 shadow-lg shadow-gray-600 drop-shadow-md"
+                ? "border-2 border-[#171717] card  duration-500 ease-in  cursor-pointer  pb-14 h-[550px] xs:h-[600px]  md:h-[735px]   min-[300px]:w-11/12 xs:w-5/6 sm:w-2/3 md+:w-full  min-[1100px]:w-11/12 xl:w-4/5 min-[1500px]:w-2/3 bg-white opacity-90 flex flex-col    rotate-45 shadow-lg shadow-gray-600 drop-shadow-md"
+                : "relative px-6 md:px-0 min-[1700px]:px-6 pb-14 h-full xss:h-[550px] xs:h-[600px]  md:h-[735px]   min-[300px]:w-11/12 xs:w-5/6 sm:w-2/3 md+:w-full  min-[1100px]:w-11/12 xl:w-4/5 min-[1500px]:w-2/3  cursor-pointer transition-colors duration-500 ease-in bg-black/90 flex flex-col  rotate-45 shadow-lg shadow-gray-600 drop-shadow-md"
             }
           >
             {hover ? (
-              <div className=" w-full h-full relative ">
+              <div className="w-full h-full relative ">
                 <a
                   href="/assets/Nitin's Resume.pdf"
                   download="nitin_resume.pdf"

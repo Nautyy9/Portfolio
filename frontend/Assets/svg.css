@@ -3,6 +3,6 @@
   stroke: "rgba(255, 255, 255, 1) ";
   stroke-linecap: "round";
   stroke-linejoin: "round";
-  stroke-dashoffset: "0px";
-  stroke-dasharray: "1px 1px";
+  strokedashoffset: "0px";
+  strokedasharray: "1px 1px";
 }

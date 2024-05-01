@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import * as THREE from "three";
 import {
+  Environment,
   Float,
   Html,
   MeshReflectorMaterial,
@@ -28,6 +29,7 @@ function ThreeApp() {
   });
   return (
     <>
+      {/* <Environment background /> */}
       <OrbitControls
         dampingFactor={0.01}
         minPolarAngle={0}

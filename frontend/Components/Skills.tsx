@@ -9,6 +9,22 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import {
+  CssSvg,
+  HtmlSvg,
+  JsSvg,
+  MongoSvg,
+  NextSvg,
+  NodeSvg,
+  PrismaSvg,
+  ReactSvg,
+  ReduxSvg,
+  SanitySvg,
+  SocketSvg,
+  ThreeSvg,
+  TrpcSvg,
+  TsSvg,
+} from "../Assets/svgComponents/index";
 
 const cardVar = {
   hidden: { opacity: 0, scale: 0 },
@@ -50,6 +66,15 @@ const newConfig = {
   restDelta: 0.01,
 };
 
+const toggleVar = {
+  initial: {
+    x: 0,
+  },
+  animate: {
+    x: 24,
+  },
+};
+
 function Skills() {
   // const sections = ["S", "e", "c", "t", "i", "o", "n", "🙃", "3"];
   const card_container = useRef<HTMLDivElement | null>(null!);
@@ -64,6 +89,7 @@ function Skills() {
     target: skill_container,
     offset: ["start end", "end center"],
   });
+  const [isToggled, setIsToggled] = useState<boolean>();
   // console.log(scrollX);
   const scaleCard = useSpring(
     useTransform(scrollYProgress, [0, 0.1], [0, 1]),
@@ -217,19 +243,131 @@ function Skills() {
           );
         })}
       </div>
-      <div className=" md:hidden"></div>
-      {/* <div className="h-full absolute right-5  top-0 hidden xs+:flex justify-center text-2xl  my-[-100px] md+:my-auto items-center text-white tracking-wider">
-        <button className="rotate-[180deg] -mt-80 break:mt-0 xl:p-2 text-white xl:py-4 bg-transparent">
-          {sections.map((section, id) => (
-            <h1
-              key={id}
-              className="sec_part hover:scale-125 transition duration-200"
+      <div className=" md:hidden flex flex-col gap-y-20 my-20">
+        <div className="flex w-full justify-center relative items-center gap-x-5">
+          <div className="cursor-pointer flex w-[60%] justify-end items-center gap-x-5">
+            <h3 className="">Skills</h3>
+            <div
+              className={` h-6 outline  outline-2  ${
+                isToggled ? "bg-[#f5e4bc]   outline-black" : "bg-black  "
+              } w-12`}
+              onClick={() => setIsToggled(!isToggled)}
             >
-              {section}
-            </h1>
-          ))}
-        </button> 
-      </div> */}
+              <motion.div
+                variants={toggleVar}
+                animate={isToggled ? "animate" : "initial"}
+                transition={{
+                  duration: 1,
+                  damping: 20,
+                  stiff: 90,
+                  type: "spring",
+                }}
+                className={` m-1 h-4 w-4 ${
+                  isToggled ? "on bg-black" : "off bg-[#f5e4bc]"
+                } `}
+              ></motion.div>
+            </div>
+          </div>
+          <h3 className="w-[50%]">Contribution</h3>
+        </div>
+        <div className="flex flex-wrap gap-x-5 min-[310px]:gap-x-8 gap-y-10 justify-center items-center">
+          <HtmlSvg className={"h-32 w-32 object-fill"} />
+          <CssSvg className={"h-32 w-32 object-fill"} />
+          <JsSvg className={"h-32 w-32 object-fill"} />
+          <ReactSvg className={"h-32 w-32 object-fill"} />
+          <ThreeSvg className={"h-32 w-32 object-fill"} />
+          <NextSvg className={"h-32 w-32 object-fill"} />
+          <ReduxSvg className={"h-32 w-32 object-fill"} />
+          <TrpcSvg className={"h-32 w-32 object-fill"} />
+          <NodeSvg className={"h-32 w-32 object-fill"} />
+          <TsSvg className={"h-32 w-32 object-fill"} />
+          <SocketSvg className={"h-32 w-32 object-fill"} />
+          <PrismaSvg className={"h-32 w-32 object-fill"} />
+          <MongoSvg className={"h-32 w-32 object-fill"} />
+          <SanitySvg className={"h-32 w-32 object-fill"} />
+        </div>
+        {/* <motion.img
+            src="../public/assets/html.svg"
+            alt="css_svg"
+            className="h-32 w-32 object-fill"
+          />
+          <motion.img
+            src="../public/assets/css.svg"
+            alt="css_svg"
+            className="h-32 w-32 object-fill"
+          />
+          <motion.img
+            src="../public/assets/js.svg"
+            alt="css_svg"
+            className="h-32 w-32 object-fill"
+          />
+          <motion.img
+            src="../public/assets/react.svg"
+            alt="css_svg"
+            className="h-32 w-32 object-fill"
+          />
+          <motion.img
+            src="../public/assets/threejs.svg"
+            alt="css_svg"
+            className="h-32 w-32 object-fill"
+          />
+          <motion.img
+            src="../public/assets/next.svg"
+            alt="css_svg"
+            className="h-32 w-32 object-fill"
+          />
+        </div>
+        <motion.img
+          src="../public/assets/typescript.svg"
+          alt="css_svg"
+          className="h-32 w-32 object-fill"
+        />
+        <motion.img
+          src="../public/assets/trpc.svg"
+          alt="css_svg"
+          className="h-32 w-32 object-fill"
+        />
+        <motion.img
+          src="../public/assets/socket.svg"
+          alt="css_svg"
+          className="h-32 w-32 object-fill"
+        />
+        <motion.img
+          src="../public/assets/sanity.svg"
+          alt="css_svg"
+          className="h-32 w-32 object-fill"
+        />
+        <motion.img
+          src="../public/assets/redux.svg"
+          alt="css_svg"
+          className="h-32 w-32 object-fill"
+        />
+        <motion.img
+          src="../public/assets/prisma.svg"
+          alt="css_svg"
+          className="h-32 w-32 object-fill"
+        />
+        <motion.img
+          src="../public/assets/node.svg"
+          alt="css_svg"
+          className="h-32 w-32 object-fill"
+        />
+        <motion.img
+          src="../public/assets/mongodb.svg"
+          alt="css_svg"
+          className="h-32 w-32 object-fill"
+        />
+        <motion.img
+          src="../public/assets/firebase.svg"
+          alt="css_svg"
+          className="h-32 w-32 object-fill"
+        /> */}
+        {/* <motion.img
+          src="../public/assets/git.svg"
+          alt="css_svg"
+          className="h-32 w-32 object-fill"
+        /> */}
+      </div>
     </div>
   );
 }

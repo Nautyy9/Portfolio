@@ -120,7 +120,7 @@ function Header() {
   return (
     <div
       id="header"
-      className="overflow-x-hidden w-screen h-16 flex items-center ring-2  ring-[#292823] text-[#292823] fixed header z-40 top-0 "
+      className="overflow-x-hidden w-screen h-14 xs:h-16 flex items-center ring-2  ring-[#292823] text-[#292823] fixed header z-40 top-0 "
     >
       <div className="mx-5 w-full  xss:w-11/12  md+:w-5/6 xss:mx-auto flex items-center justify-between xss:justify-between  ">
         <motion.div className="flex">
@@ -196,7 +196,7 @@ function Header() {
         </div>
       </div>
       {!toggleMenu && (
-        <div className=" anim border-t-2 border-[#171717] shadow-black mt-16 h-max flex flex-col xs:flex-row justify-center xs:justify-around items-center xs:items-start bg-[#f5e4bc] text-[#292823] header fixed z-50 top-0 w-screen text-shade-dark  ">
+        <div className=" anim border-t-2 border-[#171717] shadow-black mt-14 xs:mt-16 h-max flex flex-col xs:flex-row justify-center xs:justify-around items-center xs:items-start bg-[#f5e4bc] text-[#292823] header fixed z-50 top-0 w-screen text-shade-dark  ">
           <div className="routes flex flex-col my-5">
             <h1 className="border-b-2 border-black ">Route</h1>
             <div className="flex flex-col items-start mt-3 gap-2">

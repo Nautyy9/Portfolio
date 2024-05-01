@@ -2,15 +2,9 @@ import { useEffect, useId, useRef, useState } from "react";
 import { BsArrow90DegRight } from "react-icons/bs";
 import { Link } from "react-scroll";
 import { IoCubeOutline } from "react-icons/io5";
-import {
-  AnimatePresence,
-  animate,
-  motion,
-  useAnimate,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
+import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import gsap, { Elastic } from "gsap";
+import CubeCanvas from "../cube/CubeCanvas";
 
 const textVar = {
   hidden: {
@@ -41,16 +35,7 @@ const innerText = {
   },
 };
 
-const coords = {
-  x: 0,
-  y: 0,
-};
-
-let h = 0;
-let w = 0;
-
 function Home() {
-  const id = useId();
   const Fname = ["n", "i", "t", "i", "n"];
   const Lname = ["n", "a", "u", "t", "i", "y", "a", "l"];
   const backText = useRef<HTMLDivElement>(null);
@@ -150,14 +135,14 @@ function Home() {
               opacity: 0,
             }}
             transition={{ type: "spring" }}
-            className=" z-40 relative h-full w-11/12 md:w-5/6  mx-auto  "
+            className=" z-50 relative h-full w-11/12 md:w-5/6  mx-auto  "
           >
             <div className=" text-[#f4805b]/40  left-0 w-full z-20 text-[16px] pt-11 font-bold absolute top-1/2 -translate-y-1/2 ">
               <div className="flex mt-2 ">
                 {Fname?.map((name, id) => (
                   <h1
                     key={`${id}-h-fname-${id}`}
-                    className=" pl-[5px] md:pl-0 drop-shadow-md text-7xl md:text-9xl h_name cursor-pointer hover:animate-rubberBand"
+                    className="z-50  pl-[5px] md:pl-0 drop-shadow-md text-7xl md:text-9xl h_name cursor-pointer hover:animate-rubberBand"
                   >
                     {name}
                   </h1>
@@ -167,7 +152,7 @@ function Home() {
                 {Lname?.map((name, id) => (
                   <h1
                     key={`${id}-h-lname-${id}`}
-                    className=" pl-[6px] md:pl-0  text-7xl md:text-9xl mt-2 h_surname hover:animate-rubberBand"
+                    className="z-50 pl-[6px] md:pl-0  text-7xl md:text-9xl mt-2 h_surname hover:animate-rubberBand"
                   >
                     {name}
                   </h1>
@@ -232,19 +217,6 @@ function Home() {
         <IoCubeOutline className=" w-[50px] h-[50px] text-blue-700" />
       </div>
 
-      {/* <div className="hidden  xs+:flex h-full z-10 absolute right-0  top-0  justify-center w-16  my-[-100px] md+:my-auto items-center">
-        <button className="rotate-[180deg]">
-          {sections.map((section, id) => (
-            <h1
-              key={id}
-              className=" sec_part hover:scale-125 transition duration-200"
-            >
-              {section}
-            </h1>
-          ))}
-        </button>
-      </div> */}
-
       {showText && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -268,22 +240,6 @@ function Home() {
           </div>
         </motion.div>
       )}
-      {/* 
-      <div className="bg_text absolute h-screen hidden text-opacity-40  xl:gap-y-28 xl:flex flex-col mix-blend-soft-light justify-end text-right  blur-[1px]  top-[45%]   text-8xl w-full  left-0">
-        <div className="bg_text1 " style={{ textShadow: "2px 2px 2px black" }}>
-          DEVELOPER
-        </div>
-        <div className="bg_text2 " style={{ textShadow: "2px 2px 2px black" }}>
-          DESIGNER
-        </div>
-        <div className="bg_text3 " style={{ textShadow: "2px 2px 2px black" }}>
-          DANCER
-        </div>
-        <div className="bg_text4 " style={{ textShadow: "2px 2px 2px black" }}>
-          FOOTBALLER
-        </div>
-      </div> */}
-      {/* <div className="w-full sm:w-11/12  md:w-5/6  mx-auto  "> */}
 
       {showText && (
         <motion.div
@@ -320,7 +276,7 @@ function Home() {
           {/* </div> */}
         </motion.div>
       )}
-      {/* <ThreeHome cubeRef={CubeRef} /> */}
+      <CubeCanvas cubeRef={CubeRef} />
     </motion.div>
   );
 }

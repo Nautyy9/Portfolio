@@ -9,7 +9,10 @@ type all = {
 
 export default function CubeCanvas({ cubeRef }: all) {
   return (
-    <div ref={cubeRef} className=" app_container ">
+    <div
+      ref={cubeRef}
+      className="z-50 w-1/2 h-full app_container cursor-pointer "
+    >
       <Canvas
         shadows
         camera={{

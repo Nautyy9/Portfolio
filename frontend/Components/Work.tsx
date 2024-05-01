@@ -138,7 +138,7 @@ function Work() {
                           modalRef.current!.showModal();
                         }}
                         src="/assets/finserve_2.png"
-                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
+                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample1"
                       />
                       <img
@@ -148,7 +148,7 @@ function Work() {
                           modalRef?.current!.showModal();
                         }}
                         src="/assets/finserve_1.png"
-                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72 lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
+                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72 lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
                     </div>
@@ -158,7 +158,7 @@ function Work() {
                   <a target="_blank" href="https://djt-finserve.netlify.app/">
                     <div
                       ref={imgdiv_ref}
-                      className={`md+:mt-14 lg:mt-0 cursor-not-allowed   bg-cover
+                      className={`md+:mt-14 lg:mt-0    bg-cover
                       ${
                         !minHeight
                           ? "h-[250px] w-[250px] xss:h-[300px] xss:w-[300px] xs:h-[350px] xs:w-[350px] sm:w-[550px] sm:h-[380px] md+:h-[500px] md+:w-[430px] xl:w-[600px] 2xl:w-[800px] gap-y-2"
@@ -167,7 +167,7 @@ function Work() {
                     >
                       <img
                         src="/assets/finserve_1.png"
-                        className="h-full hover:scale-125  transition-transform duration-200 ease-in-out z-50  w-full object-cover bg-contain"
+                        className="h-full md+:hover:scale-125  transition-transform duration-200 ease-in-out z-50  w-full object-cover bg-contain"
                         alt="project-1"
                       />
                     </div>
@@ -186,7 +186,7 @@ function Work() {
               >
                 <div className=" flex justify-center md+:justify-start w-full">
                   <div
-                    className={`flex-col flex w-max     items-center  justify-center  ${
+                    className={`flex-col flex w-max items-center  justify-center  ${
                       !minHeight ? "gap-y-5" : "gap-y-2"
                     }`}
                   >
@@ -216,7 +216,7 @@ function Work() {
                           modalRef.current!.showModal();
                         }}
                         src="/assets/scrap2.png"
-                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
+                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample1"
                       />
                       <img
@@ -226,7 +226,7 @@ function Work() {
                           modalRef.current!.showModal();
                         }}
                         src="/assets/scrap3.png"
-                        className="h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
+                        className="h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
                     </div>
@@ -236,7 +236,7 @@ function Work() {
                   <a target="_blank" href="https://kabadi.vercel.app/">
                     <div
                       ref={imgdiv3_ref}
-                      className={`md+:mt-14 lg:mt-0 cursor-not-allowed   bg-cover
+                      className={`md+:mt-14 lg:mt-0    bg-cover
                       ${
                         !minHeight
                           ? "h-[250px] w-[250px] xss:h-[300px] xss:w-[300px] xs:h-[350px] xs:w-[350px] sm:w-[550px] sm:h-[380px]  md+:h-[430px] md+:w-[430px] xl:h-[500px] xl:w-[600px] 2xl:w-[800px] gap-y-2"
@@ -245,7 +245,7 @@ function Work() {
                     >
                       <img
                         src="/assets/scrap_1.png"
-                        className="h-full hover:scale-125 z-50 transition-transform duration-200 ease-in-out w-full object-cover justify-self-end bg-contain"
+                        className="h-full md+:hover:scale-125 z-50 transition-transform duration-200 ease-in-out w-full object-cover justify-self-end bg-contain"
                         alt="project-1"
                       />
                     </div>
@@ -304,7 +304,7 @@ function Work() {
                           modalRef.current!.showModal();
                         }}
                         src="/assets/profile1.png"
-                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
+                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample1"
                       />
                       <img
@@ -314,13 +314,13 @@ function Work() {
                           modalRef.current!.showModal();
                         }}
                         src="/assets/profile2.png"
-                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
+                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
                     </div>
                   </div>
                 </div>
-                <div className="bg-orange-400 w-full justify-center md+:justify-end z-50  flex">
+                <div className=" w-full justify-center md+:justify-end z-50  flex">
                   <a
                     target="_blank"
                     href="https://imagegallery-eaha.onrender.com"
@@ -336,12 +336,12 @@ function Work() {
                     >
                       <img
                         src="/assets/profile3.png"
-                        className="my-3  bg-cover  hover:scale-125 transition-transform duration-200 ease-in-out   w-full  h-[300px] "
+                        className="my-3  bg-cover  md+:hover:scale-125 transition-transform duration-200 ease-in-out   w-full  h-[300px] "
                         alt="project-1"
                       />
                       <img
                         src="/assets/profile4.png"
-                        className="hidden md+:block my-3 h-[300px] w-full   hover:scale-125 transition-transform duration-200 ease-in-out    bg-cover"
+                        className="hidden md+:block my-3 h-[300px] w-full   md+:hover:scale-125 transition-transform duration-200 ease-in-out    bg-cover"
                         alt="project-1"
                       />
                     </div>
@@ -401,7 +401,7 @@ function Work() {
                   >
                     <img
                       src="/assets/market.png"
-                      className="z-50 h-full  hover:scale-125 transition-transform duration-200 ease-in-out   w-full object-cover bg-contain"
+                      className="z-50 h-full  md+:hover:scale-125 transition-transform duration-200 ease-in-out   w-full object-cover bg-contain"
                       alt="project-1"
                     />
                   </div>
@@ -421,7 +421,7 @@ function Work() {
           {sections.map((section, id) => (
             <h1
               key={id}
-              className="sec_part  hover:scale-125 transition duration-200 text-2xl"
+              className="sec_part  md+:hover:scale-125 transition duration-200 text-2xl"
             >
               {section}
             </h1> 

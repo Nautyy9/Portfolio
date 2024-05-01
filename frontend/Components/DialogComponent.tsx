@@ -32,7 +32,7 @@ function DialogComponent({ modalRef, activeImg }: refArray) {
       ></img>
       <button
         autoFocus={false}
-        className="absolute top-2  right-3 bg-red-600 text-white  rounded-full border-4 border-y-black border-x-white  font-medium  py-.5 px-2 xs:py-2 xs:px-4"
+        className="absolute top-2  right-3 bg-[#f5e4bc] text-[#292823]  focus:outline-none rounded-full border-4 border-y-[#292823] border-x-white  font-medium  py-.5 px-2 xs:py-2 xs:px-4"
         onClick={() => modalRef?.current?.close()}
       >
         <span className=" font-bold text-center text-xl  ">X</span>
