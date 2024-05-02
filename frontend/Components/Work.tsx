@@ -1,18 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { contextValue } from "../context/Context";
 import vanilaTilt from "vanilla-tilt";
-import { AiFillHtml5 } from "react-icons/ai";
-import {
-  SiJavascript,
-  SiTypescript,
-  SiReact,
-  SiNodedotjs,
-  SiMongodb,
-  SiExpress,
-  SiSocketdotio,
-} from "react-icons/si";
-import { DiCss3 } from "react-icons/di";
+
 import DialogComponent from "./DialogComponent";
+import {
+  CssSvg,
+  ExpressSvg,
+  HtmlSvg,
+  JsSvg,
+  MongoSvg,
+  NodeSvg,
+  PythonSvg,
+  ReactSvg,
+  TsSvg,
+} from "../Assets/svgComponents";
 function Work() {
   const { work_ref, scrolldiv_ref } = contextValue();
   const [minHeight, setMinHeight] = useState(false);
@@ -74,7 +75,7 @@ function Work() {
     >
       <div
         style={{
-          fontFamily: "Coconat",
+          fontFamily: "Bluu",
         }}
         ref={work_ref}
         className="drop-shadow-md shadow-work mx-auto  work relative "
@@ -108,25 +109,37 @@ function Work() {
                       !minHeight ? "gap-y-5" : "gap-y-2"
                     }`}
                   >
-                    <h1 className="font-semibold mb-2 text-2xl md+:text-3xl lg+:text-4xl text-[#171717] ">
+                    <h1 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
                       DJT FINSERVE
                     </h1>
-                    <h3 className="bg-[#5C4033] py-0.5 md+:py-1  lg+:py-2 px-2  lg+:text-lg  text-white">
+                    <h3
+                      style={{
+                        fontFamily: "Ignazio",
+                      }}
+                      className="bg-[#292823] py-0.5 md+:py-1   px-4    text-white"
+                    >
                       internship
                     </h3>
                     <div className=" flex gap-5 justify-center mx-auto  md+:gap-10">
-                      <div className="h-8 w-8  sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <AiFillHtml5 className="h-full w-full" />
+                      <div className="h-16 w-16 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16  ">
+                        <HtmlSvg from="work" className="h-full w-full" />
                       </div>
-                      <div className="h-8 w-8 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <SiJavascript className="h-full w-full" />
+                      <div className="h-16 w-16 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 ">
+                        <JsSvg from="work" className="h-full w-full" />
                       </div>
-                      <div className="h-8 w-8 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <DiCss3 className="w-full h-full" />
+                      <div className="h-16 w-16 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 ">
+                        <CssSvg from="work" className="w-full h-full" />
                       </div>
                       <p></p>
                     </div>
-                    <h2 className="text-lg md+:text-2xl">Preview</h2>
+                    <h2
+                      style={{
+                        fontFamily: "Ignazio",
+                      }}
+                      className="font-semibold text-2xl"
+                    >
+                      Preview
+                    </h2>
                     <div
                       className="hidden md+:flex w-full font-medium z-50 text-[#171717] justify-center  md+:flex-col  md+:flex-nowrap lg:flex-row flex-wrap gap-4 object-contain"
                       style={{ fontFamily: "Ignazio" }}
@@ -192,21 +205,33 @@ function Work() {
                       !minHeight ? "gap-y-5" : "gap-y-2"
                     }`}
                   >
-                    <h1 className="font-semibold mb-2 text-2xl md+:text-3xl lg+:text-4xl text-[#171717] ">
-                      Kabadi [Scrap]
+                    <h1 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
+                      Kabadi[Scrap]
                     </h1>
-                    <h3 className="bg-[#5C4033] py-1  lg+:py-2 px-2  lg+:text-lg text-white">
+                    <h3
+                      style={{
+                        fontFamily: "Ignazio",
+                      }}
+                      className="bg-[#292823] py-0.5 md+:py-1   px-4    text-white"
+                    >
                       client
                     </h3>
                     <div className=" flex gap-5 justify-center mx-auto  md+:gap-10">
-                      <div className="h-8 w-8 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <SiReact className="h-full w-full" />
+                      <div className="h-12 w-12  lg+:h-16 lg+:w-16 ">
+                        <ReactSvg from="work" className="h-full w-full" />
                       </div>
-                      <div className="h-8 w-8 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <SiTypescript className="h-full w-full" />
+                      <div className="h-12 w-12 lg+:h-16 lg+:w-16 ">
+                        <TsSvg from="work" className="h-full w-full" />
                       </div>
                     </div>
-                    <h2 className="text-lg md+:text-2xl">Preview</h2>
+                    <h2
+                      style={{
+                        fontFamily: "Ignazio",
+                      }}
+                      className="font-semibold text-2xl"
+                    >
+                      Preview
+                    </h2>
                     <div
                       className="hidden md+:flex  w-3/4 md+:w-1/2 font-medium tracking-normal text-[#171717] justify-center  md+:flex-col lg:flex-row  md+:flex-nowrap gap-4 object-contain"
                       style={{ fontFamily: "Ignazio" }}
@@ -272,31 +297,43 @@ function Work() {
                       !minHeight ? "gap-y-5" : "gap-y-5"
                     }`}
                   >
-                    <h1 className="font-semibold md+:mb-2 text-2xl md+:text-3xl lg+:text-4xl text-[#171717] ">
+                    <h1 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
                       Image Gallery
                     </h1>
-                    <h3 className="bg-[#5C4033] py-1  lg+:py-2 px-2  lg+:text-lg text-white">
-                      self project
+                    <h3
+                      style={{
+                        fontFamily: "Ignazio",
+                      }}
+                      className="bg-[#292823] py-0.5 md+:py-1  px-4    text-white"
+                    >
+                      project
                     </h3>
-                    <span className="hidden md+:block font-sans border-2 border-[#171717] xl+:font-semibold text-red-600 px-4 py-2">
+                    <span className="hidden md+:block font-sans border-2 border-[#292823] xl+:font-semibold text-red-600 px-4 py-2">
                       This Website may load slow due to static serving
                     </span>
 
                     <div className=" flex gap-5 justify-center mx-auto  md+:gap-10">
-                      <div className="h-8 w-8 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <SiNodedotjs className="h-full w-full" />
+                      <div className="h-12 w-12 lg+:h-16 lg+:w-16 ">
+                        <NodeSvg className="h-full w-full" from="work" />
                       </div>
-                      <div className="h-8 w-8 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <SiExpress className="h-full w-full" />
+                      <div className="h-12 w-12 lg+:h-16 lg+:w-16 ">
+                        <ExpressSvg from="work" className="h-full w-full" />
                       </div>
-                      <div className="h-8 w-8 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <SiMongodb className="w-full h-full" />
+                      <div className="h-12 w-12 lg+:h-16 lg+:w-16 ">
+                        <MongoSvg from="work" className="w-full h-full" />
                       </div>
-                      <div className="h-8 w-8 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <SiJavascript className="w-full h-full" />
+                      <div className="h-12 w-12 lg+:h-16 lg+:w-16 ">
+                        <JsSvg from="work" className="w-full h-full" />
                       </div>
                     </div>
-                    <h2 className="text-lg md+:text-2xl">Preview</h2>
+                    <h2
+                      style={{
+                        fontFamily: "Ignazio",
+                      }}
+                      className="font-semibold text-2xl"
+                    >
+                      Preview
+                    </h2>
                     <div
                       className="hidden md+:flex flex-col lg:flex-row justify-center flex-nowrap gap-4 object-contain"
                       style={{ fontFamily: "Ignazio" }}
@@ -370,21 +407,33 @@ function Work() {
                       !minHeight ? "gap-y-5" : "gap-y-2"
                     }`}
                   >
-                    <h1 className="font-semibold mb-2 text-2xl md+:text-3xl lg+:text-4xl text-[#171717] ">
-                      Smart Cart
+                    <h1 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
+                      Smart Shopping Cart
                     </h1>
-                    <h3 className="bg-[#5C4033] py-1  lg+:py-2 px-2  lg+:text-lg text-white">
-                      internship
+                    <h3
+                      style={{
+                        fontFamily: "Ignazio",
+                      }}
+                      className="bg-[#292823] py-0.5 md+:py-1 px-4 text-white"
+                    >
+                      Object Detection
                     </h3>
                     <div className=" flex gap-5 justify-center mx-auto  md+:gap-10">
-                      <div className="h-8 w-8 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <SiReact className="h-full w-full" />
+                      <div className="h-h-12 w-12 lg+:h-16 lg+:w-16 ">
+                        <ReactSvg from="work" className="h-full w-full" />
                       </div>
-                      <div className="h-8 w-8 sm:h-12 sm:w-12 lg+:h-16 lg+:w-16 border-gray-700 border-2">
-                        <SiSocketdotio className="h-full w-full" />
+                      <div className=" h-12 w-12 lg+:h-16 lg+:w-16 ">
+                        <PythonSvg from="work" className="h-full w-full" />
                       </div>
                     </div>
-                    <h2 className="text-lg md+:text-2xl">Preview</h2>
+                    <h2
+                      style={{
+                        fontFamily: "Ignazio",
+                      }}
+                      className="font-semibold text-2xl"
+                    >
+                      Preview
+                    </h2>
                     <div
                       className="font-medium tracking-normal text-[#171717] text-lg justify-center flex md+:flex-col lg:flex-row flex-nowrap md+:flex-wrap gap-4 object-contain"
                       style={{ fontFamily: "Ignazio" }}

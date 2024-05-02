@@ -15,9 +15,9 @@ const svgVar = {
     stroke: "white",
   },
 };
-function ThreeSvg({ className }: { className: string }) {
+function ThreeSvg({ className, from }: { className: string; from: string }) {
   return (
-    <svg
+    <motion.svg
       fill="black"
       height="2500"
       width="2500"
@@ -36,35 +36,44 @@ function ThreeSvg({ className }: { className: string }) {
         transition={{
           duration: 2,
           ease: "easeInOut",
-          repeat: Infinity,
+          repeat: 1,
           repeatType: "loop",
           repeatDelay: 0.5,
         }}
-        // fillRule="evenodd"
-        // clipRule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         stroke="white"
         strokeWidth="3"
         opacity={1}
-        // strokeMiterlimit="10"
-        // strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeLinejoin="round"
       >
         <motion.path
           animate="animate"
           initial="initial"
+          style={{
+            filter: "drop-shadow(0px 2px 6px white)",
+          }}
           d="M70.213 200.94L27 26l173.23 49.874z"
         />
         <motion.path
           animate="animate"
           initial="initial"
+          style={{
+            filter: "drop-shadow(0px 2px 2px white)",
+          }}
           d="M113.583 50.942l21.591 87.496-86.567-24.945z"
         />
         <motion.path
           animate="initial"
           initial="animate"
+          style={{
+            filter: "drop-shadow(0px 2px 2px white)",
+          }}
           d="M92.103 125.36L81.379 81.895l43.008 12.346zM70.651 38.483l10.724 43.465-43.008-12.346zM156.663 63.26l10.724 43.465-43.008-12.346zM92.108 125.39l10.724 43.465-43.008-12.346z"
         />
       </motion.g>
-    </svg>
+    </motion.svg>
   );
 }
 

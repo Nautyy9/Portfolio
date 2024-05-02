@@ -1,7 +1,7 @@
 .items {
   stroke-width: "0.5";
   stroke: "rgba(255, 255, 255, 1) ";
-  stroke-linecap: "round";
+  strokelinecap: "round";
   stroke-linejoin: "round";
   strokedashoffset: "0px";
   strokedasharray: "1px 1px";

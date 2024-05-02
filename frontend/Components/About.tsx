@@ -36,47 +36,41 @@ function About() {
           <div className="flex  flex-col  justify-center items-center gap-y-4   w-11/12 mx-auto ">
             <h3
               style={{ fontFamily: "Bluu" }}
-              className=" text-center text-2xl  sm:text-3xl lg+:text-4xl  underline lg:no-underline font-semibold mb-4 mt-20  lg:w-auto "
+              className="  text-center text-2xl  sm:text-3xl lg+:text-4xl  underline lg:no-underline font-semibold mb-4 mt-20  lg:w-auto "
             >
               {" "}
               I Might be the Developer you are looking for...
             </h3>
             <div className="flex flex-col gap-y-2 sm:gap-y-4 w-5/6  self-center">
-              <p className="text-lg sm:text-xl  w-auto">
+              <p className=" font-medium  text-xl  w-auto">
                 Partnering with agencies and brands that value design and
                 development integrity.
               </p>
-              <p className="text-lg sm:text-xl ">
+              <p className=" font-medium text-xl ">
                 Delivering highly executed front-end user experiences by paying
                 close attention to the nuances of design, optimization, and
                 performance.
               </p>
             </div>
             <div className="flex flex-col xs+:flex-row lg:flex-col  gap-y-8 lg+:flex-row mb-10 mt-5 lg:mt-10  lg:gap-x-10 w-full  items-center xs+:items-start lg:items-center lg+:items-start justify-around">
-              <div className="flex flex-col items-center gap-y-2 ">
-                <h3 className=" text-[22px] xs:text-2xl mx-auto px-2 border-2 border-black ">
+              <div className="flex flex-col items-center gap-y-4 ">
+                <h3 className=" text-[22px] py-1 text-xl xs:text-2xl mx-auto px-4 border-2 border-black ">
                   Status
                 </h3>
-                <p className="text-lg sm:text-xl mt-2 border-black border-b">
-                  Fresher
-                </p>
+                <p className=" text-xl border-black border-b">Fresher</p>
               </div>
-              <div className="flex flex-col gap-y-2 items-center">
-                <h1 className=" text-[22px] py-1 xs:text-2xl mx-auto border-2 px-2 border-black ">
+              <div className="flex flex-col gap-y-4 items-center">
+                <h1 className=" text-[22px] py-1 xs:text-2xl mx-auto border-2 px-4 border-black ">
                   Services
                 </h1>
-                <p className="text-lg sm:text-xl mt-2 border-black border-b">
-                  Development
-                </p>
-                <p className="text-lg sm:text-xl border-black border-b  text-center mt-1">
+                <p className="text-xl  border-black border-b">Development</p>
+                <p className="text-xl border-black border-b  text-center ">
                   Front-end Development
                 </p>
-                <p className="text-lg sm:text-xl mt-1 border-black border-b">
+                <p className="text-xl  border-black border-b">
                   Back-end Development
                 </p>
-                <p className="text-lg sm:text-xl mt-1 border-black border-b">
-                  Type-safe Code
-                </p>
+                <p className="text-xl  border-black border-b">Type-safe Code</p>
               </div>
             </div>
           </div>
@@ -132,13 +126,13 @@ function About() {
                   <div className="w-1/2 flex flex-col justify-around items-center ">
                     <AboutUtils content="EDUCATION" />
                     <AboutUtils content="EXPERIENCE" />
-                    <div className=" flex md:w-full justify-center items-center border-red-500 border-2 p-1 xs:p-2 xs:ml-4 ">
+                    <div className=" flex md:w-full justify-center items-center border-[#f4805b] border-2 p-1 xs:p-2 xs:ml-4 ">
                       <p className=" text-white  text-center text-base xs:text-xl ">
                         Click to download
                       </p>
                       <HiOutlineDownload
                         size={25}
-                        className=" h-max w-max inset-0 md:border-0 rounded-full border-2 border-red-500 p-1 xs:p-2 ml-3 my-auto text-red-500"
+                        className=" h-max w-max inset-0 md:border-0 rounded-full border-2 border-[#f4805b] p-1 xs:p-2 ml-3 my-auto text-[#f4805b]"
                       ></HiOutlineDownload>
                     </div>
                   </div>

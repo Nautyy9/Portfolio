@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@gsap/react": "^2.0.2",
     "@million/lint": "^0.0.73",
     "@prisma/client": "^4.12.0",

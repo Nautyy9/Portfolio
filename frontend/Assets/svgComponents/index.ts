@@ -7,8 +7,8 @@ import NodeSvg from "./NodeSvg";
 import PrismaSvg from "./PrismaSvg";
 import ReactSvg from "./ReactSvg";
 import ReduxSvg from "./ReduxSvg";
-import SanitySvg from "./SanitySvg";
-import SocketSvg from "./SocketSvg";
+import PythonSvg from "./PythonSvg";
+import ExpressSvg from "./ExpressSvg";
 import ThreeSvg from "./ThreeSvg";
 import TrpcSvg from "./TrpcSvg";
 import TsSvg from "./TsSvg";
@@ -19,10 +19,10 @@ export {
   JsSvg,
   MongoSvg,
   ReduxSvg,
-  SocketSvg,
+  ExpressSvg,
   ThreeSvg,
   TrpcSvg,
-  SanitySvg,
+  PythonSvg,
   NextSvg,
   NodeSvg,
   ReactSvg,

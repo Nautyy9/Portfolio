@@ -141,7 +141,7 @@ function Header() {
               style={{
                 fontFamily: "Bluu",
               }}
-              className="font-bold text-2xl xl:text-4xl m-auto xs+:pr-4 md+:pr-0 whitespace-nowrap  "
+              className="font-bold text-2xl xl:text-3xl m-auto xs+:pr-4 md+:pr-0 whitespace-nowrap  "
             >
               Nitin's Folio
             </motion.h2>
@@ -165,7 +165,7 @@ function Header() {
             staggerChildren: 0.5,
             delayChildren: 0.3,
           }}
-          className=" hidden md:flex lg:justify-start text-sm font-semibold  md:gap-4 md+:gap-0 xl:gap-10  "
+          className=" hidden md:flex lg:justify-start text-sm font-semibold  md:gap-4 md+:gap-0 xl:gap-5 xl+:gap-8  "
         >
           <GotoRouteLarge path="home" content="Home" />
           <GotoRouteLarge path="about" content="About Me" />
@@ -198,7 +198,7 @@ function Header() {
       {!toggleMenu && (
         <div
           id="header_dropdown"
-          className=" anim border-t-2 border-[#171717] shadow-black mt-14 xs:mt-16 h-max flex flex-col xs:flex-row justify-center xs:justify-around items-center xs:items-start bg-[#f5e4bc] text-[#292823] header fixed z-50 top-0 w-screen text-shade-dark  "
+          className="anim border-t-2 border-[#171717] shadow-black mt-14 xs:mt-16 h-max flex flex-col xs:flex-row justify-center xs:justify-around items-center xs:items-start bg-[#f5e4bc] text-[#292823] header fixed z-50 top-0 w-screen text-shade-dark  "
         >
           <div className="routes flex flex-col my-5">
             <h2

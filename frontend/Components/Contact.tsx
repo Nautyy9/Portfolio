@@ -1,20 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BiLink } from "react-icons/bi";
 import { AiOutlineInstagram, AiFillGithub } from "react-icons/ai";
 import { BsWhatsapp } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
-import { createTRPCProxyClient, httpBatchLink, loggerLink } from "@trpc/client";
-import type { appRouterType } from "types-for-frontend/types";
+// import { createTRPCProxyClient, httpBatchLink, loggerLink } from "@trpc/client";
+// import type { appRouterType } from "types-for-frontend/types";
 import Confetti from "react-confetti";
+import emailjs from "@emailjs/browser";
+import { envClientSchema } from "../env";
 
-const client = createTRPCProxyClient<appRouterType>({
-  links: [
-    loggerLink(),
-    httpBatchLink({
-      url: "https://nitins-folio-odwi.onrender.com/trpc",
-    }),
-  ],
-});
+// const client = createTRPCProxyClient<appRouterType>({
+//   links: [
+//     loggerLink(),
+//     httpBatchLink({
+//       url: "https://nitins-folio-odwi.onrender.com/trpc",
+//     }),
+//   ],
+// });
 
 type formDetailType = {
   name: string;
@@ -25,7 +27,7 @@ type formDetailType = {
 };
 
 function Contact() {
-  const [showConfetti, setShowConfetti] = useState<string>();
+  const [showConfetti, setShowConfetti] = useState<boolean>();
   const height = window.innerHeight;
   const [hideLine, setHideLine] = useState(false);
   const [formDetials, setFormDetials] = useState<formDetailType>({
@@ -41,34 +43,90 @@ function Contact() {
   const subRef = useRef<HTMLInputElement>(null!);
   const msgRef = useRef<HTMLTextAreaElement>(null!);
   const contactRef = useRef<HTMLDivElement>(null);
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+
+  //   setFormDetials((prev: formDetailType) => ({
+  //     ...prev,
+  //     name: nameRef.current?.value,
+  //     email: emailRef.current?.value,
+  //     phone: phnRef.current?.value,
+  //     subject: subRef.current?.value,
+  //     message: msgRef.current?.value,
+  //   }));
+
+  //   // const result = client.stringOut.query()
+
+  //   const result = await client.fields.mutate({
+  //     name: nameRef.current?.value!,
+  //     email: emailRef.current?.value!,
+  //     phoneNumber: parseInt(phnRef.current?.value!),
+  //     subject: subRef.current?.value!,
+  //     message: msgRef.current?.value!,
+  //   });
+  //   if (!!result) {
+  //     setShowConfetti(result);
+  //   }
+  // };
+
+  function onSubmit(e: any) {
     e.preventDefault();
-
-    setFormDetials((prev: formDetailType) => ({
-      ...prev,
-      name: nameRef.current?.value,
-      email: emailRef.current?.value,
-      phone: phnRef.current?.value,
-      subject: subRef.current?.value,
-      message: msgRef.current?.value,
-    }));
-
-    // const result = client.stringOut.query()
-
-    const result = await client.fields.mutate({
-      name: nameRef.current?.value!,
-      email: emailRef.current?.value!,
-      phoneNumber: parseInt(phnRef.current?.value!),
-      subject: subRef.current?.value!,
-      message: msgRef.current?.value!,
-    });
-    if (!!result) {
-      setShowConfetti(result);
+    console.log(formDetials);
+    if (
+      !formDetials.message ||
+      !formDetials.email ||
+      !formDetials.name ||
+      !formDetials.phone ||
+      !formDetials.subject
+    ) {
+      alert("Please fill in values");
+      return null;
     }
-  };
+    const templateParams = {
+      from_name: name,
+      from_email: formDetials.email,
+      to_name: envClientSchema.SERVICE_NAME,
+      message: formDetials.message,
+      phone: formDetials.phone,
+      subject: formDetials.subject,
+    };
+    emailjs
+      .send(
+        envClientSchema.SERVICE_ID,
+        envClientSchema.TEMPLATE_ID,
+        templateParams,
+        { publicKey: envClientSchema.PUBLIC_KEY }
+      )
+      .then((res) => {
+        setFormDetials((prev: formDetailType) => ({
+          ...prev,
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        }));
+        setShowConfetti(true);
+      })
+      .catch((err) => {
+        alert("Error while sending request please try again after some time ");
+      });
+  }
+  function debounce(fn: any) {
+    let timer: NodeJS.Timeout;
+    return async function () {
+      if (timer) {
+        clearTimeout(timer);
+      } else {
+        timer = setTimeout(() => {
+          fn();
+        }, 300);
+      }
+    };
+  }
 
   useEffect(() => {
-    console.log(contactRef.current?.offsetHeight);
+    // console.log(contactRef.current?.offsetHeight);
     if (window.innerWidth <= 1780) {
       setHideLine(true);
     } else {
@@ -203,7 +261,7 @@ function Contact() {
                 </span>
                 <form
                   onSubmit={(e) => {
-                    onSubmit(e);
+                    debounce(onSubmit(e));
                   }}
                   className=" flex flex-col  mt-24 w-full md:top-0 sm:items-center sm:justify-center gap-y-10 h-max"
                 >
@@ -219,6 +277,7 @@ function Contact() {
                       ref={nameRef}
                       type="text"
                       placeholder="Name"
+                      onChange={(e) => (formDetials.name = e.target.value)}
                       className="border  border-white focus:border-[#f9d5ca] p-3 focus:outline-none  focus:border-2 text-white transition duration-100 ease-in  bg-transparent"
                     />
                   </div>
@@ -235,6 +294,7 @@ function Contact() {
                         id="ph-no"
                         type="text"
                         placeholder="Phone Number"
+                        onChange={(e) => (formDetials.phone = e.target.value)}
                         className=" border  border-white focus:border-[#f9d5ca] p-3 focus:border-2 focus:outline-none  w-full  text-white    bg-transparent transition duration-100 ease-in "
                       />
                     </div>
@@ -247,6 +307,7 @@ function Contact() {
                       </label>
                       <input
                         ref={emailRef}
+                        onChange={(e) => (formDetials.email = e.target.value)}
                         id="add"
                         type="email"
                         placeholder="Email"
@@ -263,6 +324,7 @@ function Contact() {
                     </label>
                     <input
                       ref={subRef}
+                      onChange={(e) => (formDetials.subject = e.target.value)}
                       id="sub"
                       type="text"
                       placeholder="Subject"
@@ -278,6 +340,7 @@ function Contact() {
                     </label>
                     <textarea
                       ref={msgRef}
+                      onChange={(e) => (formDetials.message = e.target.value)}
                       id="msg"
                       rows={4}
                       placeholder="Message"
@@ -294,14 +357,15 @@ function Contact() {
             </>
           ) : (
             <>
-              <div className="bg-[#171717] col-span-3 xl:col-span-1 h-[600px] flex items-center xl:absolute xl:top-[15%]">
-                <div className=" flex    w-full ">
+              <div className="bg-transparent bg-opacity-0 col-span-3 xl:col-span-1 h-[600px] flex items-center xl:absolute xl:top-[15%]">
+                <div className="flex w-full ">
                   <Confetti
                     gravity={0.04}
-                    className="w-11/12  mx-auto h-full"
+                    className="w-11/12 mx-auto h-full"
                   ></Confetti>
-                  <h1 className="z-20 text-xl sm:text-3xl font-bold flex justify-center items-center text-white text-center">
-                    {showConfetti}
+                  <h1 className="z-20 text-4xl font-bold flex justify-center items-center text-white text-center">
+                    {showConfetti &&
+                      "We appreciate you reaching out! We'll be in touch shortly."}
                   </h1>
                 </div>
               </div>
