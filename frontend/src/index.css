@@ -6,42 +6,42 @@
 }
 @font-face {
   font-family: "Coconat";
-  src: url(../dist/fonts/Coconat-BoldExt.woff) format("woff") ;
+  src: url(/fonts/Coconat-BoldExt.woff) format("woff") ;
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Ignazio";
-  src: url(../dist/fonts/Ignazio.ttf) format("ttf");
+  src: url(/fonts/Ignazio.ttf) format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Hedvig";
-  src: url(../dist/fonts/HedvigLettersSans-Regular.ttf) format("ttf");
+  src: url(/fonts/HedvigLettersSans-Regular.ttf) format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  src: url(../dist/fonts/bluunext-titling.woff) format("woff"),
-  url(../dist/fonts/bluunext-titling.woff2) format("woff2");
+  src: url(/fonts/bluunext-titling.woff) format("woff"),
+  url(/fonts/bluunext-titling.woff2) format("woff2");
   font-family: "Bluu";
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  src: url(../dist/fonts/bluunext-titling.woff) format("woff");
+  src: url(/fonts/bluunext-titling.woff) format("woff");
   font-family: "Bluu";
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: "Bluu";
-  src: url(../dist/fonts/BluuNext-Bolditalic.otf) format("otf");
+  src: url(/fonts/BluuNext-Bolditalic.otf) format("otf");
   font-weight: bold;
   font-style: italic;
 }
