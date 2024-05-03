@@ -175,15 +175,15 @@ function Contact() {
       id="contact"
       className="min-h-[1280px]  md+:min-h-[1080px] h-screen  bg-[#171717]  shadow-lg contact"
     >
-      <div className="grid grid-flow-row xl:grid-flow-col w-full h-full xl:grid-cols-3 relative m-auto  xs:mb-0 gap-y-20 xl:gap-y-0 justify-self-center mx-auto ">
-        <div className="col-span-1 flex w-full relative left-20 xss:left-[90px] xs:left-36 xs+:left-28 sm:left-0 flex-col  sm:flex-row sm:absolute top-20  xl:relative  xl:top-[10%] xl:-translate-y-[70%]  m-auto xl:flex-col  gap-y-10 xl:gap-y-60 mb-10 xs:mb-0">
-          <div className="flex flex-col gap-y-2 xs:gap-y-5 mt-4 xl:mt-10 mx-auto  ">
-            <h1
-              style={{ fontFamily: "Coconat" }}
-              className="font-semibold text-[#f9d5ca] text-xl xs+:text-3xl"
+      <div className="flex flex-col xl:flex-row w-full h-full relative items-center justify-center gap-y-10 xl:gap-y-0 ">
+        <div className="flex w-full lg+:w-1/2 justify-center  flex-col sm:flex-row xl:flex-col gap-y-10  xl:gap-y-60  ">
+          <div className="flex flex-col gap-y-2 xs:gap-y-5 mx-auto  ">
+            <h2
+              style={{ fontFamily: "Bluu" }}
+              className="font-semibold text-[#f9d5ca] text-4xl xs+:text-5xl"
             >
               Portfolio
-            </h1>
+            </h2>
             <div className="text-white text-base xs+:text-xl tracking-wider items-center flex flex-col gap-y-1 ">
               <a
                 href="https://github.com/Nautyy9/"
@@ -195,14 +195,21 @@ function Contact() {
               {/* <p className='flex justify-center hover:scale-110 transition duration-200 ease-in w-28'><BiLink className='my-auto'></BiLink> </p> */}
             </div>
           </div>
-          <div className="flex flex-col gap-y-2 mb-4  xl:mb-0 xs:gap-y-5 my-auto mx-auto">
+          <div className="flex flex-col gap-y-2   xl:mb-0 xs:gap-y-5 mx-auto">
             <h1
-              style={{ fontFamily: "Coconat" }}
-              className="font-semibold  text-[#f9d5ca] text-center text-xl xs+:text-3xl "
+              style={{ fontFamily: "Bluu" }}
+              className="font-semibold  text-[#f9d5ca] text-center text-4xl xs+:text-5xl "
             >
               Social
             </h1>
             <div className="text-white text-base xs+:text-xl tracking-wider items-center flex flex-col gap-y-1 ">
+              <a
+                href="https://wa.me/919990989306"
+                className="flex justify-center hover:scale-110 transition duration-200 ease-in gap-x-2"
+              >
+                <BsWhatsapp className="my-auto"></BsWhatsapp>WhatsappMe!
+                <BiLink className="my-auto"></BiLink>{" "}
+              </a>
               <a
                 href="https://www.linkedin.com/in/nitin-nautiyal-75a67619a/"
                 className="justify-center flex hover:scale-110 transition duration-200 ease-in gap-x-2"
@@ -217,40 +224,36 @@ function Contact() {
                 <AiOutlineInstagram className="my-auto"></AiOutlineInstagram>
                 Instagram <BiLink className="my-auto"></BiLink>{" "}
               </a>
-              <a
-                href="https://wa.me/919990989306"
-                className="flex justify-center hover:scale-110 transition duration-200 ease-in gap-x-2"
-              >
-                <BsWhatsapp className="my-auto"></BsWhatsapp>WhatsappMe!
-                <BiLink className="my-auto"></BiLink>{" "}
-              </a>
             </div>
           </div>
         </div>
         <div
-          className={`z-30 col-span-2 h-max xl:h-4/5  m-auto xl:m-0 xl:translate-y-[-50%] xl:top-[50%]  grid grid-flow-row md:grid-flow-col md:grid-cols-3 relative w-full xss:w-4/5 md:w-11/12 lg+:w-5/6 xl:w-full  xl+:w-11/12   ${
-            showConfetti ? "bg-[#171717]" : "bg-gray-900/70"
-          } mb-10 mx-auto`}
+          className={`z-30  h-max xl:h-4/5 flex flex-col  md:flex-row relative w-full xss:w-4/5 md:w-11/12 lg+:w-5/6 xl:w-full mx-auto xl+:w-11/12   ${
+            showConfetti ? "bg-transparent" : "bg-gray-900/70"
+          } `}
         >
           {!showConfetti ? (
             <>
               {" "}
-              <div className="sm:col-span-1  ">
-                <div className="  flex flex-col justify-end items-center w-full h-full">
-                  <p className="lg+:text-xl absolute top-[5%] md:top-[10%] left-10 text-white ">
-                    Say Hellow! 👋
-                  </p>
-                  <h1 className="hidden md:inline-block text-lg text-clip lg+:text-3xl text-center  font-semibold text-[#f9d5ca] absolute xl:left-[1%] break:left-[5%] top-[45%]  w-64 lg+:w-80  -translate-y-[50%]">
-                    Wanna be starting something ?
-                  </h1>
-                  <p className="hidden md:inline-block text-base tracking-tight w-60  lg+:text-xl absolute text-white lg+:w-80 xl:left-[1%] break:left-[10%] bottom-[10%]  text-center">
-                    Feel free to reach out if you wanna collaborate with me,or
-                    simply have a chat
-                  </p>
+              <div className=" pt-10 md:pt-0 ">
+                <div className="  flex flex-col justify-center items-center md:py-16 w-full h-full ">
+                  <div className="flex items-start justify-center h-2/3 text-center   w-full">
+                    <p className="text-xl text-white ">Say Hellow! 👋</p>
+                  </div>
+                  <div className="hidden h-full md:flex flex-col w-full  justify-between mx-auto">
+                    <h1 className=" flex text-3xl  text-center  font-semibold text-[#f9d5ca]   w-64 lg+:w-80  mx-auto   ">
+                      Wanna be starting something ?
+                    </h1>
+                    <p className=" inline md+:ml-8 lg+:ml-14 border-4 border-dotted  p-2  text-lg tracking-tight w-full lg+:text-xl  text-white lg+:w-80   text-center">
+                      I'm always interested in collaborating on creative
+                      projects. Feel free to reach out and chat about potential
+                      opportunities.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className=" mx-auto px-4 w-full xs:w-[380px] sm:col-span-2 relative  sm:w-full -xl lg:-none -xl  h-max ">
-                <span
+              <div className=" mx-auto px-4 w-full xs:w-[380px] relative my-auto sm:w-full  h-max ">
+                {/* <span
                   className={
                     !hideLine
                       ? `text-white text-4xl rotate-90 bottom-[50%] translate-y-[50%]  -left-[30%] absolute  `
@@ -258,14 +261,14 @@ function Contact() {
                   }
                 >
                   ______________________________
-                </span>
+                </span> */}
                 <form
                   onSubmit={(e) => {
                     debounce(onSubmit(e));
                   }}
-                  className=" flex flex-col  mt-24 w-full md:top-0 sm:items-center sm:justify-center gap-y-10 h-max"
+                  className=" flex flex-col w-full my-10  md:top-0 sm:items-center sm:justify-center gap-y-10 h-max"
                 >
-                  <div className="flex flex-col  w-full sm:w-5/6 mx-auto  gap-2 ">
+                  <div className="flex flex-col  w-full sm:w-5/6 md:w-full md+:w-5/6 mx-auto  gap-2 ">
                     <label
                       htmlFor="name"
                       className="text-white font-medium text-xl w-full"
@@ -278,11 +281,11 @@ function Contact() {
                       type="text"
                       placeholder="Name"
                       onChange={(e) => (formDetials.name = e.target.value)}
-                      className="border  border-white focus:border-[#f9d5ca] p-3 focus:outline-none  focus:border-2 text-white transition duration-100 ease-in  bg-transparent"
+                      className="border text-xl border-white focus:border-[#f9d5ca] p-3 focus:outline-none  focus:border-2 text-white focus:text-black transition duration-200 ease-in-out bg-transparent focus:bg-white"
                     />
                   </div>
-                  <div className="flex flex-col sm:flex-row w-full sm:w-5/6 gap-y-10 sm:gap-2 mx-auto gap-x-4">
-                    <div className="flex flex-col ">
+                  <div className="flex flex-col sm:flex-row w-full sm:w-5/6 md:w-full md+:w-5/6 gap-y-10 sm:gap-2  gap-x-4">
+                    <div className="flex flex-col w-full">
                       <label
                         htmlFor="ph-no"
                         className="text-white font-medium text-xl "
@@ -295,10 +298,10 @@ function Contact() {
                         type="text"
                         placeholder="Phone Number"
                         onChange={(e) => (formDetials.phone = e.target.value)}
-                        className=" border  border-white focus:border-[#f9d5ca] p-3 focus:border-2 focus:outline-none  w-full  text-white    bg-transparent transition duration-100 ease-in "
+                        className=" border text-xl border-white focus:border-[#f9d5ca] p-3 focus:border-2 focus:outline-none  w-full  text-white    bg-transparent transition duration-100 ease-in "
                       />
                     </div>
-                    <div className="flex flex-col ">
+                    <div className="flex flex-col w-full">
                       <label
                         htmlFor="add"
                         className="text-white font-medium text-xl "
@@ -311,11 +314,11 @@ function Contact() {
                         id="add"
                         type="email"
                         placeholder="Email"
-                        className="border  border-white focus:border-[#f9d5ca] p-3 focus:border-2 focus:outline-none w-full text-white transition duration-100 ease-in  bg-transparent"
+                        className="border text-xl border-white focus:border-[#f9d5ca] p-3 focus:border-2 focus:outline-none w-full text-white transition duration-100 ease-in  bg-transparent"
                       />
                     </div>
                   </div>
-                  <div className="flex flex-col w-full sm:w-5/6 mx-auto gap-2 ">
+                  <div className="flex flex-col w-full sm:w-5/6 md:w-full md+:w-5/6 mx-auto gap-2 ">
                     <label
                       htmlFor="sub"
                       className="text-white font-medium text-xl"
@@ -328,10 +331,10 @@ function Contact() {
                       id="sub"
                       type="text"
                       placeholder="Subject"
-                      className="border  border-white focus:border-[#f9d5ca] p-3 focus:outline-none focus:border-2  text-white transition duration-100 ease-in  bg-transparent"
+                      className="border text-xl  border-white focus:border-[#f9d5ca] p-3 focus:outline-none focus:border-2  text-white transition duration-100 ease-in  bg-transparent"
                     />
                   </div>
-                  <div className="flex  flex-col  w-full  sm:w-5/6 mx-auto gap-2">
+                  <div className="flex  flex-col  w-full  sm:w-5/6 md:w-full md+:w-5/6 mx-auto gap-2">
                     <label
                       htmlFor="msg"
                       className="text-white font-medium text-xl"
@@ -344,13 +347,13 @@ function Contact() {
                       id="msg"
                       rows={4}
                       placeholder="Message"
-                      className="border  border-white focus:border-[#f9d5ca] p-3 focus:outline-none focus:border-2  text-white transition duration-100 ease-in   bg-transparent"
+                      className="border text-xl border-white focus:border-[#f9d5ca] p-3 focus:outline-none focus:border-2  text-white transition duration-100 ease-in   bg-transparent"
                     />
                   </div>
                   <input
                     type="submit"
                     value="Submit"
-                    className="cursor-pointer hover:scale-110 hover:animate-pulse duration-300  text-[#f4805b] border-2 border-[#f4805b] text-xl py-2 px-4  flex self-start sm:ml-[8%] mb-10  "
+                    className="cursor-pointer hover:scale-110 hover:animate-pulse duration-300  text-[#f4805b] border-2 border-[#f4805b] text-xl py-2 px-4 flex self-start sm:ml-[8%]   "
                   />
                 </form>
               </div>

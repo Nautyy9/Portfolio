@@ -467,22 +467,6 @@ function Work() {
         </div>
       </div>
       <DialogComponent modalRef={modalRef} activeImg={activeImg} />
-      {/* <div
-        style={{ visibility: "hidden", fontFamily: "Coconat" }}
-        ref={section_ref}
-        className=" h-full text-center hidden xs+:flex  text-[#5C4033] py-4 fixed  right-10 sm:right-5  top-[50%] translate-y-[-50%] md+:my-auto z-1 tracking-normal"
-      >
-        <button className="rotate-[180deg]  p-2 py-4   h-max my-auto">
-          {sections.map((section, id) => (
-            <h1
-              key={id}
-              className="sec_part  md+:hover:scale-125 transition duration-200 text-2xl"
-            >
-              {section}
-            </h1> 
-          ))}
-        </button>
-      </div> */}
     </div>
   );
 }

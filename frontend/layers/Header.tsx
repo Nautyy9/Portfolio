@@ -165,7 +165,7 @@ function Header() {
             staggerChildren: 0.5,
             delayChildren: 0.3,
           }}
-          className=" hidden md:flex lg:justify-start text-sm font-semibold  md:gap-4 md+:gap-0 xl:gap-5 xl+:gap-8  "
+          className=" hidden md:flex lg:justify-start  font-semibold  md:gap-0  xl:gap-5 xl+:gap-8  "
         >
           <GotoRouteLarge path="home" content="Home" />
           <GotoRouteLarge path="about" content="About Me" />

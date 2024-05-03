@@ -27,7 +27,7 @@ function GotoRouteLarge({ path, content }: largeScreenType) {
         offset={-64}
         duration={1000}
         className={
-          "cursor-pointer whitespace-nowrap py-1.5 md:py-3 px-1 md+:p-3 h-full lg:px-6 hover:scale-110 transition-all hover:bg-black/10  ease-in-out  text-lg md+:text-xl "
+          "cursor-pointer whitespace-nowrap py-1.5 md:py-3 px-2 min-[800px]:px-3  md+:px-4 h-full lg+:px-6 hover:scale-110 transition-all hover:bg-black/10  ease-in-out  text-lg lg+:text-xl "
         }
       >
         {content}
