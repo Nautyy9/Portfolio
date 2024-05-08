@@ -4,7 +4,7 @@ import { HiOutlineDownload } from "react-icons/hi";
 import AboutUtils from "../utils/AboutUtils";
 function About() {
   const [hover, setHover] = useState(false);
-  const sections = ["S", "e", "c", "t", "i", "o", "n", "🙃", "2"];
+  // const sections = ["S", "e", "c", "t", "i", "o", "n", "🙃", "2"];
   let card_ref = useRef<HTMLDivElement>(null!);
   useEffect(() => {
     setHover(false);
@@ -42,11 +42,14 @@ function About() {
               I Might be the Developer you are looking for...
             </h3>
             <div className="flex flex-col gap-y-2 sm:gap-y-4 w-5/6  self-center">
-              <p className=" font-medium  text-xl  w-auto">
+              <p
+                style={{ fontFamily: "Ignazio" }}
+                className=" font-medium text-lg  xs:text-xl  w-auto"
+              >
                 Partnering with agencies and brands that value design and
                 development integrity.
               </p>
-              <p className=" font-medium text-xl ">
+              <p className=" font-medium text-lg xs:text-xl ">
                 Delivering highly executed front-end user experiences by paying
                 close attention to the nuances of design, optimization, and
                 performance.
@@ -111,38 +114,43 @@ function About() {
               </div>
             ) : (
               <div className="h-full ">
-                <div className=" flex  items-center relative">
-                  <h1 className="text-white drop-shadow-lg text-base xs:text-xl md:text-3xl absolute xs:ml-2 col-span-1">
-                    MY RESUME
-                  </h1>
-                  <div className="flex h-max w-full xs:mr-2 flex-col   items-end col-span-2 text-white text-xl  text-center ">
-                    <span className="border-t-8  drop-shadow-sm mt-5 w-1/2  border-[#f5e4bc] "></span>
-                    <br></br>
-                    <span className="border-t-8  drop-shadow-sm w-1/2  border-[#f5e4bc] "></span>
-                    <br></br>
-                  </div>
-                </div>
-                <div className="head flex  w-full h-full ">
-                  <div className="w-1/2 flex flex-col justify-around items-center ">
-                    <AboutUtils content="EDUCATION" />
-                    <AboutUtils content="EXPERIENCE" />
-                    <div className=" flex md:w-full justify-center items-center border-[#f4805b] border-2 p-1 xs:p-2 xs:ml-4 ">
-                      <p className=" text-white  text-center text-base xs:text-xl ">
-                        Click to download
-                      </p>
-                      <HiOutlineDownload
-                        size={25}
-                        className=" h-max w-max inset-0 md:border-0 rounded-full border-2 border-[#f4805b] p-1 xs:p-2 ml-3 my-auto text-[#f4805b]"
-                      ></HiOutlineDownload>
+                <a
+                  href="/assets/Nitin's Resume.pdf"
+                  download="nitin_resume.pdf"
+                >
+                  <div className=" flex  items-center relative">
+                    <h1 className="text-white drop-shadow-lg text-base xs:text-xl md:text-3xl absolute xs:ml-2 col-span-1">
+                      MY RESUME
+                    </h1>
+                    <div className="flex h-max w-full xs:mr-2 flex-col   items-end col-span-2 text-white text-xl  text-center ">
+                      <span className="border-t-8  drop-shadow-sm mt-5 w-1/2  border-[#f5e4bc] "></span>
+                      <br></br>
+                      <span className="border-t-8  drop-shadow-sm w-1/2  border-[#f5e4bc] "></span>
+                      <br></br>
                     </div>
                   </div>
-                  <div className="w-1/2  flex flex-col justify-around ">
-                    <AboutUtils content="SKILLS" />
-                    <AboutUtils content="PROJECTS" />
-                    <AboutUtils content="LANGUAGES" />
-                    <AboutUtils content="INTERESTS" />
+                  <div className="head flex  w-full h-full ">
+                    <div className="w-1/2 flex flex-col justify-around items-center ">
+                      <AboutUtils content="EDUCATION" />
+                      <AboutUtils content="EXPERIENCE" />
+                      <div className=" flex md:w-full justify-center items-center border-[#f4805b] border-2 p-1 xs:p-2 xs:ml-4 ">
+                        <p className=" text-white  text-center text-base xs:text-xl ">
+                          Click to download
+                        </p>
+                        <HiOutlineDownload
+                          size={25}
+                          className=" h-max w-max inset-0 md:border-0 rounded-full border-2 border-[#f4805b] p-1 xs:p-2 ml-3 my-auto text-[#f4805b]"
+                        ></HiOutlineDownload>
+                      </div>
+                    </div>
+                    <div className="w-1/2  flex flex-col justify-around ">
+                      <AboutUtils content="SKILLS" />
+                      <AboutUtils content="PROJECTS" />
+                      <AboutUtils content="LANGUAGES" />
+                      <AboutUtils content="INTERESTS" />
+                    </div>
                   </div>
-                </div>
+                </a>
               </div>
             )}
           </div>

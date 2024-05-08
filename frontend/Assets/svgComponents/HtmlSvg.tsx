@@ -4,15 +4,9 @@ import React, { useEffect } from "react";
 const htmlVar = {
   initial: {
     pathLength: 0,
-    pathOffset: 0,
-    strokeDashoffset: 0,
-    strokeDasharray: 1,
   },
   animate: {
     pathLength: 2,
-    pathOffset: 2.5,
-    strokeDashoffset: 0.5,
-    strokeDasharray: 0.5,
   },
 };
 
@@ -42,11 +36,6 @@ function HtmlSvg({
           animate={anim}
           transition={{
             duration: 3,
-            delay: 0,
-            ease: "easeInOut",
-            repeat: 2,
-            repeatType: "reverse",
-            repeatDelay: 0.1,
           }}
           fill="#000000"
           fillOpacity={1}

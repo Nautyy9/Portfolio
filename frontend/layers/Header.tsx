@@ -12,7 +12,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { SiAboutdotme } from "react-icons/si";
 import { GiSkills } from "react-icons/gi";
 import { GrPersonalComputer } from "react-icons/gr";
-import { motion } from "framer-motion";
+import { animate, delay, motion } from "framer-motion";
 import { contextValue } from "../context/Context";
 import {
   linkRoute,
@@ -21,10 +21,10 @@ import {
 } from "../utils/headerUtils";
 
 const nameWrapper = {
-  hidden: {
+  initial: {
     opacity: 0,
   },
-  visible: {
+  animate: {
     opacity: 1,
     transition: {
       ease: "easeInOut",
@@ -34,12 +34,12 @@ const nameWrapper = {
 };
 
 const nameVar = {
-  hidden: {
+  initial: {
     scale: 0,
     opacity: 0,
     x: -100,
   },
-  visible: {
+  animate: {
     scale: 1,
     opacity: 1,
     x: 0,
@@ -50,28 +50,50 @@ const nameVar = {
   },
 };
 
-const linkWrapper = {
-  hidden: {
+const burgerVar = {
+  initial: {
     opacity: 0,
+    x: 100,
   },
   animate: {
     opacity: 1,
+    x: 0,
     transition: {
-      staggerChildren: 0.5,
-      delayChildren: 0.2,
-      duration: 3,
+      duration: 1,
+      delay: 2,
     },
   },
 };
 const linkVar = {
-  hidden: {
+  initial: {
     x: 100,
+    opacity: 0,
   },
-  animate: {
+  animate: (i: number) => ({
     x: 0,
+    opacity: 1,
+
     transition: {
+      delay: 2.2 + i * 0.1,
       ease: "easeInOut",
       duration: 0.5,
+    },
+  }),
+};
+
+const centerContent = {
+  initial: {
+    y: -100,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1.5,
+      delay: 1,
+      staggerChildren: 0.5,
+      delayChildren: 0.3,
     },
   },
 };
@@ -83,7 +105,7 @@ const linkVar = {
 function Header() {
   const [toggleMenu, setToggleMenu] = useState(true);
   const { menuRef } = contextValue();
-  const tl = gsap.timeline();
+  // const tl = gsap.timeline();
   // const [scope, animate] = useAnimate();
   // const linkRef = useRef<HTMLDivElement>(null);
   // useEffect(() => {
@@ -99,13 +121,6 @@ function Header() {
   //     { delay: staggerItems, duration: 0.3 }
   //   );
   // }, []);
-  useEffect(() => {
-    tl.fromTo(
-      ".anim",
-      { y: -200 },
-      { y: 0, duration: 0.5, ease: "Power2.easeIn" }
-    );
-  });
 
   function setMenu() {
     setToggleMenu(true);
@@ -120,14 +135,14 @@ function Header() {
   return (
     <div
       id="header"
-      className="overflow-x-hidden w-screen h-14 xs:h-16 flex items-center ring-2  ring-[#292823] text-[#292823] fixed header z-40 top-0 "
+      className="overflow-x-hidden w-dvw h-14 xs:h-16 flex items-center ring-2  ring-[#292823] text-[#292823] fixed header z-40 top-0 "
     >
-      <div className="mx-5 w-full  xss:w-11/12  md+:w-5/6 xss:mx-auto flex items-center justify-between xss:justify-between  ">
+      <div className="mx-5 w-full xss:w-11/12  md+:w-5/6 xss:mx-auto flex items-center justify-between xss:justify-between  ">
         <motion.div className="flex">
           <motion.div
-            initial="hidden"
-            animate="visible"
             variants={nameWrapper}
+            animate="animate"
+            initial="initial"
             className="inline-flex self-center "
           >
             <motion.img
@@ -157,14 +172,9 @@ function Header() {
           ></motion.span>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 1.5,
-            delay: 1,
-            staggerChildren: 0.5,
-            delayChildren: 0.3,
-          }}
+          variants={centerContent}
+          animate="animate"
+          initial="initial"
           className=" hidden md:flex lg:justify-start  font-semibold  md:gap-0  xl:gap-5 xl+:gap-8  "
         >
           <GotoRouteLarge path="home" content="Home" />
@@ -174,40 +184,48 @@ function Header() {
           <GotoRouteLarge path="contact" content="Contact" />
         </motion.div>
         <div className="hidden  md:flex justify-end col-span-1 ">
-          <motion.div
-            variants={linkWrapper}
-            initial="hidden"
-            animate="animate"
-            className=" flex md:justify-end w-full h-full  gap-2  lg:gap-5 "
-          >
+          <div className=" flex md:justify-end w-full h-full  gap-2  lg:gap-5 ">
             {linkRoute.map((val, ind) => {
               return (
-                <motion.div variants={linkVar} key={ind}>
+                <motion.div
+                  variants={linkVar}
+                  initial="initial"
+                  animate={{ ...linkVar.animate(ind) }}
+                  key={ind}
+                >
                   {val}
                 </motion.div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
-        <div className="col-span-2 md:hidden flex justify-end ">
+        <motion.div
+          variants={burgerVar}
+          animate="animate"
+          initial="initial"
+          className="col-span-2 md:hidden flex justify-end "
+        >
           <div ref={menuRef} className="menu-btn" onClick={setMenu}>
             <div className="menu-btn__burger"></div>
           </div>
-        </div>
+        </motion.div>
       </div>
       {!toggleMenu && (
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
           id="header_dropdown"
-          className="anim border-t-2 border-[#171717] shadow-black mt-14 xs:mt-16 h-max flex flex-col xs:flex-row justify-center xs:justify-around items-center xs:items-start bg-[#f5e4bc] text-[#292823] header fixed z-50 top-0 w-screen text-shade-dark  "
+          className=" border-t-2 border-[#171717] shadow-black mt-14 xs:mt-16 h-max flex flex-col xs:flex-row justify-center xs:justify-around items-center xs:items-start  text-[#292823] header fixed z-50 top-0 w-screen text-shade-dark  "
         >
-          <div className="routes flex flex-col my-5">
+          <div className="routes flex flex-col my-5 ">
             <h2
               style={{ fontFamily: "Bluu" }}
-              className="text-5xl border-b-2 border-black "
+              className="absolute  mx-auto xs:w-1/2 left-0  text-center text-5xl border-b-2 w-full border-black "
             >
               Route
             </h2>
-            <div className="flex flex-col items-start mt-3 gap-2">
+            <div className="flex flex-col items-start mt-16 gap-2">
               <div className="flex xs:flex-col gap-2 gap-x-5 ">
                 <GotoRouteSmall
                   path="home"
@@ -228,7 +246,7 @@ function Header() {
                   }
                 />
               </div>
-              <div className="flex xs:flex-col gap-2 gap-x-5">
+              <div className="flex xs:flex-col gap-2 gap-x-6">
                 <GotoRouteSmall
                   path="skills"
                   content={"Skills"}
@@ -262,12 +280,12 @@ function Header() {
           <div className=" handles flex flex-col  my-5  ">
             <h2
               style={{ fontFamily: "Bluu" }}
-              className="text-5xl border-b-2 border-black"
+              className="absolute w-full mx-auto xs:w-1/2  right-0  text-center text-5xl border-b-2 border-black"
             >
               Handles
             </h2>
-            <div className="flex xs:flex-col mt-3 gap-2 items-start ">
-              <div className="flex flex-col gap-2 ">
+            <div className="flex xs:flex-col mt-16 gap-2 gap-x-5 items-start ">
+              <div className="flex flex-col gap-2   ">
                 <a
                   target="_blank"
                   href="https://www.linkedin.com/in/nitin-nautiyal-75a67619a/"
@@ -317,7 +335,7 @@ function Header() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );

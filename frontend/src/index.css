@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: "Coconat";
   src: url(/fonts/Coconat-Regular.woff) format("woff");
   font-weight: normal;
@@ -9,7 +9,7 @@
   src: url(/fonts/Coconat-BoldExt.woff) format("woff") ;
   font-weight: bold;
   font-style: normal;
-}
+} */
 
 @font-face {
   font-family: "Ignazio";
@@ -18,18 +18,17 @@
   font-style: normal;
 }
 
-@font-face {
+/* @font-face {
   font-family: "Hedvig";
   src: url(/fonts/HedvigLettersSans-Regular.ttf) format("ttf");
   font-weight: normal;
   font-style: normal;
-}
+} */
 
 @font-face {
-  src: url(/fonts/bluunext-titling.woff) format("woff"),
-  url(/fonts/bluunext-titling.woff2) format("woff2");
+  src: url(/fonts/bluunext-titling.woff2) format("woff2");
   font-family: "Bluu";
-  font-weight: normal;
+  font-weight: 900;
   font-style: normal;
 }
 
@@ -39,18 +38,11 @@
   font-weight: bold;
   font-style: normal;
 }
-@font-face {
-  font-family: "Bluu";
+ @font-face {
+  font-family: "BluuBold";
   src: url(/fonts/BluuNext-Bolditalic.otf) format("otf");
   font-weight: bold;
   font-style: italic;
-}
-
-@font-face {
-  font-family: "CG";
-  src: url(../dist/fonts/CG-Regular.ttf) format("ttf");
-  font-weight: normal;
-  font-style: normal;
 }
 
 @tailwind base;
@@ -99,14 +91,14 @@ body {
   p,
   a,
   input {
-    font-family: "CG";
+    font-family: "Ignazio";
   }
 }
 @media (max-width: 768px) {
   p,
   a,
   input {
-    font-family: "CG";
+    font-family: "Ignazio";
   }
 }
 
@@ -367,7 +359,7 @@ body {
     left: 56%;
     transform: translateX(-50%);
     height: 420px;
-    top: 40%;
+    top: 45%;
     width: 420px;
   }
   .round_img {
@@ -380,7 +372,7 @@ body {
     transform-origin: 0px 210px;
   }
   .img_div {
-    top: 45%;
+    top: 47%;
     left: 56%;
     transform: translateX(-50%);
     height: 420px;
@@ -415,12 +407,12 @@ body {
     height: 230px;
   }
 }
-@media (max-width: 500px) and (min-height: 750px) {
+@media (min-width: 400px) and (max-width: 500px) and (min-height: 750px) {
   .round_text span {
     transform-origin: 0px 196px;
     font-size: 2.1rem;
-    left: 50%;
-    top: 2%;
+    left: 49.5%;
+    top: 1.7%;
     /* transform-origin: 0px 250px; */
   }
   .img_div {
@@ -436,7 +428,7 @@ body {
   }
 }
 
-@media (max-width: 360px) and (min-height: 750px) {
+@media (max-width: 400px) and (min-height: 750px) {
   .round_text span {
     transform-origin: 0px 170px;
     font-size: 1.8rem;
@@ -446,9 +438,9 @@ body {
   }
   .img_div {
     left: 50%;
-    top: 40%;
+    top: 55%;
     /* background-color: #19a419; */
-    transform: translateX(-45%);
+    transform: translateX(-43%);
     height: 320px;
     width: 320px;
   }
@@ -470,14 +462,14 @@ body {
   }
   .img_div {
     left: 50%;
-    top: 50%;
+    top: 55%;
     /* background-color: #19a419; */
-    transform: translateX(-45%);
+    transform: translateX(-43%);
     height: 320px;
     width: 320px;
   }
   .round_img {
-    left: 50%;
+    left: 47%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 250px;
@@ -496,16 +488,16 @@ body {
   justify-content: center;
   align-items: center;
   width: 30px;
-  height: 18px;
+  height: 20px;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
 }
 
 .menu-btn__burger {
-  width: 30px;
-  height: 3.2px;
+  width: 20px;
+  height: 3px;
   background: #171717;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   /* box-shadow: 0px 2px 2px rgba(0,0,0,.2); */
   transition: all 0.5s ease-in-out;
 }
@@ -514,18 +506,18 @@ body {
 .menu-btn__burger::after {
   content: "";
   position: absolute;
-  width: 30px;
-  height: 3.2px;
+  width: 25px;
+  height: 3px;
   background: #171717;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   /* box-shadow: 0px 2px 2px rgba(0,0,0,.2); */
   transition: all 0.5s ease-in-out;
 }
 .menu-btn__burger::before {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
 }
 .menu-btn__burger::after {
-  transform: translateY(10px);
+  transform: translateY(8px);
 }
 /* ANIMATION */
 .menu-btn.open .menu-btn__burger {
@@ -556,15 +548,7 @@ body {
   color: #dfd3c3;
   width: 288px;
   border: 4px solid #dfd3c3;
-  /* border-radius: 8px; */
-  /* position: absolute;
-  top: 50%;
-  left: 20%;
-  z-index: 1; */
-  /* border-radius: 0 150px; */
-  /* border: 2px solid #d8ffcb ; */
-  /* background-color: rgb(55 65 81); */
-  /* box-shadow:   2px 2px 5px  rgba(255, 255, 255, .4),-2px -2px 5px rgba(255, 255, 255, .4); */
+
 }
 
 .images {
@@ -670,7 +654,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 35;
+  z-index: 20;
   background-color: #121212;
   width: 50%;
   height: 100%;

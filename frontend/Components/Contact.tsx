@@ -28,7 +28,7 @@ type formDetailType = {
 
 function Contact() {
   const [showConfetti, setShowConfetti] = useState<boolean>();
-  const height = window.innerHeight;
+  // const height = window.innerHeight;
   const [hideLine, setHideLine] = useState(false);
   const [formDetials, setFormDetials] = useState<formDetailType>({
     name: "",
@@ -37,6 +37,7 @@ function Contact() {
     subject: "",
     message: "",
   });
+  const [showMessage, setShowMessage] = useState<string>("");
   const nameRef = useRef<HTMLInputElement>(null!);
   const phnRef = useRef<HTMLInputElement>(null!);
   const emailRef = useRef<HTMLInputElement>(null!);
@@ -71,7 +72,7 @@ function Contact() {
 
   function onSubmit(e: any) {
     e.preventDefault();
-    console.log(formDetials);
+    // console.log(formDetials);
     if (
       !formDetials.message ||
       !formDetials.email ||
@@ -79,7 +80,7 @@ function Contact() {
       !formDetials.phone ||
       !formDetials.subject
     ) {
-      alert("Please fill in values");
+      setShowMessage("Please fill in values");
       return null;
     }
     const templateParams = {
@@ -107,9 +108,14 @@ function Contact() {
           message: "",
         }));
         setShowConfetti(true);
+        setShowMessage(
+          "We appreciate you reaching out! We'll be in touch shortly."
+        );
       })
       .catch((err) => {
-        alert("Error while sending request please try again after some time ");
+        setShowMessage(
+          "Error while sending request please try again after some time "
+        );
       });
   }
   function debounce(fn: any) {
@@ -143,31 +149,6 @@ function Contact() {
     });
   });
 
-  // useEffect(() => {
-  //     const controller = new AbortController();
-  //     try{
-  //         if(formDetials?.name !== "" && formDetials?.email !== "" && formDetials?.phone !== "" && formDetials?.subject !== "" && formDetials?.message !== "" ){
-  //             axios.post('https://kabadi-backend.onrender.com/home', {
-  //                 formDetials
-  //             })
-  //             .then((data) =>{
-  //                 setMsg(data.data.msg);
-  //             })
-  //             .catch((error) =>{
-  //                 console.log(error);
-  //             })
-
-  //         }
-  //         else {
-  //             console.log('wtf empty value!?')
-  //         }
-  // }
-  // catch(err) {
-  //     console.log(controller.signal.aborted)
-  // }
-  // return () => controller.abort();
-
-  // },[onSubmit])
   return (
     <div
       style={{ fontFamily: "Ignazio" }}
@@ -228,8 +209,8 @@ function Contact() {
           </div>
         </div>
         <div
-          className={`z-30  h-max xl:h-4/5 flex flex-col  md:flex-row relative w-full xss:w-4/5 md:w-11/12 lg+:w-5/6 xl:w-full mx-auto xl+:w-11/12   ${
-            showConfetti ? "bg-transparent" : "bg-gray-900/70"
+          className={`z-30  h-max xl:h-4/5 flex flex-col  md:flex-row relative w-full px-10 xs:px-5 sm:px-0 xs:w-4/5 md:w-11/12 lg+:w-5/6 xl:w-full xs:mx-auto xl+:w-11/12   ${
+            showConfetti ? "bg-none" : "bg-gray-900/70"
           } `}
         >
           {!showConfetti ? (
@@ -252,7 +233,7 @@ function Contact() {
                   </div>
                 </div>
               </div>
-              <div className=" mx-auto px-4 w-full xs:w-[380px] relative my-auto sm:w-full  h-max ">
+              <div className=" mx-auto px-4 w-full  relative my-auto sm:w-full  h-max ">
                 {/* <span
                   className={
                     !hideLine
@@ -284,8 +265,8 @@ function Contact() {
                       className="border text-xl border-white focus:border-[#f9d5ca] p-3 focus:outline-none  focus:border-2 text-white focus:text-black transition duration-200 ease-in-out bg-transparent focus:bg-white"
                     />
                   </div>
-                  <div className="flex flex-col sm:flex-row w-full sm:w-5/6 md:w-full md+:w-5/6 gap-y-10 sm:gap-2  gap-x-4">
-                    <div className="flex flex-col w-full">
+                  <div className="flex flex-col sm:flex-row w-full sm:w-5/6 md:w-full md+:w-5/6 gap-y-10 gap-2  gap-x-4">
+                    <div className="flex flex-col w-full gap-2">
                       <label
                         htmlFor="ph-no"
                         className="text-white font-medium text-xl "
@@ -301,7 +282,7 @@ function Contact() {
                         className=" border text-xl border-white focus:border-[#f9d5ca] p-3 focus:border-2 focus:outline-none  w-full  text-white    bg-transparent transition duration-100 ease-in "
                       />
                     </div>
-                    <div className="flex flex-col w-full">
+                    <div className="flex flex-col w-full gap-2">
                       <label
                         htmlFor="add"
                         className="text-white font-medium text-xl "
@@ -360,15 +341,14 @@ function Contact() {
             </>
           ) : (
             <>
-              <div className="bg-transparent bg-opacity-0 col-span-3 xl:col-span-1 h-[600px] flex items-center xl:absolute xl:top-[15%]">
-                <div className="flex w-full ">
+              <div className="bg-none  col-span-3 xl:col-span-1 h-[600px] flex items-center xl:absolute xl:top-[15%]">
+                <div className="flex w-full justify-center items-center">
                   <Confetti
                     gravity={0.04}
                     className="w-11/12 mx-auto h-full"
                   ></Confetti>
-                  <h1 className="z-20 text-4xl font-bold flex justify-center items-center text-white text-center">
-                    {showConfetti &&
-                      "We appreciate you reaching out! We'll be in touch shortly."}
+                  <h1 className="z-20 text-3xl font-bold  text-center  text-white ">
+                    {showMessage + "🙂"}
                   </h1>
                 </div>
               </div>

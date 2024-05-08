@@ -1,3 +1,4 @@
+import { useAnimation } from "framer-motion";
 import React, { createContext, useEffect, useRef, useContext } from "react";
 import { Event } from "three";
 
@@ -7,8 +8,15 @@ const ContextValue = () => {
   const work_ref = useRef<HTMLDivElement>(null);
   const scrolldiv_ref = useRef<HTMLDivElement>(null);
   const section_ref = useRef<HTMLDivElement>(null);
+
   if (location.pathname === "/") {
-    return { menuRef, head_ref, work_ref, scrolldiv_ref, section_ref };
+    return {
+      menuRef,
+      head_ref,
+      work_ref,
+      scrolldiv_ref,
+      section_ref,
+    };
   } else return {};
 };
 
@@ -24,9 +32,10 @@ function ContextProvider({ children }: { children: React.ReactNode }) {
   const section_ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.onscroll = (e: Event) => {
+    const scroll = (window.onscroll = (e: Event) => {
       debounce(scrollRoll)();
-    };
+    });
+    return () => window.removeEventListener("scroll", scroll);
   }, [window.onscroll, window.onresize]);
   function scrollRoll() {
     if (!scrolldiv_ref.current || !work_ref.current) return;
@@ -60,9 +69,11 @@ function ContextProvider({ children }: { children: React.ReactNode }) {
   }
   function debounce(func: () => void) {
     var timer: NodeJS.Timer;
-    return () => {
+    return function () {
       if (timer) clearTimeout(timer);
-      timer = setTimeout(() => func(), 50);
+      else {
+        timer = setTimeout(() => func(), 100);
+      }
     };
   }
 

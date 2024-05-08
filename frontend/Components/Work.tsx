@@ -109,9 +109,9 @@ function Work() {
                       !minHeight ? "gap-y-5" : "gap-y-2"
                     }`}
                   >
-                    <h1 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
+                    <h3 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
                       DJT FINSERVE
-                    </h1>
+                    </h3>
                     <h3
                       style={{
                         fontFamily: "Ignazio",
@@ -205,14 +205,14 @@ function Work() {
                       !minHeight ? "gap-y-5" : "gap-y-2"
                     }`}
                   >
-                    <h1 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
+                    <h3 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
                       Kabadi[Scrap]
-                    </h1>
+                    </h3>
                     <h3
                       style={{
                         fontFamily: "Ignazio",
                       }}
-                      className="bg-[#292823] py-0.5 md+:py-1   px-4    text-white"
+                      className="bg-[#292823] py-0.5 md+:py-1  px-4 text-white"
                     >
                       client
                     </h3>
@@ -233,7 +233,7 @@ function Work() {
                       Preview
                     </h2>
                     <div
-                      className="hidden md+:flex  w-3/4 md+:w-1/2 font-medium tracking-normal text-[#171717] justify-center  md+:flex-col lg:flex-row  md+:flex-nowrap gap-4 object-contain"
+                      className="hidden md+:flex flex-col lg:flex-row justify-center flex-nowrap gap-4 object-contain"
                       style={{ fontFamily: "Ignazio" }}
                     >
                       <img
@@ -255,26 +255,27 @@ function Work() {
                           modalRef.current!.showModal();
                         }}
                         src="https://utfs.io/f/71c48ae6-b239-46e8-946e-1990b3bc9eb3-f0f0qm.png"
-                        className="h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
+                        className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
                     </div>
                   </div>
                 </div>
-                <div className="  w-full md+:h-2/3 justify-center md+:justify-end z-50 items-center flex">
+
+                <div className="  w-full md+:h-2/3 md+:my-auto  justify-center md+:justify-end md+:items-center flex ">
                   <a target="_blank" href="https://kabadi.vercel.app/">
                     <div
                       ref={imgdiv3_ref}
                       className={`md+:mt-14 lg:mt-0    bg-cover
                       ${
                         !minHeight
-                          ? "h-[250px] w-[250px] xss:h-[300px] xss:w-[300px] xs:h-[350px] xs:w-[350px] sm:w-[550px] sm:h-[380px]  md+:h-[430px] md+:w-[430px] xl:h-[500px] xl:w-[600px] 2xl:w-[800px] gap-y-2"
+                          ? "h-[250px] w-[250px] xss:h-[300px] xss:w-[300px] xs:h-[350px] xs:w-[350px] sm:w-[550px] sm:h-[380px] md+:h-[500px] md+:w-[430px] xl:w-[600px] 2xl:w-[800px] gap-y-2"
                           : " h-[300px] w-[250px] xss:w-[300px]  xs:w-[350px] sm:w-[550px] md+:w-[430px]  xl:w-[600px] 2xl:w-[800px]"
                       }`}
                     >
                       <img
                         src="https://utfs.io/f/c091e905-81d1-438e-a5fb-6922208c820e-vuus03.png"
-                        className="h-full md+:hover:scale-125 z-50 transition-transform duration-200 ease-in-out w-full object-cover justify-self-end bg-contain"
+                        className="h-full md+:hover:scale-125  transition-transform duration-200 ease-in-out z-50  w-full object-cover bg-contain"
                         alt="project-1"
                       />
                     </div>
@@ -297,9 +298,9 @@ function Work() {
                       !minHeight ? "gap-y-5" : "gap-y-5"
                     }`}
                   >
-                    <h1 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
+                    <h3 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
                       Image Gallery
-                    </h1>
+                    </h3>
                     <h3
                       style={{
                         fontFamily: "Ignazio",
@@ -407,9 +408,9 @@ function Work() {
                       !minHeight ? "gap-y-5" : "gap-y-2"
                     }`}
                   >
-                    <h1 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
+                    <h3 className="font-bold  mb-2 text-2xl  xs:text-4xl  text-[#171717] ">
                       Smart Shopping Cart
-                    </h1>
+                    </h3>
                     <h3
                       style={{
                         fontFamily: "Ignazio",

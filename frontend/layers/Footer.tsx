@@ -21,7 +21,12 @@ function Footer() {
               duration={1000}
               className="cursor-pointer gap-x-10 flex  "
             >
-              <p className="text-4xl sm:text-6xl">Let's Talk</p>
+              <h2
+                style={{ fontFamily: "Bluu" }}
+                className="text-4xl  font- sm:text-6xl"
+              >
+                Let's Talk
+              </h2>
               <BsArrowUpRight className="hidden sm:inline-block h-10 w-10 my-auto" />
             </Link>
           </div>
@@ -46,7 +51,7 @@ function Footer() {
             </a>
           </div>
         </div>
-        <div className="relative  grid grid-flow-row sm:grid-flow-col columns-3   md:items-end gap-y-3 md:gap-y-2 font-medium xl:gap-x-20 whitespace-nowrap  ">
+        <div className="relative  grid grid-flow-row sm:grid-flow-col columns-3   md:items-end gap-y-3 md:gap-y-2  xl:gap-x-20 whitespace-nowrap  ">
           <div className=" flex-wrap gap-y-10 flex w-full col-span-1   justify-around  text-xl  sm:text-2xl">
             <Link
               to="skills"
@@ -70,12 +75,13 @@ function Footer() {
             </Link>
           </div>
           <Link
+            style={{ fontFamily: "Bluu" }}
             to="home"
             spy={true}
             smooth={true}
             offset={-64}
             duration={1000}
-            className="order-first sm:order-none  h-max w-max  place-self-center justify-self-center col-span-1 md:block whitespace-nowrap cursor-pointer text-4xl border-y-2 border-[#171717] "
+            className="order-first sm:order-none   h-max w-max  place-self-center justify-self-center col-span-1 md:block whitespace-nowrap cursor-pointer text-4xl border-y-2 border-[#171717] "
           >
             Nitin's Folio
           </Link>

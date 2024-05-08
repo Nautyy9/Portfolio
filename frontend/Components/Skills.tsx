@@ -79,7 +79,7 @@ const iconVar = {
   animate: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.5,
+      staggerChildren: 0.2,
       delayChildren: 0.4,
       duration: 1,
       ease: "easeInOut",
@@ -158,11 +158,6 @@ function Skills() {
     }
   });
 
-  const scaleCard = useSpring(
-    useTransform(scrollYProgress, [0, 0.1], [0, 1]),
-    newConfig
-  );
-
   const frontendX = useSpring(
     useTransform(scrollYProgress, scrollX.fX, [2000, -150]),
     springConfig
@@ -184,15 +179,17 @@ function Skills() {
   //   console.log(latest);
   // });
   useEffect(() => {
-    once();
+    resizeFunction();
+    return () => resizeFunction();
   }, []);
   useEffect(() => {
     const resize = (window.onresize = (e) => {
-      once();
+      debounce(resizeFunction)();
     });
     return () => window.removeEventListener("resize", resize);
   }, [window.onresize]);
-  const once = useCallback(() => {
+
+  const resizeFunction = useCallback(() => {
     if (window.innerWidth <= 1229) {
       setScrollX((prev) => ({
         ...prev,
@@ -219,10 +216,21 @@ function Skills() {
       }));
     }
   }, [scrollX]);
+
+  function debounce(fn: () => void) {
+    let timer: NodeJS.Timeout;
+    return function () {
+      if (timer) {
+        clearTimeout(timer);
+      } else {
+        timer = setTimeout(() => fn(), 200);
+      }
+    };
+  }
   // * note for future don't have nested child inside skill component since gsap has trigger on it
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="sync">
       <div
         ref={skill_container}
         id="skills"
@@ -241,15 +249,7 @@ function Skills() {
 
           {frontMap.map((val, i) => {
             return (
-              <motion.div
-                key={Math.random() * 100 + i}
-                variants={cardVar}
-                initial="hidden"
-                whileInView="animate"
-                viewport={{ amount: 0.5, once: true }}
-                custom={i}
-                className=""
-              >
+              <motion.div key={Math.random() * 100 + i} className="">
                 {val}
               </motion.div>
             );
@@ -262,15 +262,7 @@ function Skills() {
 
           {backMap.map((val, i) => {
             return (
-              <motion.div
-                key={i + Math.random() * 100}
-                className=""
-                variants={cardVar}
-                initial="hidden"
-                whileInView="animate"
-                viewport={{ amount: 0.7, once: true }}
-                custom={i}
-              >
+              <motion.div key={i + Math.random() * 100} className="">
                 {val}
               </motion.div>
             );
@@ -282,15 +274,7 @@ function Skills() {
           />
           {utilityMap.map((val, i) => {
             return (
-              <motion.div
-                key={i + Math.random() * 100}
-                className=""
-                variants={cardVar}
-                initial="hidden"
-                whileInView="animate"
-                viewport={{ amount: 0.8, once: true }}
-                custom={i}
-              >
+              <motion.div key={i + Math.random() * 100} className="">
                 {val}
               </motion.div>
             );
@@ -302,15 +286,7 @@ function Skills() {
           />
           {dbMap.map((val, i) => {
             return (
-              <motion.div
-                key={Math.random() * 100}
-                className=""
-                variants={cardVar}
-                initial="hidden"
-                whileInView="animate"
-                viewport={{ amount: 1, once: true }}
-                custom={i}
-              >
+              <motion.div key={Math.random() * 100} className="">
                 {val}
               </motion.div>
             );
@@ -348,7 +324,7 @@ function Skills() {
             animate={iconAnim}
             className={` ${
               isToggled ? "hidden" : "flex"
-            }  w-11/12 mx-auto flex-wrap gap-x-5 min-[310px]:gap-x-8 gap-y-10 justify-center items-center`}
+            }  w-11/12 mx-auto flex-wrap gap-x-5 min-[310px]:gap-x-10 gap-y-10 justify-center items-center`}
           >
             <motion.div
               variants={iconVar}

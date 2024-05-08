@@ -1,17 +1,16 @@
-import React from "react";
 import { AnimationControls, motion } from "framer-motion";
 const svgVar = {
   initial: {
     pathLength: 0,
-    pathOffset: 1.5,
-    strokeDashoffset: 0,
-    strokeDasharray: 0,
+    // pathOffset: 1.5,
+    // strokeDashoffset: 0,
+    // strokeDasharray: 0,
   },
   animate: {
     pathLength: 1,
-    pathOffset: 0,
-    strokeDashoffset: 0.8,
-    strokeDasharray: 0.5,
+    // pathOffset: 0,
+    // strokeDashoffset: 0.8,
+    // strokeDasharray: 0.5,
   },
 };
 function TsSvg({
@@ -37,11 +36,8 @@ function TsSvg({
           animate={anim}
           transition={{
             duration: 3,
-            delay: 0,
+
             ease: "easeInOut",
-            repeat: 2,
-            repeatType: "reverse",
-            repeatDelay: 0.1,
           }}
           strokeWidth="0.2px"
           stroke="rgba(3, 140, 252)"

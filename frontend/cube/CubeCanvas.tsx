@@ -1,4 +1,3 @@
-import { Leva } from "leva";
 import CubeBackground from "./CubeBackgroud";
 import React, { MutableRefObject } from "react";
 import { Canvas } from "@react-three/fiber";
@@ -11,9 +10,10 @@ export default function CubeCanvas({ cubeRef }: all) {
   return (
     <div
       ref={cubeRef}
-      className="z-50 w-1/2 h-full app_container cursor-pointer "
+      className=" z-30 w-1/2 h-full app_container cursor-pointer "
     >
       <Canvas
+        resize={{ scroll: false }}
         shadows
         camera={{
           fov: 45,
