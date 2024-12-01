@@ -1,16 +1,10 @@
-import {
-  useScroll,
-  Sparkles,
-  useFBX,
-  useAnimations,
-  useGLTF,
-} from "@react-three/drei";
+import { useScroll, Sparkles, StatsGl } from "@react-three/drei";
+import CloudComp from "../gltf_jsx/Clouds/Clouds";
 // import { useLoader } from "@react-three/fiber";
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
-import { Room, Carpet, Mage, FinalModel } from "../gltf_jsx/index";
-import { GiCoinsPile } from "react-icons/gi";
+import { Room, Carpet, FinalModel } from "../gltf_jsx/index";
 
 function ThreeHome() {
   const scroll = useScroll();
@@ -20,9 +14,9 @@ function ThreeHome() {
   > | null>(null);
 
   const roomRef = useRef<THREE.Group | null>(null);
-
   const [sparkle, setSparkle] = useState<boolean>(true);
   const ballref = useRef<THREE.Mesh | null>(null);
+  // const cloudRef = useRef<any>(null);
   // const ballModel = useFBX("/static/wizards_room/last_one.fbx");
 
   // const { animations: ballAnim } = ballModel;
@@ -42,6 +36,10 @@ function ThreeHome() {
   //   };
   // });
 
+  // useEffect(() => {
+  // }, [scroll.offset]);
+  // console.log(scroll);
+
   useFrame((state, delta) => {
     const position = ballref.current?.position;
     // console.log(position);
@@ -59,7 +57,6 @@ function ThreeHome() {
       // sparkleRef.current.position.y = -Math.sin(1) * 0.04;
     }
   });
-
   return (
     <>
       <Suspense fallback={null}>
@@ -74,8 +71,8 @@ function ThreeHome() {
           ref={ballref}
           position={[-26, -10, 0]}
           scale={0.09}
-        ></mesh> */}
-        {/* <primitive
+        ></mesh>
+        <primitive
           object={ballModel}
           position={[-22, 3, 10]}
           scale={10}
@@ -96,11 +93,10 @@ function ThreeHome() {
         )}
         <FinalModel
           scale={10}
-          position={[-25, -12, 0]}
+          position={[-25, -15, 0]}
           rotation={[0, 0.5, 0]}
         />
       </Suspense>
-
       <Suspense fallback={null}>
         <Room
           roomRef={roomRef}
@@ -109,7 +105,9 @@ function ThreeHome() {
           rotation-z={0.6}
           rotation-x={-Math.PI * 0.5}
         />
-        {/* <Sparkles
+        <StatsGl />
+        <CloudComp />
+        <Sparkles
           color={"hotpink"}
           scale={[30, -30, 40]}
           speed={0.8}
@@ -117,7 +115,7 @@ function ThreeHome() {
           position={[20, 0, 5]}
           count={20}
           // onWheel={(e) => console.log(e)}
-        /> */}
+        />
       </Suspense>
     </>
   );

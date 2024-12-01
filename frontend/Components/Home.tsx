@@ -1,42 +1,38 @@
-import { useEffect, useRef, useState } from "react";
-import { BsArrow90DegRight } from "react-icons/bs";
-import { Link } from "react-scroll";
-import { IoCubeOutline } from "react-icons/io5";
-import { AnimatePresence, delay, motion, useAnimation } from "framer-motion";
-import gsap, { Elastic } from "gsap";
-import CubeCanvas from "../cube/CubeCanvas";
+import { useEffect, useRef, useState } from "react"
+import { BsArrow90DegRight } from "react-icons/bs"
+import { Link } from "react-scroll"
+import { IoCubeOutline } from "react-icons/io5"
+import { AnimatePresence, motion, Variants } from "framer-motion"
+import gsap, { Elastic } from "gsap"
+import CubeCanvas from "../cube/CubeCanvas"
 
 const textVar = {
   hidden: {
-    scale: 0,
-    opacity: 0,
-    y: -100,
+    y: 50,
   },
   visible: {
-    scale: 1,
-    opacity: 1,
     y: 0,
     transition: {
-      duration: 2,
-      staggerChildren: 0.5,
-      delayChildren: 0.2,
+      duration: 2.5,
+      staggerChildren: 0.7,
+      delayChildren: 0.5,
     },
   },
-};
+} as Variants
 
 const innerText = {
   hidden: {
-    scale: 0,
+    scaleY: 0,
     opacity: 0,
   },
   visible: {
-    scale: 1,
+    scaleY: 1,
     opacity: 1,
     transition: {
-      type: "spring",
+      type: "elastic",
     },
   },
-};
+} as Variants
 
 const nameVariant = {
   initial: { x: -50, y: 50, scale: 0 },
@@ -51,53 +47,53 @@ const nameVariant = {
       delay: 3 + i * 0.5,
     },
   }),
-};
+}
 
 function Home() {
-  const Fname = ["n", "i", "t", "i", "n"];
-  const Lname = ["n", "a", "u", "t", "i", "y", "a", "l"];
-  const backText = useRef<HTMLDivElement>(null);
-  const nameRef = useRef<HTMLDivElement>(null);
-  const text = "nitinnautiyal-webdeveloper/designer";
-  const roundText = text.split("");
-  const CubeRef = useRef<HTMLDivElement | null>(null);
-  const miniCube = useRef<HTMLDivElement | null>(null);
-  const [showText, setShowText] = useState(false);
+  const Fname = ["n", "i", "t", "i", "n"]
+  const Lname = ["n", "a", "u", "t", "i", "y", "a", "l"]
+  const backText = useRef<HTMLDivElement>(null)
+  const nameRef = useRef<HTMLDivElement>(null)
+  const text = "nitinnautiyal-webdeveloper/designer"
+  const roundText = text.split("")
+  const CubeRef = useRef<HTMLDivElement | null>(null)
+  const miniCube = useRef<HTMLDivElement | null>(null)
+  const [showText, setShowText] = useState(false)
   const setImages = () => {
-    const text = document.querySelector(".who");
+    const text = document.querySelector(".who")
     // const name = document.querySelector('.name');
     // threeCube.classList.add("hidden");
-    miniCube.current?.classList.remove("xl:hidden");
-    CubeRef.current?.classList.add("hidden");
-    text!.classList.add("hidden");
-  };
+    miniCube.current?.classList.remove("xl:hidden")
+    CubeRef.current?.classList.add("hidden")
+    text!.classList.add("hidden")
+  }
 
   // const [scope, animate] = useAnimate();
-  const pathRef = useRef<SVGPathElement>(null);
-  const lineDivRef = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null)
+  const lineDivRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // window.onpointermove = (e) => {
     //   console.log(e.clientY);
     // };
-    if (!lineDivRef.current) return;
+    if (!lineDivRef.current) return
     lineDivRef.current.onmousemove = (e) => {
       // console.log(lineDivRef.current?.getBoundingClientRect());
-      updateWidth(e.offsetY + 70);
-    };
+      updateWidth(e.offsetY + 70)
+    }
     lineDivRef.current.onmouseout = (e) => {
-      if (!pathRef.current) return;
+      if (!pathRef.current) return
       gsap.to(pathRef.current, {
         attr: { d: "M-10,80 Q60,80 100,80" },
         ease: Elastic.easeOut.config(2, 0.4),
-      });
-    };
-  });
+      })
+    }
+  })
 
   function updateWidth(val: number) {
-    if (!pathRef.current) return;
+    if (!pathRef.current) return
 
-    pathRef.current.setAttribute("d", `M-10,80 Q60 ${val}  100,80`);
+    pathRef.current.setAttribute("d", `M-10,80 Q60 ${val}  100,80`)
   }
 
   // useEffect(() => {
@@ -237,7 +233,7 @@ function Home() {
                         opacity: 1,
                       }}
                       transition={{ duration: 1, delay: 7 }}
-                      className="z-[80] text-xl  xs:text-2xl"
+                      className="z-[80] text-xl  font-bellota xs:text-2xl"
                     >
                       WHO?
                     </motion.h6>
@@ -270,7 +266,7 @@ function Home() {
           className="z-50 flex cursor-pointer animate-pulse transition hover:scale-125 duration-300 xl:hidden absolute bottom-5 right-5"
           ref={miniCube}
           onClick={() => {
-            window.location.href = "/three-js";
+            window.location.href = "underdevelopment"
           }}
         >
           <span className="text-xl text-center m-auto">3D😇 {"-->"}</span>
@@ -302,7 +298,6 @@ function Home() {
 
         {showText && (
           <motion.div
-            style={{ fontFamily: "CG" }}
             ref={backText}
             className="md+:flex name z-40 absolute top-[40%] xs:top-[45%] md:top-1/2 -translate-y-1/2 lg:top-0 items-center  lg:translate-y-0  mx-auto text-clip xss:text-center md:text-left   w-11/12 md:w-5/6 inset-0 font-semibold tracking-tight  text-[18px] xss:text-[20px]  xs:text-[25px] sm:text-3xl md:text-3xl md:tracking-normal  md+:tracking-widest  text-[#f5e4bc] "
           >
@@ -344,10 +339,10 @@ function Home() {
       </div>
       <CubeCanvas cubeRef={CubeRef} />
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home
 
 // <div className="img_div h-[50%] w-[400px]  mx-60 absolute top-[50%] translate-y-[-50%] rounded-full bg-cover bg-no-repeat bg-center bg-[url(../public/assets/IMG-20190701-WA0001_-_Copy-removebg-preview.png)]">
 {

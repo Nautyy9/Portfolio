@@ -1,9 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import ContextProvider from "../context/Context";
-import ThreeApp from "../three-src/ThreeApp";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react"
+import ReactDOM from "react-dom/client"
+import App from "./App"
+import ContextProvider from "../context/Context"
+import ThreeApp from "../three-src/ThreeApp"
+import UnderDevelopment from "../Components/UnderDevelopment"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import {
   ThreeAbout,
   ThreeContact,
@@ -11,22 +12,10 @@ import {
   ThreeWork,
   ThreeWrapperComponent,
   ThreeHome,
-} from "../three-components";
-const root = document.getElementById("root") as HTMLDivElement;
-const three = document.getElementById("three") as HTMLDivElement;
-if (root && location.pathname === "/") {
-  ReactDOM.createRoot(root).render(
-    <React.StrictMode>
-      <ContextProvider>
-        <Router basename="/">
-          <Routes>
-            <Route index element={<App />}></Route>
-          </Routes>
-        </Router>
-      </ContextProvider>
-    </React.StrictMode>
-  );
-} else {
+} from "../three-components"
+const root = document.getElementById("root") as HTMLDivElement
+const three = document.getElementById("three") as HTMLDivElement
+if (root && location.pathname.startsWith("/three-js")) {
   ReactDOM.createRoot(three).render(
     <React.StrictMode>
       <Router basename="/three-js">
@@ -41,5 +30,21 @@ if (root && location.pathname === "/") {
         </Routes>
       </Router>
     </React.StrictMode>
-  );
+  )
+} else if (root) {
+  ReactDOM.createRoot(root).render(
+    <React.StrictMode>
+      <ContextProvider>
+        <Router basename="/">
+          <Routes>
+            <Route index element={<App />}></Route>
+            <Route
+              path="underdevelopment"
+              element={<UnderDevelopment />}
+            ></Route>
+          </Routes>
+        </Router>
+      </ContextProvider>
+    </React.StrictMode>
+  )
 }

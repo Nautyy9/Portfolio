@@ -1,8 +1,8 @@
-import { AiFillGithub } from "react-icons/ai";
-import { BsWhatsapp, BsArrowUpRight } from "react-icons/bs";
-import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { AiFillGithub } from "react-icons/ai"
+import { BsWhatsapp, BsArrowUpRight } from "react-icons/bs"
+import { FaInstagram, FaLinkedinIn } from "react-icons/fa"
 
-import { Link } from "react-scroll";
+import { Link } from "react-scroll"
 function Footer() {
   return (
     <div
@@ -59,7 +59,7 @@ function Footer() {
               smooth={true}
               offset={-64}
               duration={1000}
-              className="hover:scale-110 h-max max-[300px]:w-28 w-32 text-center hover:bg-black/10 cursor-pointer border-2 border-[#171717] transition-all ease-in-out py-0.5 px-1.5"
+              className="hover:scale-110 h-max max-[300px]:w-28 w-32 font-bellota-medium text-center hover:bg-black/10 cursor-pointer border-2 border-[#171717] transition-all ease-in-out py-0.5 px-1.5"
             >
               Skills
             </Link>
@@ -69,7 +69,7 @@ function Footer() {
               smooth={true}
               offset={-64}
               duration={1000}
-              className="hover:scale-110 max-[300px]:w-28 w-32 text-center h-max hover:bg-black/10 cursor-pointer border-2 border-[#171717] transition-all ease-in-out py-0.5 px-1.5"
+              className="hover:scale-110 max-[300px]:w-28 font-bellota-medium  w-32 text-center h-max hover:bg-black/10 cursor-pointer border-2 border-[#171717] transition-all ease-in-out py-0.5 px-1.5"
             >
               Contact
             </Link>
@@ -92,7 +92,7 @@ function Footer() {
               smooth={true}
               offset={-64}
               duration={1000}
-              className="hover:scale-110 max-[300px]:w-28 w-32 text-center h-max hover:bg-black/10 cursor-pointer border-2 border-[#171717] transition-all ease-in-out py-0.5 px-1.5"
+              className="hover:scale-110 max-[300px]:w-28 font-bellota-medium  w-32 text-center h-max hover:bg-black/10 cursor-pointer border-2 border-[#171717] transition-all ease-in-out py-0.5 px-1.5"
             >
               About Me
             </Link>
@@ -102,7 +102,7 @@ function Footer() {
               smooth={true}
               offset={-64}
               duration={1000}
-              className="hover:scale-110 max-[300px]:w-28 w-32 text-center h-max  hover:bg-black/10 cursor-pointer border-2 border-[#171717] transition-all ease-in-out py-0.5 px-1.5"
+              className="hover:scale-110 max-[300px]:w-28 font-bellota-medium  w-32 text-center h-max  hover:bg-black/10 cursor-pointer border-2 border-[#171717] transition-all ease-in-out py-0.5 px-1.5"
             >
               Work
             </Link>
@@ -110,7 +110,7 @@ function Footer() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

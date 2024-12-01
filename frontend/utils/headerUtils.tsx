@@ -1,21 +1,21 @@
-import React, { Dispatch, SetStateAction } from "react";
-import { AiFillGithub, AiOutlineInstagram } from "react-icons/ai";
-import { BsWhatsapp } from "react-icons/bs";
-import { FaLinkedinIn } from "react-icons/fa";
-import { Link } from "react-scroll";
-import { motion } from "framer-motion";
+import React, { Dispatch, SetStateAction } from "react"
+import { AiFillGithub, AiOutlineInstagram } from "react-icons/ai"
+import { BsWhatsapp } from "react-icons/bs"
+import { FaLinkedinIn } from "react-icons/fa"
+import { Link } from "react-scroll"
+import { motion } from "framer-motion"
 type largeScreenType = {
-  path: string;
-  content: string;
-};
+  path: string
+  content: string
+}
 
 type smallScreenType = {
-  path: string;
-  content: string;
-  icon?: any;
-  setToggle: Dispatch<SetStateAction<boolean>>;
-  menuRef: React.RefObject<HTMLDivElement> | undefined;
-};
+  path: string
+  content: string
+  icon?: any
+  setToggle: Dispatch<SetStateAction<boolean>>
+  menuRef: React.RefObject<HTMLDivElement> | undefined
+}
 
 function GotoRouteLarge({ path, content }: largeScreenType) {
   return (
@@ -26,14 +26,17 @@ function GotoRouteLarge({ path, content }: largeScreenType) {
         smooth={true}
         offset={-64}
         duration={1000}
+        style={{
+          fontFamily: "Bellota_Medium",
+        }}
         className={
-          "cursor-pointer whitespace-nowrap py-1.5 md:py-3 px-2 min-[800px]:px-3  md+:px-4 h-full lg+:px-6 hover:scale-110 transition-all hover:bg-black/10  ease-in-out  text-lg lg+:text-xl "
+          "cursor-pointer whitespace-nowrap py-1.5 md:py-1.5 px-2 min-[800px]:px-3  md+:px-4 h-full lg+:px-4 hover:scale-110 transition-all hover:bg-black/10  ease-in-out text-lg"
         }
       >
         {content}
       </Link>
     </motion.div>
-  );
+  )
 }
 
 function GotoRouteSmall({
@@ -49,8 +52,8 @@ function GotoRouteSmall({
         to={path}
         spy={true}
         onClick={() => {
-          menuRef?.current!.classList.remove("open");
-          setToggle!(true);
+          menuRef?.current!.classList.remove("open")
+          setToggle!(true)
         }}
         smooth={true}
         offset={-64}
@@ -61,7 +64,7 @@ function GotoRouteSmall({
         {content}
       </Link>
     </React.Fragment>
-  );
+  )
 }
 const linkRoute = [
   <div className="h-6 ">
@@ -100,7 +103,7 @@ const linkRoute = [
       ></AiOutlineInstagram>
     </a>
   </div>,
-];
+]
 
-export default null;
-export { GotoRouteLarge, GotoRouteSmall, linkRoute };
+export default null
+export { GotoRouteLarge, GotoRouteSmall, linkRoute }

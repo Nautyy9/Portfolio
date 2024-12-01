@@ -1,34 +1,14 @@
-/* @font-face {
-  font-family: "Coconat";
-  src: url(/fonts/Coconat-Regular.woff) format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
 @font-face {
-  font-family: "Coconat";
-  src: url(/fonts/Coconat-BoldExt.woff) format("woff") ;
-  font-weight: bold;
-  font-style: normal;
-} */
-
-@font-face {
-  font-family: "Ignazio";
-  src: url(/fonts/Ignazio.ttf) format("ttf");
+  font-family: "Bellota";
+  src: url(/fonts/bellota/BellotaText-Light.otf) format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
-/* @font-face {
-  font-family: "Hedvig";
-  src: url(/fonts/HedvigLettersSans-Regular.ttf) format("ttf");
-  font-weight: normal;
-  font-style: normal;
-} */
-
 @font-face {
-  src: url(/fonts/bluunext-titling.woff2) format("woff2");
-  font-family: "Bluu";
-  font-weight: 900;
+  font-family: "Bellota_Medium";
+  src: url(/fonts/bellota/BellotaText-Medium.otf) format("opentype");
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -38,12 +18,7 @@
   font-weight: bold;
   font-style: normal;
 }
- @font-face {
-  font-family: "BluuBold";
-  src: url(/fonts/BluuNext-Bolditalic.otf) format("otf");
-  font-weight: bold;
-  font-style: italic;
-}
+
 
 @tailwind base;
 :root {
@@ -52,6 +27,10 @@
   --dark : #292823
   --font-family-header: Bluu, serif;
   --font-family-details: Bluu, serif;
+  
+  --image_dark_big_screen: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20250%20250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter%20id%3D%22noiseFilter%22%3E%3CfeTurbulence%20type%3D%22turbulence%22%20baseFrequency%3D%2210%22%20numOctaves%3D%22.4%22%20result%3D%22turbulence%22%20stitchTiles%3D%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23noiseFilter)%22%2F%3E%3C%2Fsvg%3E");
+
+  --image_dark_small_screen: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20250%20250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter%20id%3D%22noiseFilter%22%3E%3CfeTurbulence%20type%3D%22turbulence%22%20baseFrequency%3D%22100%22%20numOctaves%3D%22.4%22%20result%3D%22turbulence%22%20stitchTiles%3D%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23noiseFilter)%22%2F%3E%3C%2Fsvg%3E");
   --image_light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ecc979' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
 /* #AC3D32 */
@@ -87,20 +66,12 @@ body {
   background-color: var(--primary);
 }
 
-@media (min-width: 768px) {
   p,
   a,
+  span,
   input {
-    font-family: "Ignazio";
+    font-family: "Bellota";
   }
-}
-@media (max-width: 768px) {
-  p,
-  a,
-  input {
-    font-family: "Ignazio";
-  }
-}
 
 * {
   margin: 0;
@@ -200,27 +171,42 @@ body {
 }
 #home {
   background: black;
-  background-image: url(https://utfs.io/f/40a302e3-1364-463a-aff3-527879d8252f-kh09eq.svg);
+  background-image: var(--image_dark_big_screen)
 }
 #contact {
   background: black;
-  background-image: url(https://utfs.io/f/40a302e3-1364-463a-aff3-527879d8252f-kh09eq.svg);
+  background-image: var(--image_dark_big_screen);
 }
 #skills {
-  background: black;
-  background-image: url(https://utfs.io/f/40a302e3-1364-463a-aff3-527879d8252f-kh09eq.svg);
+  background: #000000;
+  background-image: var(--image_dark_big_screen);
 }
+
+@media (max-width: 1000px) {
+  #skills {
+  background: #000000;
+  background-image: var(--image_dark_small_screen)
+}
+#home {
+  background: #000000;
+  background-image: var(--image_dark_small_screen);
+}
+#contact {
+  background: black;
+  background-image: var(--image_dark_small_screen)
+}
+} 
 
 #header_dropdown {
   background-color: var(--primary);
   background-image: var(--image_light);
 }
-.skills {
+/* .skills {
   font-family: "Coconat";
 
   background: #121212;
   filter: url(#grainy);
-}
+} */
 
 .sec_part {
   /* display: flex; */
@@ -675,6 +661,7 @@ body {
   .app_container {
     visibility: hidden;
   }
+
 }
 
 dialog[open] {

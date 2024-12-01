@@ -304,9 +304,9 @@ type roomType = JSX.IntrinsicElements["group"] & {
   roomRef: React.MutableRefObject<THREE.Group | null>;
 };
 
-const roomHeight = 15;
-const no_pages = 3;
-
+// const roomHeight = 15;
+// const no_pages = 3;
+// const baseOffset = 0.72 * 3;
 function Room({ roomRef, ...props }: roomType) {
   const { nodes, materials, animations } = useGLTF(
     "/static/wizards_room/final_room.glb"
@@ -319,7 +319,7 @@ function Room({ roomRef, ...props }: roomType) {
   const { min, max, speed, intensity } = useControls({
     min: { value: 1, min: 0, max: 10 },
     max: { value: 3, min: 0, max: 10 },
-    speed: { value: 1, min: 0, max: 10 },
+    speed: { value: 1, min: 0, max: 10, step: 0.01 },
     intensity: {
       value: 0.000001,
       min: 0.0000000000000001,
@@ -397,9 +397,9 @@ function Room({ roomRef, ...props }: roomType) {
           broomRef.current.position,
           {
             duration: 3,
-            x: -2.5,
+            x: -2,
             y: 0.708041,
-            z: -0.2,
+            z: 0,
           },
           "-=8.5"
         );
@@ -407,7 +407,7 @@ function Room({ roomRef, ...props }: roomType) {
           broomRef.current.position,
           {
             duration: 8,
-            x: -3.2,
+            x: -2,
             y: 0.5,
             z: -2.4,
             overwrite: "auto",
@@ -455,23 +455,15 @@ function Room({ roomRef, ...props }: roomType) {
   }, [actions, names]);
 
   useFrame((state, delta) => {
-    // console.log(scroll.offset, broomRef.current?.position);
-
-    if (scroll.offset > 0.72 && broomRef.current) {
+    if (scroll.offset * 2.8 > 0.76 && broomRef.current) {
       // console.log(Math.sin((scroll.offset * -delta * 100) / 10));
-      if (broomRef.current.rotation.y <= scroll.offset) {
-        broomRef.current.rotation.y = scroll.offset * -30;
-      } else {
-        broomRef.current.rotation.y += -delta;
-      }
-    } else if (scroll.offset <= 0.78 && broomRef.current) {
-      if (broomRef.current.rotation.y < 0) {
-        broomRef.current.rotation.y = scroll.offset * 30;
-      } else {
-        broomRef.current.rotation.y = 0;
-      }
+      broomRef.current.rotation.y = (scroll.offset * 2.8 - 0.76) * -20;
+    } else if (scroll.offset * 2.8 < 0.3 && broomRef.current) {
+      broomRef.current.position.set(3.2, 3.74, 3.24);
+      broomRef.current.rotation.set(1.77, 0.08, -1.59);
     }
-    if (tl.current) tl.current.seek(scroll.offset * tl.current.duration());
+    if (tl.current)
+      tl.current.seek(scroll.offset * 2.8 * tl.current.duration());
   });
   return (
     <group ref={roomRef} {...props} dispose={null}>
@@ -1474,7 +1466,7 @@ function Room({ roomRef, ...props }: roomType) {
           name="broom"
           geometry={nodes.pCylinder32.geometry}
           material={materials.brown}
-          position={[3.04, 3.74, 3.24]}
+          position={[3.2, 3.74, 3.24]}
           rotation={[1.77, 0.08, -1.59]}
           scale={0.01}
         />
@@ -1730,9 +1722,9 @@ function Room({ roomRef, ...props }: roomType) {
           scale={0.017}
         />
         <Float
-          floatIntensity={intensity}
+          floatIntensity={0.001}
           speed={speed}
-          floatingRange={[min, max]}
+          floatingRange={[-0.01, 0.01]}
         >
           <group
             name="polySurface350"

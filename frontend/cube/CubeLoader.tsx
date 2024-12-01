@@ -1,23 +1,23 @@
-import { useGLTF } from "@react-three/drei";
-import { useFrame, useLoader } from "@react-three/fiber";
-import React, { useRef } from "react";
-import * as THREE from "three";
+import { useGLTF } from "@react-three/drei"
+import { useFrame, useLoader } from "@react-three/fiber"
+import React, { useRef } from "react"
+import * as THREE from "three"
 function CubeLoader() {
-  const model = useGLTF("static/steel_cube/scene.gltf");
-  model.scene.castShadow = true;
-  model.scene.receiveShadow = true;
+  const model = useGLTF("static/steel_cube/scene.gltf")
+  model.scene.castShadow = true
+  model.scene.receiveShadow = true
 
-  const groupContainerRef = useRef<THREE.Group>(null);
-  const modelRef = useRef<THREE.Mesh>(null);
+  const groupContainerRef = useRef<THREE.Group>(null)
+  const modelRef = useRef<THREE.Mesh>(null)
 
   useFrame((state, delta) => {
-    groupContainerRef.current!.rotation.y += delta * 0.3;
-    const angle = state.clock.getElapsedTime();
+    groupContainerRef.current!.rotation.y += delta * 0.3
+    const angle = state.clock.getElapsedTime()
 
-    groupContainerRef.current!.position.y += Math.sin(angle) * 0.003;
+    groupContainerRef.current!.position.y += Math.sin(angle) * 0.003
 
-    groupContainerRef.current!.position.x += Math.cos(angle) * 0.005;
-  });
+    groupContainerRef.current!.position.x += Math.cos(angle) * 0.005
+  })
 
   return (
     <group
@@ -26,7 +26,7 @@ function CubeLoader() {
       onPointerEnter={() => (document.body.style.cursor = "pointer")}
       onPointerLeave={() => (document.body.style.cursor = "default")}
       onDoubleClick={() => {
-        window.location.href = "/three-js";
+        window.location.href = "underdevelopment"
       }}
     >
       <primitive ref={modelRef} object={model.scene} scale={3} />
@@ -74,7 +74,7 @@ function CubeLoader() {
         ></meshNormalMaterial>
       </mesh>
     </group>
-  );
+  )
 }
 
-export default CubeLoader;
+export default CubeLoader

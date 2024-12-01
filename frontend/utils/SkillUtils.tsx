@@ -1,6 +1,13 @@
-import { MotionValue, motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { AiOutlineArrowDown } from "react-icons/ai";
+import {
+  MotionValue,
+  motion,
+  useInView,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+
+import { AiOutlineArrowDown } from "react-icons/ai"
 
 const cardVar = {
   hidden: { opacity: 0, scale: 0 },
@@ -14,7 +21,7 @@ const cardVar = {
       ease: "easeInOut",
     },
   }),
-};
+}
 
 function SkillUtils() {
   return (
@@ -42,7 +49,7 @@ function SkillUtils() {
         )
       )}
     </div>
-  );
+  )
 }
 
 function ScrollElem({
@@ -50,9 +57,9 @@ function ScrollElem({
   content,
   style,
 }: {
-  className: string;
-  content: string;
-  style: { x: MotionValue<number> };
+  className: string
+  content: string
+  style: { x: MotionValue<number> }
 }) {
   return (
     <motion.div
@@ -80,7 +87,7 @@ function ScrollElem({
         )
       )}
     </motion.div>
-  );
+  )
 }
 
 function ImageElem({
@@ -89,30 +96,42 @@ function ImageElem({
   className,
   index,
 }: {
-  className: string;
-  src: string;
-  content: string;
-  index: number;
+  className: string
+  src: string
+  content: string
+  index: number
 }) {
+  const imageRef = useRef<HTMLDivElement | null>(null)
+  const [shouldAnimate, setShouldAnimate] = useState(false)
+  const { scrollYProgress } = useScroll({
+    target: imageRef,
+    offset: ["start end", "end end"],
+  })
+
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    if (value === 1) {
+      setShouldAnimate(true)
+    }
+  })
+
   return (
     <motion.div
+      ref={imageRef}
       variants={cardVar}
-      initial={{ ...cardVar.hidden }}
-      whileInView={cardVar.animate(index)}
-      viewport={{ once: true, amount: 0.5 }}
-      className=" skillcard"
+      initial="hidden"
+      animate={shouldAnimate && "animate"}
+      custom={index}
+      className="skillcard"
     >
       <img
         src={src}
         alt=""
-        className={` ml-1 mt-2 bg-white images shadow-md shadow-white ${className}`}
+        className={`ml-1 mt-2 bg-white images shadow-md shadow-white ${className}`}
       />
-      <h3 style={{ fontFamily: "Ignazio" }} className="skill_text text-xl">
-        {content}
-      </h3>
+      <h3 className="skill_text font-bellota text-xl">{content}</h3>
     </motion.div>
-  );
+  )
 }
 
-export default null;
-export { SkillUtils, ScrollElem, ImageElem };
+export default null
+export { SkillUtils, ScrollElem, ImageElem }

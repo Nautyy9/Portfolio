@@ -224,7 +224,14 @@ function Mage({ ...props }: MageType) {
             overwrite: "auto",
           },
           "+=8"
-        );
+        ).to(
+          mageRef.current.position,
+          {
+            duration: 2,
+            y: -80,
+            overwrite: "auto",
+          }
+        )
       }
     },
     { scope: mageRef }

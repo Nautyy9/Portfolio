@@ -1,18 +1,19 @@
-import JsSvg from "./JsSvg";
-import CssSvg from "./CssSvg";
-import HtmlSvg from "./HtmlSvg";
-import NextSvg from "./NextSvg";
-import MongoSvg from "./MongoSvg";
-import NodeSvg from "./NodeSvg";
-import PrismaSvg from "./PrismaSvg";
-import ReactSvg from "./ReactSvg";
-import ReduxSvg from "./ReduxSvg";
-import PythonSvg from "./PythonSvg";
-import ExpressSvg from "./ExpressSvg";
-import ThreeSvg from "./ThreeSvg";
-import TrpcSvg from "./TrpcSvg";
-import TsSvg from "./TsSvg";
-
+import JsSvg from "./JsSvg"
+import CssSvg from "./CssSvg"
+import HtmlSvg from "./HtmlSvg"
+import NextSvg from "./NextSvg"
+import MongoSvg from "./MongoSvg"
+import NodeSvg from "./NodeSvg"
+import PrismaSvg from "./PrismaSvg"
+import ReactSvg from "./ReactSvg"
+import ReduxSvg from "./ReduxSvg"
+import PythonSvg from "./PythonSvg"
+import ExpressSvg from "./ExpressSvg"
+import ThreeSvg from "./ThreeSvg"
+import TrpcSvg from "./TrpcSvg"
+import TsSvg from "./TsSvg"
+import FramerSvg from "./FramerSvg"
+import ReactQuerySvg from "./ReactQuery"
 export {
   CssSvg,
   HtmlSvg,
@@ -28,4 +29,6 @@ export {
   ReactSvg,
   PrismaSvg,
   TsSvg,
-};
+  FramerSvg,
+  ReactQuerySvg,
+}

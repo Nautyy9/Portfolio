@@ -1,24 +1,20 @@
-import gsap from "gsap";
+import gsap from "gsap"
 // import ScrollSmoother from 'gsap/ScrollSmoother'
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react"
 import {
   AiOutlineInstagram,
   AiFillGithub,
   AiFillHome,
   AiOutlineContacts,
-} from "react-icons/ai";
-import { BsWhatsapp, BsFacebook } from "react-icons/bs";
-import { FaLinkedinIn } from "react-icons/fa";
-import { SiAboutdotme } from "react-icons/si";
-import { GiSkills } from "react-icons/gi";
-import { GrPersonalComputer } from "react-icons/gr";
-import { animate, delay, motion } from "framer-motion";
-import { contextValue } from "../context/Context";
-import {
-  linkRoute,
-  GotoRouteLarge,
-  GotoRouteSmall,
-} from "../utils/headerUtils";
+} from "react-icons/ai"
+import { BsWhatsapp, BsFacebook } from "react-icons/bs"
+import { FaLinkedinIn } from "react-icons/fa"
+import { SiAboutdotme } from "react-icons/si"
+import { GiSkills } from "react-icons/gi"
+import { GrPersonalComputer } from "react-icons/gr"
+import { animate, delay, motion } from "framer-motion"
+import { contextValue } from "../context/Context"
+import { linkRoute, GotoRouteLarge, GotoRouteSmall } from "../utils/headerUtils"
 
 const nameWrapper = {
   initial: {
@@ -31,7 +27,7 @@ const nameWrapper = {
       duration: 1,
     },
   },
-};
+}
 
 const nameVar = {
   initial: {
@@ -48,7 +44,7 @@ const nameVar = {
       ease: "easeInOut",
     },
   },
-};
+}
 
 const burgerVar = {
   initial: {
@@ -63,7 +59,7 @@ const burgerVar = {
       delay: 2,
     },
   },
-};
+}
 const linkVar = {
   initial: {
     x: 100,
@@ -79,7 +75,7 @@ const linkVar = {
       duration: 0.5,
     },
   }),
-};
+}
 
 const centerContent = {
   initial: {
@@ -96,15 +92,15 @@ const centerContent = {
       delayChildren: 0.3,
     },
   },
-};
+}
 
 // const staggerItems = stagger(0.1, {
 //   startDelay: 0.5,
 // });
 
 function Header() {
-  const [toggleMenu, setToggleMenu] = useState(true);
-  const { menuRef } = contextValue();
+  const [toggleMenu, setToggleMenu] = useState(true)
+  const { menuRef } = contextValue()
   // const tl = gsap.timeline();
   // const [scope, animate] = useAnimate();
   // const linkRef = useRef<HTMLDivElement>(null);
@@ -123,13 +119,13 @@ function Header() {
   // }, []);
 
   function setMenu() {
-    setToggleMenu(true);
+    setToggleMenu(true)
     if (toggleMenu) {
-      menuRef?.current!.classList.add("open");
-      return setToggleMenu(false);
+      menuRef?.current!.classList.add("open")
+      return setToggleMenu(false)
     } else {
-      menuRef?.current!.classList.remove("open");
-      return setToggleMenu(true);
+      menuRef?.current!.classList.remove("open")
+      return setToggleMenu(true)
     }
   }
   return (
@@ -175,7 +171,7 @@ function Header() {
           variants={centerContent}
           animate="animate"
           initial="initial"
-          className=" hidden md:flex lg:justify-start  font-semibold  md:gap-0  xl:gap-5 xl+:gap-8  "
+          className=" hidden md:flex lg:justify-start   md:gap-0  xl:gap-5 xl+:gap-8  "
         >
           <GotoRouteLarge path="home" content="Home" />
           <GotoRouteLarge path="about" content="About Me" />
@@ -195,7 +191,7 @@ function Header() {
                 >
                   {val}
                 </motion.div>
-              );
+              )
             })}
           </div>
         </div>
@@ -338,7 +334,7 @@ function Header() {
         </motion.div>
       )}
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header

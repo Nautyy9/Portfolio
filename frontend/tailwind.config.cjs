@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require("tailwindcss/defaultTheme");
+const defaultTheme = require("tailwindcss/defaultTheme")
 const {
   default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+} = require("tailwindcss/lib/util/flattenColorPalette")
 module.exports = {
   content: [
     "./src/**/*.{html,js,ts,tsx}",
@@ -63,6 +63,8 @@ module.exports = {
       fontFamily: {
         Neue: ["BebasNeue"],
         bluu: ["BluuNext"],
+        bellota: ["Bellota"],
+        "bellota-medium": ["Bellota_Medium"],
       },
       animation: {
         scroll:
@@ -137,14 +139,14 @@ module.exports = {
     },
   },
   plugins: [addVariablesForColors, require("tailwindcss-animate")],
-};
+}
 
 function addVariablesForColors({ addBase, theme }) {
-  let allColors = flattenColorPalette(theme("colors"));
+  let allColors = flattenColorPalette(theme("colors"))
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-  );
+  )
   addBase({
     ":root": newVars,
-  });
+  })
 }

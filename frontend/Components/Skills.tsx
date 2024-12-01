@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { SkillUtils, ScrollElem } from "../utils/SkillUtils";
-import { frontMap, backMap, dbMap, utilityMap } from "../utils/skillsMapper";
+import { useCallback, useEffect, useRef, useState } from "react"
+import { SkillUtils, ScrollElem, ImageElem } from "../utils/SkillUtils"
+// import { backMap, dbMap, utilityMap, frontMap } from "../utils/skillsMapper"
 import {
   AnimatePresence,
   motion,
@@ -8,7 +8,7 @@ import {
   useScroll,
   useSpring,
   useTransform,
-} from "framer-motion";
+} from "framer-motion"
 import {
   CssSvg,
   HtmlSvg,
@@ -24,7 +24,7 @@ import {
   ThreeSvg,
   TrpcSvg,
   TsSvg,
-} from "../Assets/svgComponents/index";
+} from "../Assets/svgComponents/index"
 
 const cardVar = {
   hidden: { opacity: 0, scale: 0 },
@@ -38,7 +38,7 @@ const cardVar = {
       ease: "easeInOut",
     },
   }),
-};
+}
 // const innerVar = {
 //   hidden: {
 //     scale: 0,
@@ -59,12 +59,12 @@ const springConfig = {
   stiffness: 100,
   damping: 60,
   restDelta: 0.01,
-};
+}
 const newConfig = {
   stiffness: 20,
   damping: 60,
   restDelta: 0.01,
-};
+}
 
 const toggleVar = {
   initial: {
@@ -73,7 +73,7 @@ const toggleVar = {
   animate: {
     x: 24,
   },
-};
+}
 
 const iconVar = {
   animate: {
@@ -88,106 +88,130 @@ const iconVar = {
   initial: {
     opacity: 0,
   },
-};
+}
 
 function Skills() {
   // const sections = ["S", "e", "c", "t", "i", "o", "n", "🙃", "3"];
-  const card_container = useRef<HTMLDivElement | null>(null!);
+  // const image_container = useRef<HTMLDivElement | null>(null!)
   const [scrollX, setScrollX] = useState({
     fX: [0, 0.05],
     bX: [0.35, 0.55],
     uX: [0.55, 0.7],
     dX: [0.7, 0.85],
-  });
-  const skill_container = useRef<HTMLDivElement | null>(null!);
+  })
+  const skill_container = useRef<HTMLDivElement | null>(null!)
+  const [isToggled, setIsToggled] = useState<boolean>()
+
   const { scrollYProgress } = useScroll({
     target: skill_container,
     offset: ["start end", "end center"],
-  });
-  const [isToggled, setIsToggled] = useState<boolean>();
+  })
 
-  const iconAnim = useAnimation();
-  const cardAnim = useAnimation();
-  const htmlSvgAnim = useAnimation();
-  const cssSvgAnim = useAnimation();
-  const jsSvgAnim = useAnimation();
-  const mongoSvgAnim = useAnimation();
-  const reduxSvgAnim = useAnimation();
-  const reactSvgAnim = useAnimation();
-  const trpcSvgAnim = useAnimation();
-  const prismaSvgAnim = useAnimation();
-  const tsSvgAnim = useAnimation();
-  const nodeSvgAnim = useAnimation();
-  const nextSvgAnim = useAnimation();
-  const pythonSvgAnim = useAnimation();
-  const expressSvgAnim = useAnimation();
+  const [partitions, setPartitions] = useState<number>()
+
+  const iconAnim = useAnimation()
+  const cardAnim = useAnimation()
+  const htmlSvgAnim = useAnimation()
+  const cssSvgAnim = useAnimation()
+  const jsSvgAnim = useAnimation()
+  const mongoSvgAnim = useAnimation()
+  const reduxSvgAnim = useAnimation()
+  const reactSvgAnim = useAnimation()
+  const trpcSvgAnim = useAnimation()
+  const prismaSvgAnim = useAnimation()
+  const tsSvgAnim = useAnimation()
+  const nodeSvgAnim = useAnimation()
+  const nextSvgAnim = useAnimation()
+  const pythonSvgAnim = useAnimation()
+  const expressSvgAnim = useAnimation()
 
   useEffect(() => {
     if (isToggled) {
-      iconAnim.start("initial");
-      cardAnim.start("animate");
-      htmlSvgAnim.start("initial");
-      cssSvgAnim.start("initial");
-      jsSvgAnim.start("initial");
-      mongoSvgAnim.start("initial");
-      reduxSvgAnim.start("initial");
-      reactSvgAnim.start("initial");
-      trpcSvgAnim.start("initial");
-      prismaSvgAnim.start("initial");
-      tsSvgAnim.start("initial");
-      nodeSvgAnim.start("initial");
-      nextSvgAnim.start("initial");
-      pythonSvgAnim.start("initial");
-      expressSvgAnim.start("initial");
+      iconAnim.start("initial")
+      cardAnim.start("animate")
+      htmlSvgAnim.start("initial")
+      cssSvgAnim.start("initial")
+      jsSvgAnim.start("initial")
+      mongoSvgAnim.start("initial")
+      reduxSvgAnim.start("initial")
+      reactSvgAnim.start("initial")
+      trpcSvgAnim.start("initial")
+      prismaSvgAnim.start("initial")
+      tsSvgAnim.start("initial")
+      nodeSvgAnim.start("initial")
+      nextSvgAnim.start("initial")
+      pythonSvgAnim.start("initial")
+      expressSvgAnim.start("initial")
     } else {
-      iconAnim.start("animate");
-      cardAnim.start("initial");
-      htmlSvgAnim.start("animate");
-      cssSvgAnim.start("animate");
-      jsSvgAnim.start("animate");
-      mongoSvgAnim.start("animate");
-      reduxSvgAnim.start("animate");
-      reactSvgAnim.start("animate");
-      trpcSvgAnim.start("animate");
-      prismaSvgAnim.start("animate");
-      tsSvgAnim.start("animate");
-      nodeSvgAnim.start("animate");
-      nextSvgAnim.start("animate");
-      pythonSvgAnim.start("animate");
-      expressSvgAnim.start("animate");
+      iconAnim.start("animate")
+      cardAnim.start("initial")
+      htmlSvgAnim.start("animate")
+      cssSvgAnim.start("animate")
+      jsSvgAnim.start("animate")
+      mongoSvgAnim.start("animate")
+      reduxSvgAnim.start("animate")
+      reactSvgAnim.start("animate")
+      trpcSvgAnim.start("animate")
+      prismaSvgAnim.start("animate")
+      tsSvgAnim.start("animate")
+      nodeSvgAnim.start("animate")
+      nextSvgAnim.start("animate")
+      pythonSvgAnim.start("animate")
+      expressSvgAnim.start("animate")
     }
-  });
+  })
 
   const frontendX = useSpring(
     useTransform(scrollYProgress, scrollX.fX, [2000, -150]),
     springConfig
-  );
+  )
   const backendX = useSpring(
     useTransform(scrollYProgress, scrollX.bX, [1500, -150]),
     springConfig
-  );
+  )
   const utiliiesX = useSpring(
     useTransform(scrollYProgress, scrollX.uX, [1500, -150]),
     springConfig
-  );
+  )
   const dbX = useSpring(
     useTransform(scrollYProgress, scrollX.dX, [1500, -160]),
     springConfig
-  );
+  )
 
   // useMotionValueEvent(scrollYProgress, "change", (latest) => {
   //   console.log(latest);
   // });
   useEffect(() => {
-    resizeFunction();
-    return () => resizeFunction();
-  }, []);
+    resizeFunction()
+    checkWrapping()
+    return () => {
+      resizeFunction(), checkWrapping()
+    }
+  }, [])
+
   useEffect(() => {
     const resize = (window.onresize = (e) => {
-      debounce(resizeFunction)();
-    });
-    return () => window.removeEventListener("resize", resize);
-  }, [window.onresize]);
+      debounce(resizeFunction)()
+      debounce(checkWrapping)()
+    })
+
+    return () => window.removeEventListener("resize", resize)
+  }, [window.onresize])
+
+  function checkWrapping() {
+    // if (frontArr1 && frontArr1.length > 0) setFrontArr1([])
+    // if (frontArr2 && frontArr2.length > 0) setFrontArr2([])
+    // if (frontArr3 && frontArr3.length > 0) setFrontArr3([])
+    if (window.matchMedia("(max-width: 1229px)").matches) {
+      setPartitions(3)
+    } else if (
+      window.matchMedia("(min-width: 1229px) and (max-width: 1670px)").matches
+    ) {
+      setPartitions(2)
+    } else {
+      setPartitions(1)
+    }
+  }
 
   const resizeFunction = useCallback(() => {
     if (window.innerWidth <= 1229) {
@@ -197,7 +221,7 @@ function Skills() {
         bX: [0.25, 0.45],
         uX: [0.4, 0.65],
         dX: [0.65, 0.85],
-      }));
+      }))
     } else if (window.innerWidth <= 1671 && window.innerWidth > 1229) {
       setScrollX((prev) => ({
         ...prev,
@@ -205,7 +229,7 @@ function Skills() {
         bX: [0.3, 0.5],
         uX: [0.5, 0.6],
         dX: [0.6, 0.8],
-      }));
+      }))
     } else {
       setScrollX((prev) => ({
         ...prev,
@@ -213,19 +237,19 @@ function Skills() {
         bX: [0.2, 0.55],
         uX: [0.55, 0.7],
         dX: [0.7, 0.85],
-      }));
+      }))
     }
-  }, [scrollX]);
+  }, [scrollX])
 
   function debounce(fn: () => void) {
-    let timer: NodeJS.Timeout;
+    let timer: NodeJS.Timeout
     return function () {
       if (timer) {
-        clearTimeout(timer);
+        clearTimeout(timer)
       } else {
-        timer = setTimeout(() => fn(), 200);
+        timer = setTimeout(() => fn(), 200)
       }
-    };
+    }
   }
   // * note for future don't have nested child inside skill component since gsap has trigger on it
 
@@ -234,63 +258,145 @@ function Skills() {
       <div
         ref={skill_container}
         id="skills"
-        className=" bg-[#171717] text-[#dfd3c3] flex-col items-center h-max skills relative overflow-hidden shadow-skills   "
+        className=" bg-[#171717] text-[#dfd3c3] flex-col items-center h-max relative overflow-hidden"
       >
-        <div className="flex w-max mt-10 ">
+        <div className="flex w-max mt-10">
           <SkillUtils />
           <SkillUtils />
         </div>
-        <div className="hidden relative md:flex flex-wrap md:gap-14 md+:gap-20 mx-auto w-5/6 items-end  justify-around py-20 ">
+        <div className="hidden relative md:flex flex-wrap md:gap-14 md+:gap-20 mx-auto w-5/6 items-end  justify-around py-20 overflow-visible ">
           <ScrollElem
             style={{ x: frontendX }}
             className="frontend"
             content="Front-End"
           />
+          <>
+            <ImageElem
+              index={0}
+              className="object-cover"
+              src="https://utfs.io/f/ff41f5e0-c0b8-4c2c-9a1f-9d17852cdfe7-1wvcb.png"
+              content="HTML"
+            />
 
-          {frontMap.map((val, i) => {
-            return (
-              <motion.div key={Math.random() * 100 + i} className="">
-                {val}
-              </motion.div>
-            );
-          })}
+            <ImageElem
+              index={1}
+              className="object-contain"
+              src="https://utfs.io/f/c8bebf6d-9266-4e1f-9665-59e46932f8be-248z.png"
+              content="CSS"
+            />
+            <ImageElem
+              index={partitions === 1 ? 2 : partitions === 2 ? 2 : 0}
+              className="object-cover"
+              src="https://utfs.io/f/aab05137-d7d3-4f13-9c48-151880248491-2mh.png"
+              content="JAVA SCRIPT"
+            />
+            <ImageElem
+              index={partitions === 1 ? 3 : partitions === 2 ? 0 : 1}
+              className="object-contain"
+              src="https://utfs.io/f/2d88e177-f17f-4bf6-90f3-9f0c5e4e98df-1sj3pb.png"
+              content="REACTJS"
+            />
+            <ImageElem
+              index={partitions === 1 ? 0 : partitions === 2 ? 1 : 0}
+              className="object-contain"
+              src="https://utfs.io/f/038cec89-1b11-4d1b-b804-9f2cc4671a92-m4kjo9.png"
+              content="THREE.JS"
+            />
+            <ImageElem
+              index={partitions === 1 ? 1 : partitions === 2 ? 2 : 1}
+              className="object-cover"
+              src="https://utfs.io/f/c83c8e1d-6f7d-4b65-a14d-bafcbd01ba84-hcfblw.png"
+              content="NEXT.JS"
+            />
+          </>
+
           <ScrollElem
             style={{ x: backendX }}
             className="backend"
             content="Back-End"
           />
 
-          {backMap.map((val, i) => {
-            return (
-              <motion.div key={i + Math.random() * 100} className="">
-                {val}
-              </motion.div>
-            );
-          })}
+          <>
+            <ImageElem
+              index={0}
+              className="object-contain"
+              src="assets/trpc.svg"
+              content="tRPC"
+            />
+            <ImageElem
+              index={1}
+              className="object-contain"
+              src="https://utfs.io/f/70038ef7-edf4-446a-9252-ea23035c4eac-lnbyxc.png"
+              content="EXPRESS.JS"
+            />
+            <ImageElem
+              index={partitions === 3 ? 0 : 2}
+              className="object-contain"
+              src="https://utfs.io/f/ec0564db-c885-4498-a330-8cf3b673b531-20lc2.png"
+              content="NODEJS"
+            />
+          </>
           <ScrollElem
             style={{ x: utiliiesX }}
             className="utilities "
             content="Utilities"
           />
-          {utilityMap.map((val, i) => {
-            return (
-              <motion.div key={i + Math.random() * 100} className="">
-                {val}
-              </motion.div>
-            );
-          })}
+          <>
+            <ImageElem
+              index={0}
+              className="object-cover"
+              src="https://utfs.io/f/01aa90f6-8b92-473a-8dee-d895683b02c2-2v3.png"
+              content="TYPESCRIPT"
+            />
+
+            <ImageElem
+              index={1}
+              className="object-contain"
+              src="https://utfs.io/f/f54654bd-05f1-46fd-84c7-6d6ff76d5ccc-k93pax.png"
+              content="SOCKET.IO"
+            />
+
+            <ImageElem
+              index={partitions === 3 ? 0 : 2}
+              className="object-contain"
+              src="https://utfs.io/f/18001b39-d45f-4749-8a60-2fff262e6768-nes9ve.png"
+              content="REACT QUERY"
+            />
+          </>
           <ScrollElem
             style={{ x: dbX }}
             className="extras  "
             content="DB-CMS-ORM"
           />
-          {dbMap.map((val, i) => {
-            return (
-              <motion.div key={Math.random() * 100} className="">
-                {val}
-              </motion.div>
-            );
-          })}
+          <>
+            <ImageElem
+              index={0}
+              className="object-contain"
+              src="https://utfs.io/f/45ede622-fc15-4d43-b7df-cb538b8a51e9-g7gclc.jpeg"
+              content="PRISMA"
+            />
+
+            <ImageElem
+              index={1}
+              className="object-contain"
+              src="https://utfs.io/f/54e5235a-cf53-4198-a6c3-3697cec87bff-1pysc4.png"
+              content="MONGODB"
+            />
+
+            <ImageElem
+              index={partitions === 3 ? 0 : 2}
+              className="object-contain"
+              src="https://utfs.io/f/ce28b8a3-5002-46c8-bd95-b9394d0ab61c-f1kzsi.webp"
+              content="SANITY"
+            />
+
+            <ImageElem
+              index={partitions === 1 ? 3 : partitions === 2 ? 0 : 1}
+              className="object-contain"
+              src="https://utfs.io/f/66f4919f-9308-4d21-985a-fd8165ec51bc-9bekft.png"
+              content="FIREBASE"
+            />
+          </>
         </div>
         <div className=" md:hidden flex flex-col gap-y-20 my-20">
           <div className="flex w-full justify-center relative items-center gap-x-5">
@@ -569,7 +675,7 @@ function Skills() {
         </div>
       </div>
     </AnimatePresence>
-  );
+  )
 }
 
-export default Skills;
+export default Skills

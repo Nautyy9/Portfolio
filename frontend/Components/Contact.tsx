@@ -1,13 +1,17 @@
-import { useEffect, useRef, useState } from "react";
-import { BiLink } from "react-icons/bi";
-import { AiOutlineInstagram, AiFillGithub } from "react-icons/ai";
-import { BsWhatsapp } from "react-icons/bs";
-import { FaLinkedinIn } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react"
+import { BiLink } from "react-icons/bi"
+import {
+  AiOutlineInstagram,
+  AiFillGithub,
+  AiOutlineCodeSandbox,
+} from "react-icons/ai"
+import { BsWhatsapp } from "react-icons/bs"
+import { FaLinkedinIn } from "react-icons/fa"
 // import { createTRPCProxyClient, httpBatchLink, loggerLink } from "@trpc/client";
 // import type { appRouterType } from "types-for-frontend/types";
-import Confetti from "react-confetti";
-import emailjs from "@emailjs/browser";
-import { envClientSchema } from "../env";
+import Confetti from "react-confetti"
+import emailjs from "@emailjs/browser"
+import { envClientSchema } from "../env"
 
 // const client = createTRPCProxyClient<appRouterType>({
 //   links: [
@@ -19,31 +23,31 @@ import { envClientSchema } from "../env";
 // });
 
 type formDetailType = {
-  name: string;
-  email: string;
-  phone: string;
-  subject: string;
-  message: string;
-};
+  name: string
+  email: string
+  phone: string
+  subject: string
+  message: string
+}
 
 function Contact() {
-  const [showConfetti, setShowConfetti] = useState<boolean>();
+  const [showConfetti, setShowConfetti] = useState<boolean>()
   // const height = window.innerHeight;
-  const [hideLine, setHideLine] = useState(false);
+  const [hideLine, setHideLine] = useState(false)
   const [formDetials, setFormDetials] = useState<formDetailType>({
     name: "",
     email: "",
     phone: "",
     subject: "",
     message: "",
-  });
-  const [showMessage, setShowMessage] = useState<string>("");
-  const nameRef = useRef<HTMLInputElement>(null!);
-  const phnRef = useRef<HTMLInputElement>(null!);
-  const emailRef = useRef<HTMLInputElement>(null!);
-  const subRef = useRef<HTMLInputElement>(null!);
-  const msgRef = useRef<HTMLTextAreaElement>(null!);
-  const contactRef = useRef<HTMLDivElement>(null);
+  })
+  const [showMessage, setShowMessage] = useState<string>("")
+  const nameRef = useRef<HTMLInputElement>(null!)
+  const phnRef = useRef<HTMLInputElement>(null!)
+  const emailRef = useRef<HTMLInputElement>(null!)
+  const subRef = useRef<HTMLInputElement>(null!)
+  const msgRef = useRef<HTMLTextAreaElement>(null!)
+  const contactRef = useRef<HTMLDivElement>(null)
   // const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault();
 
@@ -71,7 +75,7 @@ function Contact() {
   // };
 
   function onSubmit(e: any) {
-    e.preventDefault();
+    e.preventDefault()
     // console.log(formDetials);
     if (
       !formDetials.message ||
@@ -80,8 +84,8 @@ function Contact() {
       !formDetials.phone ||
       !formDetials.subject
     ) {
-      setShowMessage("Please fill in values");
-      return null;
+      setShowMessage("Please fill in values")
+      return null
     }
     const templateParams = {
       from_name: name,
@@ -90,7 +94,7 @@ function Contact() {
       message: formDetials.message,
       phone: formDetials.phone,
       subject: formDetials.subject,
-    };
+    }
     emailjs
       .send(
         envClientSchema.SERVICE_ID,
@@ -106,55 +110,54 @@ function Contact() {
           phone: "",
           subject: "",
           message: "",
-        }));
-        setShowConfetti(true);
+        }))
+        setShowConfetti(true)
         setShowMessage(
-          "We appreciate you reaching out! We'll be in touch shortly."
-        );
+          "I appreciate you reaching out! I'll be in touch shortly."
+        )
       })
       .catch((err) => {
         setShowMessage(
           "Error while sending request please try again after some time "
-        );
-      });
+        )
+      })
   }
   function debounce(fn: any) {
-    let timer: NodeJS.Timeout;
+    let timer: NodeJS.Timeout
     return async function () {
       if (timer) {
-        clearTimeout(timer);
+        clearTimeout(timer)
       } else {
         timer = setTimeout(() => {
-          fn();
-        }, 300);
+          fn()
+        }, 300)
       }
-    };
+    }
   }
 
   useEffect(() => {
     // console.log(contactRef.current?.offsetHeight);
     if (window.innerWidth <= 1780) {
-      setHideLine(true);
+      setHideLine(true)
     } else {
-      setHideLine(false);
+      setHideLine(false)
     }
 
     addEventListener("resize", () => {
       if (window.innerWidth <= 1780) {
         // console.log('yes');
-        setHideLine(true);
+        setHideLine(true)
       } else {
-        setHideLine(false);
+        setHideLine(false)
       }
-    });
-  });
+    })
+  })
 
   return (
     <div
-      style={{ fontFamily: "Ignazio" }}
       ref={contactRef}
       id="contact"
-      className="min-h-[1280px]  md+:min-h-[1080px] h-screen  bg-[#171717]  shadow-lg contact"
+      className="min-h-[1280px] font-bellota  md+:min-h-[1080px] h-screen  bg-[#171717]  shadow-lg contact"
     >
       <div className="flex flex-col xl:flex-row w-full h-full relative items-center justify-center gap-y-10 xl:gap-y-0 ">
         <div className="flex w-full lg+:w-1/2 justify-center  flex-col sm:flex-row xl:flex-col gap-y-10  xl:gap-y-60  ">
@@ -165,13 +168,22 @@ function Contact() {
             >
               Portfolio
             </h2>
-            <div className="text-white text-base xs+:text-xl tracking-wider items-center flex flex-col gap-y-1 ">
+            <div className="text-white text-base xs+:text-xl tracking-wide items-center flex flex-col gap-y-1 ">
               <a
                 href="https://github.com/Nautyy9/"
+                target="_blank"
                 className="justify-center flex hover:scale-110 transition duration-200 ease-in  gap-x-2"
               >
                 <AiFillGithub className="my-auto "></AiFillGithub>GitHub{" "}
                 <BiLink className="my-auto"></BiLink>{" "}
+              </a>
+              <a
+                href="https://codesandbox.io/u/Nautyy9"
+                target="_blank"
+                className="justify-center flex hover:scale-110 transition duration-200 ease-in  gap-x-2"
+              >
+                <AiOutlineCodeSandbox className="my-auto "></AiOutlineCodeSandbox>
+                Sandbox <BiLink className="my-auto"></BiLink>{" "}
               </a>
               {/* <p className='flex justify-center hover:scale-110 transition duration-200 ease-in w-28'><BiLink className='my-auto'></BiLink> </p> */}
             </div>
@@ -186,6 +198,7 @@ function Contact() {
             <div className="text-white text-base xs+:text-xl tracking-wider items-center flex flex-col gap-y-1 ">
               <a
                 href="https://wa.me/919990989306"
+                target="_blank"
                 className="flex justify-center hover:scale-110 transition duration-200 ease-in gap-x-2"
               >
                 <BsWhatsapp className="my-auto"></BsWhatsapp>WhatsappMe!
@@ -193,6 +206,7 @@ function Contact() {
               </a>
               <a
                 href="https://www.linkedin.com/in/nitin-nautiyal-75a67619a/"
+                target="_blank"
                 className="justify-center flex hover:scale-110 transition duration-200 ease-in gap-x-2"
               >
                 <FaLinkedinIn className="my-auto"></FaLinkedinIn> LinkedIn{" "}
@@ -200,6 +214,7 @@ function Contact() {
               </a>
               <a
                 href="https://www.instagram.com/nautyy9/"
+                target="_blank"
                 className="flex justify-center hover:scale-110 transition duration-200 ease-in gap-x-2"
               >
                 <AiOutlineInstagram className="my-auto"></AiOutlineInstagram>
@@ -216,8 +231,8 @@ function Contact() {
           {!showConfetti ? (
             <>
               {" "}
-              <div className=" pt-10 md:pt-0 ">
-                <div className="  flex flex-col justify-center items-center md:py-16 w-full h-full ">
+              <div className=" w-2/3 lg:w-auto pt-10 md:pt-0 ">
+                <div className="  flex flex-col justify-center items-center md:py-16 w-full mx-auto h-full ">
                   <div className="flex items-start justify-center h-2/3 text-center   w-full">
                     <p className="text-xl text-white ">Say Hellow! 👋</p>
                   </div>
@@ -225,7 +240,7 @@ function Contact() {
                     <h1 className=" flex text-3xl  text-center  font-semibold text-[#f9d5ca]   w-64 lg+:w-80  mx-auto   ">
                       Wanna be starting something ?
                     </h1>
-                    <p className=" inline md+:ml-8 lg+:ml-14 border-4 border-dotted  p-2  text-lg tracking-tight w-full lg+:text-xl  text-white lg+:w-80   text-center">
+                    <p className=" inline md+:ml-8 lg+:ml-14 border-4 border-dotted  p-2  tracking-wide text-lg w-full   text-white lg+:w-80   text-center">
                       I'm always interested in collaborating on creative
                       projects. Feel free to reach out and chat about potential
                       opportunities.
@@ -233,7 +248,7 @@ function Contact() {
                   </div>
                 </div>
               </div>
-              <div className=" mx-auto px-4 w-full  relative my-auto sm:w-full  h-max ">
+              <div className=" mx-auto px-4 w-full  relative my-auto   h-max ">
                 {/* <span
                   className={
                     !hideLine
@@ -245,7 +260,7 @@ function Contact() {
                 </span> */}
                 <form
                   onSubmit={(e) => {
-                    debounce(onSubmit(e));
+                    debounce(onSubmit(e))
                   }}
                   className=" flex flex-col w-full my-10  md:top-0 sm:items-center sm:justify-center gap-y-10 h-max"
                 >
@@ -341,13 +356,16 @@ function Contact() {
             </>
           ) : (
             <>
-              <div className="bg-none  col-span-3 xl:col-span-1 h-[600px] flex items-center xl:absolute xl:top-[15%]">
-                <div className="flex w-full justify-center items-center">
+              <div className="bg-none  col-span-3 xl:col-span-1 h-[600px] flex  mx-auto items-center xl:absolute xl:top-[15%]">
+                <div className="flex w-full justify-center items-center ">
                   <Confetti
                     gravity={0.04}
-                    className="w-11/12 mx-auto h-full"
+                    className="w-11/12 mx-auto h-full "
                   ></Confetti>
-                  <h1 className="z-20 text-3xl font-bold  text-center  text-white ">
+                  <h1
+                    // style={{ fontFamily: "Bluu" }}
+                    className="z-20 text-3xl font-bellota-medium tracking-wide  mx-auto text-center  text-white "
+                  >
                     {showMessage + "🙂"}
                   </h1>
                 </div>
@@ -357,7 +375,7 @@ function Contact() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Contact;
+export default Contact

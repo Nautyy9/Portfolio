@@ -96,7 +96,7 @@ function Carpet(props: JSX.IntrinsicElements["group"]) {
   useFrame((state, delta) => {
     if (tl.current) {
       // console.log(scroll.offset * tl.current.duration() * 30);
-      tl.current.seek(scroll.offset * tl.current.duration() * 10);
+      tl.current.seek(scroll.offset * 2.8 * tl.current.duration() * 10);
     }
   });
   return (
