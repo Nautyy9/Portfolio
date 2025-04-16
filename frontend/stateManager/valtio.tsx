@@ -1,8 +1,8 @@
-import {
-  OrbitControls,
-  OrbitControlsChangeEvent,
-  OrbitControlsProps,
-} from "@react-three/drei";
+// import {
+//   OrbitControls,
+//   OrbitControlsChangeEvent,
+//   OrbitControlsProps,
+// } from "@react-three/drei";
 import { Ref, RefObject, useRef } from "react";
 import { proxy, useSnapshot } from "valtio";
 import { useProxy } from "valtio/utils";
