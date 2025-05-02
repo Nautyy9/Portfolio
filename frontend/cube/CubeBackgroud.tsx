@@ -1,5 +1,5 @@
-import React, { Suspense } from "react"
-import * as THREE from "three"
+import React, { Suspense } from "react";
+import * as THREE from "three";
 import {
   Environment,
   Float,
@@ -7,27 +7,27 @@ import {
   MeshReflectorMaterial,
   OrbitControls,
   Sky,
-} from "@react-three/drei"
-import CubeLoader from "./CubeLoader"
-import { useFrame, useThree } from "@react-three/fiber"
+} from "@react-three/drei";
+import CubeLoader from "./CubeLoader";
+import { useFrame, useThree } from "@react-three/fiber";
 function ThreeApp() {
-  const { camera, gl } = useThree()
+  const { camera, gl } = useThree();
   // gl.setClearColor(new THREE.Color("#ff00f0"), 0.5);
-  const threeMain = document.getElementById("three") as HTMLDivElement
+  const threeMain = document.getElementById("three") as HTMLDivElement;
   useFrame((state, delta) => {
     if (window.innerWidth > 1280 && window.innerWidth < 1500) {
-      threeMain.style.width = "40%"
-      threeMain.classList.add("block")
-      threeMain.classList.remove("hidden")
+      threeMain.style.width = "40%";
+      threeMain.classList.add("block");
+      threeMain.classList.remove("hidden");
     } else if (window.innerWidth < 1280) {
-      threeMain.classList.add("hidden")
-      threeMain.classList.remove("block")
+      threeMain.classList.add("hidden");
+      threeMain.classList.remove("block");
     } else {
-      threeMain.style.width = "50%"
-      threeMain.classList.add("block")
-      threeMain.classList.remove("hidden")
+      threeMain.style.width = "50%";
+      threeMain.classList.add("block");
+      threeMain.classList.remove("hidden");
     }
-  })
+  });
   return (
     <>
       {/* <Environment background /> */}
@@ -51,6 +51,10 @@ function ThreeApp() {
       <Suspense fallback={<FallbackComp scale={1.5} />}>
         <CubeLoader />
       </Suspense>
+      {/* <Environment
+        preset="city"
+        ground={{ height: 45, radius: 100, scale: 300 }}
+      /> */}
       <mesh rotation-x={-Math.PI * 0.5} receiveShadow position-y={-4.1}>
         <planeGeometry args={[50, 50]}></planeGeometry>
         <MeshReflectorMaterial
@@ -59,10 +63,10 @@ function ThreeApp() {
         ></MeshReflectorMaterial>
       </mesh>
     </>
-  )
+  );
 }
 
-export default ThreeApp
+export default ThreeApp;
 
 function FallbackComp({ props }: any) {
   return (
@@ -70,5 +74,5 @@ function FallbackComp({ props }: any) {
       <boxGeometry args={[7, 7, 7]}></boxGeometry>
       <meshNormalMaterial wireframe></meshNormalMaterial>
     </mesh>
-  )
+  );
 }
