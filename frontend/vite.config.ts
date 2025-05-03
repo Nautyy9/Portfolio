@@ -6,6 +6,7 @@ const env = loadEnv("dev", process.cwd(), "");
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   return {
+    base: "./",
     define: {
       "process.env.PUBLIC_KEY": JSON.stringify(env.PUBLIC_KEY),
       "process.env.SERVICE_ID": JSON.stringify(env.SERVICE_ID),
