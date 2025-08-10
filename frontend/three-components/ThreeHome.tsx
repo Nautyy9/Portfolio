@@ -5,6 +5,7 @@ import { Suspense, useRef, useState } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { Room, Carpet, FinalModel } from "../gltf_jsx/index";
+import ThreeAbout from "./ThreeAbout";
 
 function ThreeHome() {
   const scroll = useScroll();
@@ -108,7 +109,7 @@ function ThreeHome() {
         <StatsGl />
         <CloudComp />
         <Sparkles
-          color={"hotpink"}
+          color={"white"}
           scale={[30, -30, 40]}
           speed={0.8}
           size={50}
@@ -116,6 +117,7 @@ function ThreeHome() {
           count={20}
           // onWheel={(e) => console.log(e)}
         />
+        {/* <ThreeAbout /> */}
       </Suspense>
     </>
   );

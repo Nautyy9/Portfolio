@@ -264,7 +264,7 @@ function Home() {
         </AnimatePresence>
 
         <RouteLink
-          to="/three-js/home"
+          to="/threejs/home"
           className="  z-50 flex cursor-pointer animate-pulse hover:scale-125 duration-1000 xl:hidden absolute bottom-5 right-5"
         >
           <span className="text-xl text-center m-auto">3D 😇 {"-->"}</span>

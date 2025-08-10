@@ -1,9 +1,12 @@
 import React, { Suspense, useState } from "react";
 import { Mage } from "../gltf_jsx";
 import { Html, useGLTF } from "@react-three/drei";
-
+import { type useGLTF as gltfType } from "@react-three/drei";
+import getModelPath from "../utils/getModelPath";
+import { GLTF } from "three-stdlib";
+const modelPath = "/static/wizard/MODEL-transformed.glb";
 function ThreeAbout() {
-  const humanModel = useGLTF("/static/Animations/human.glb");
+  const humanModel = useGLTF(getModelPath(modelPath)) as GLTF;
   const [active, setActive] = useState<boolean>(true);
   // const scroll1 = useGLTF(
   //   "/static/mage_assets/hand_painted_-_scroll/scene.gltf"
@@ -14,17 +17,19 @@ function ThreeAbout() {
   // );
   // * scroll2 === scroll1
 
-  const scroll3 = useGLTF(
-    "/static/mage_assets/magic_scroll_and_pen_with_feather/scene.gltf"
-  );
+  // const scroll3 = useGLTF(
+  //   "/static/mage_assets/magic_scroll_and_pen_with_feather/scene.gltf"
+  // ) as ReturnType<typeof useGLTF>;
 
-  const scroll4 = useGLTF("/static/mage_assets/very_useful_scroll/scene.gltf");
+  // const scroll4 = useGLTF(
+  //   "/static/mage_assets/very_useful_scroll/scene.gltf"
+  // ) as ReturnType<typeof useGLTF>;
   return (
     <>
       {/* <directionalLight intensity={1} />
       <ambientLight></ambientLight> */}
-      <Html position={[-45, 10, 0]}>
-        <div className="h-screen w-screen ">
+      <Html className="three_about_id">
+        <div className="" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
           <div
             style={{ backgroundColor: "rgb(168 85 247)" }}
             className={` ${
@@ -100,7 +105,7 @@ function ThreeAbout() {
         scale-x={8}
         scale-z={4}
       >
-        <primitive object={scroll4.scene}></primitive>
+        {/* <primitive object={scroll4.scene}></primitive> */}
       </mesh>
       <Suspense fallback={null}>
         <mesh

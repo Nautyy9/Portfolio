@@ -14,5 +14,18 @@ export default defineConfig(({ mode }) => {
       "process.env.SERVICE_NAME": JSON.stringify(env.SERVICE_NAME),
     },
     plugins: [react()],
+    build: {
+      assetsInlineLimit: 0, // Disable asset inlining
+      chunkSizeWarningLimit: 2000, // Increase warning limit (MB)
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          threejs: ["three", "@react-three/fiber"],
+          models: ["/static/**/*.glb", "/static/**/*.gltf"],
+        },
+      },
+    },
+    assetsInclude: ["**/*.glb", "**/*.gltf"],
   };
 });

@@ -17,6 +17,7 @@ import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useControls } from "leva";
+import getModelPath from "../utils/getModelPath";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -304,12 +305,13 @@ type roomType = JSX.IntrinsicElements["group"] & {
   roomRef: React.MutableRefObject<THREE.Group | null>;
 };
 
+const modelPath = "/static/wizards_room/final_room.glb";
 // const roomHeight = 15;
 // const no_pages = 3;
 // const baseOffset = 0.72 * 3;
 function Room({ roomRef, ...props }: roomType) {
   const { nodes, materials, animations } = useGLTF(
-    "/static/wizards_room/final_room.glb"
+    getModelPath(modelPath)
   ) as GLTFResult;
   const { actions } = useAnimations<THREE.AnimationClip>(animations, roomRef);
   const broomRef = useRef<THREE.Mesh | null>(null!);
@@ -2091,5 +2093,5 @@ function Room({ roomRef, ...props }: roomType) {
   );
 }
 
-useGLTF.preload("/static/wizards_room/final_room.glb");
+useGLTF.preload(getModelPath(modelPath));
 export default Room;

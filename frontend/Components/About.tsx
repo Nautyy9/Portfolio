@@ -1,26 +1,26 @@
-import React, { useEffect, useRef, useState } from "react"
-import vanilaTilt from "vanilla-tilt"
-import { HiOutlineDownload } from "react-icons/hi"
-import AboutUtils from "../utils/AboutUtils"
+import React, { useEffect, useRef, useState } from "react";
+import vanilaTilt from "vanilla-tilt";
+import { HiOutlineDownload } from "react-icons/hi";
+import AboutUtils from "../utils/AboutUtils";
 function About() {
-  const [hover, setHover] = useState(false)
+  const [hover, setHover] = useState(false);
   // const sections = ["S", "e", "c", "t", "i", "o", "n", "🙃", "2"];
-  let card_ref = useRef<HTMLDivElement>(null!)
+  let card_ref = useRef<HTMLDivElement>(null!);
   useEffect(() => {
-    setHover(false)
+    setHover(false);
     card_ref.current.onpointerover = () => {
       if (window.innerWidth < 900) {
-        setHover(false)
+        setHover(false);
       } else {
-        setHover(true)
+        setHover(true);
       }
-    }
+    };
     card_ref.current.onpointerout = () => {
-      setHover(false)
-    }
-    vanilaTilt.init(card_ref.current)
+      setHover(false);
+    };
+    vanilaTilt.init(card_ref.current);
     // console.log(card_ref);
-  }, [])
+  }, []);
 
   return (
     <div
@@ -86,11 +86,11 @@ function About() {
             {hover ? (
               <div className="w-full h-full relative ">
                 <a
-                  href="/assets/Nitin's Resume.pdf"
+                  href="/assets/Nitin_s_Resume_New.pdf"
                   download="nitin_resume.pdf"
                 >
                   <img
-                    src="https://utfs.io/f/19e4656f-8030-4bd5-95f4-fda9776656d2-2se.png"
+                    src="/assets/resume_image.jpeg"
                     className="text-white object-fill bg-cover absolute h-full w-full"
                     alt="img"
                   />
@@ -160,7 +160,7 @@ function About() {
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default About
+export default About;

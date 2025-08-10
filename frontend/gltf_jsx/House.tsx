@@ -7,6 +7,7 @@ import * as THREE from "three";
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import getModelPath from "../utils/getModelPath";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -234,10 +235,9 @@ const glassMat = new THREE.MeshPhysicalMaterial({
   opacity: 0.6,
 });
 
+const modelPath = "/static/wizards_room/house.glb";
 export function House(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(
-    "/static/wizards_room/house.glb"
-  ) as GLTFResult;
+  const { nodes, materials } = useGLTF(getModelPath(modelPath)) as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <group
@@ -1347,4 +1347,4 @@ export function House(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/static/wizards_room/house.glb");
+useGLTF.preload(getModelPath(modelPath));
