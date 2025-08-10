@@ -26,7 +26,7 @@ function CubeLoader() {
       onPointerEnter={() => (document.body.style.cursor = "pointer")}
       onPointerLeave={() => (document.body.style.cursor = "default")}
       onDoubleClick={() => {
-        window.location.href = "/three-js/home";
+        window.location.href = "/threejs/home";
       }}
     >
       <primitive ref={modelRef} object={model.scene} scale={3} />

@@ -1,157 +1,177 @@
-import { useEffect, useRef, useState } from "react"
-import { BiLink } from "react-icons/bi"
+import { useEffect, useRef, useState } from "react";
+import { BiLink } from "react-icons/bi";
 import {
   AiOutlineInstagram,
   AiFillGithub,
   AiOutlineCodeSandbox,
-} from "react-icons/ai"
-import { BsWhatsapp } from "react-icons/bs"
-import { FaLinkedinIn } from "react-icons/fa"
+} from "react-icons/ai";
+import { BsWhatsapp } from "react-icons/bs";
+import { FaLinkedinIn } from "react-icons/fa";
 // import { createTRPCProxyClient, httpBatchLink, loggerLink } from "@trpc/client";
 // import type { appRouterType } from "types-for-frontend/types";
-import Confetti from "react-confetti"
-import emailjs from "@emailjs/browser"
-import { envClientSchema } from "../env"
+import Confetti from "react-confetti";
+// import emailjs from "@emailjs/browser";
+// import { envClientSchema } from "../env";
+import { createTRPCProxyClient, httpBatchLink, loggerLink } from "@trpc/client";
+import { appRouterType } from "../../backend/types";
+import { set } from "zod";
 
-// const client = createTRPCProxyClient<appRouterType>({
-//   links: [
-//     loggerLink(),
-//     httpBatchLink({
-//       url: "https://nitins-folio-odwi.onrender.com/trpc",
-//     }),
-//   ],
-// });
+const client = createTRPCProxyClient<appRouterType>({
+  links: [
+    loggerLink(),
+    httpBatchLink({
+      url: "http://localhost:3000/trpc",
+    }),
+  ],
+});
 
 type formDetailType = {
-  name: string
-  email: string
-  phone: string
-  subject: string
-  message: string
-}
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+};
 
 function Contact() {
-  const [showConfetti, setShowConfetti] = useState<boolean>()
+  const [showConfetti, setShowConfetti] = useState<boolean>();
   // const height = window.innerHeight;
-  const [hideLine, setHideLine] = useState(false)
+  const [hideLine, setHideLine] = useState(false);
   const [formDetials, setFormDetials] = useState<formDetailType>({
     name: "",
     email: "",
     phone: "",
     subject: "",
     message: "",
-  })
-  const [showMessage, setShowMessage] = useState<string>("")
-  const nameRef = useRef<HTMLInputElement>(null!)
-  const phnRef = useRef<HTMLInputElement>(null!)
-  const emailRef = useRef<HTMLInputElement>(null!)
-  const subRef = useRef<HTMLInputElement>(null!)
-  const msgRef = useRef<HTMLTextAreaElement>(null!)
-  const contactRef = useRef<HTMLDivElement>(null)
-  // const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
+  });
+  const [showMessage, setShowMessage] = useState<string>("");
+  const [status, setStatus] = useState<string>("");
+  const nameRef = useRef<HTMLInputElement>(null!);
+  const phnRef = useRef<HTMLInputElement>(null!);
+  const emailRef = useRef<HTMLInputElement>(null!);
+  const subRef = useRef<HTMLInputElement>(null!);
+  const msgRef = useRef<HTMLTextAreaElement>(null!);
+  const contactRef = useRef<HTMLDivElement>(null);
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  //   setFormDetials((prev: formDetailType) => ({
-  //     ...prev,
-  //     name: nameRef.current?.value,
-  //     email: emailRef.current?.value,
-  //     phone: phnRef.current?.value,
-  //     subject: subRef.current?.value,
-  //     message: msgRef.current?.value,
-  //   }));
+    setFormDetials((prev: formDetailType) => ({
+      ...prev,
+      name: nameRef.current?.value,
+      email: emailRef.current?.value,
+      phone: phnRef.current?.value,
+      subject: subRef.current?.value,
+      message: msgRef.current?.value,
+    }));
 
-  //   // const result = client.stringOut.query()
+    // const result = client.stringOut.query()
 
-  //   const result = await client.fields.mutate({
-  //     name: nameRef.current?.value!,
-  //     email: emailRef.current?.value!,
-  //     phoneNumber: parseInt(phnRef.current?.value!),
-  //     subject: subRef.current?.value!,
-  //     message: msgRef.current?.value!,
-  //   });
-  //   if (!!result) {
-  //     setShowConfetti(result);
+    const result = await client.fields.mutate({
+      name: nameRef.current?.value!,
+      email: emailRef.current?.value!,
+      phoneNumber: parseInt(phnRef.current?.value!),
+      subject: subRef.current?.value!,
+      message: msgRef.current?.value!,
+    });
+
+    if (result.status === "SUCCESS") {
+      setShowConfetti(true);
+      setStatus("SUCCESS");
+      setShowMessage(result.msg);
+    } else if (result.status === "ALREADY EXISTS") {
+      setStatus("ALREADY EXISTS");
+      setShowMessage(result.msg);
+    } else {
+      setStatus("ERROR");
+      setShowMessage(result.msg);
+    }
+  };
+
+  // function onSubmit(e: any) {
+  //   e.preventDefault()
+  //   // console.log(formDetials);
+  //   if (
+  //     !formDetials.message ||
+  //     !formDetials.email ||
+  //     !formDetials.name ||
+  //     !formDetials.phone ||
+  //     !formDetials.subject
+  //   ) {
+  //     setShowMessage("Please fill in values")
+  //     return null
   //   }
-  // };
+  //   const templateParams = {
+  //     from_name: name,
+  //     from_email: formDetials.email,
+  //     to_name: envClientSchema.SERVICE_NAME,
+  //     message: formDetials.message,
+  //     phone: formDetials.phone,
+  //     subject: formDetials.subject,
+  //   }
+  //   emailjs
+  //     .send(
+  //       envClientSchema.SERVICE_ID,
+  //       envClientSchema.TEMPLATE_ID,
+  //       templateParams,
+  //       { publicKey: envClientSchema.PUBLIC_KEY }
+  //     )
 
-  function onSubmit(e: any) {
-    e.preventDefault()
-    // console.log(formDetials);
-    if (
-      !formDetials.message ||
-      !formDetials.email ||
-      !formDetials.name ||
-      !formDetials.phone ||
-      !formDetials.subject
-    ) {
-      setShowMessage("Please fill in values")
-      return null
-    }
-    const templateParams = {
-      from_name: name,
-      from_email: formDetials.email,
-      to_name: envClientSchema.SERVICE_NAME,
-      message: formDetials.message,
-      phone: formDetials.phone,
-      subject: formDetials.subject,
-    }
-    emailjs
-      .send(
-        envClientSchema.SERVICE_ID,
-        envClientSchema.TEMPLATE_ID,
-        templateParams,
-        { publicKey: envClientSchema.PUBLIC_KEY }
-      )
-      .then((res) => {
-        setFormDetials((prev: formDetailType) => ({
-          ...prev,
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        }))
-        setShowConfetti(true)
-        setShowMessage(
-          "I appreciate you reaching out! I'll be in touch shortly."
-        )
-      })
-      .catch((err) => {
-        setShowMessage(
-          "Error while sending request please try again after some time "
-        )
-      })
-  }
+  //     .then((res) => {
+  //       setFormDetials((prev: formDetailType) => ({
+  //         ...prev,
+  //         name: "",
+  //         email: "",
+  //         phone: "",
+  //         subject: "",
+  //         message: "",
+  //       }))
+  //       setShowConfetti(true)
+  //       setShowMessage(
+  //         "I appreciate you reaching out! I'll be in touch shortly."
+  //       )
+  //     })
+  //     .catch((err) => {
+  //       setShowMessage(
+  //         "Error while sending request please try again after some time "
+  //       )
+  //     })
+  // }
   function debounce(fn: any) {
-    let timer: NodeJS.Timeout
+    let timer: NodeJS.Timeout;
     return async function () {
       if (timer) {
-        clearTimeout(timer)
+        clearTimeout(timer);
       } else {
         timer = setTimeout(() => {
-          fn()
-        }, 300)
+          fn();
+        }, 300);
       }
-    }
+    };
   }
-
+  const wasteButton = async () => {
+    const api = await fetch("http://localhost:3000/button", {
+      method: "GET",
+    });
+    const data = await api.json();
+    console.log(JSON.parse(data), "data");
+  };
   useEffect(() => {
     // console.log(contactRef.current?.offsetHeight);
     if (window.innerWidth <= 1780) {
-      setHideLine(true)
+      setHideLine(true);
     } else {
-      setHideLine(false)
+      setHideLine(false);
     }
 
     addEventListener("resize", () => {
       if (window.innerWidth <= 1780) {
         // console.log('yes');
-        setHideLine(true)
+        setHideLine(true);
       } else {
-        setHideLine(false)
+        setHideLine(false);
       }
-    })
-  })
+    });
+  });
 
   return (
     <div
@@ -162,6 +182,12 @@ function Contact() {
       <div className="flex flex-col xl:flex-row w-full h-full relative items-center justify-center gap-y-10 xl:gap-y-0 ">
         <div className="flex w-full lg+:w-1/2 justify-center  flex-col sm:flex-row xl:flex-col gap-y-10  xl:gap-y-60  ">
           <div className="flex flex-col gap-y-2 xs:gap-y-5 mx-auto  ">
+            <button
+              onClick={() => wasteButton()}
+              className="text-white border-2 border-white text-xl py-2 px-4 flex self-start sm:ml-[8%] hover:scale-110 hover:animate-pulse duration-300"
+            >
+              Waster button
+            </button>
             <h2
               style={{ fontFamily: "Bluu" }}
               className="font-semibold text-[#f9d5ca] text-4xl xs+:text-5xl"
@@ -260,7 +286,7 @@ function Contact() {
                 </span> */}
                 <form
                   onSubmit={(e) => {
-                    debounce(onSubmit(e))
+                    debounce(onSubmit(e));
                   }}
                   className=" flex flex-col w-full my-10  md:top-0 sm:items-center sm:justify-center gap-y-10 h-max"
                 >
@@ -358,10 +384,12 @@ function Contact() {
             <>
               <div className="bg-none  col-span-3 xl:col-span-1 h-[600px] flex  mx-auto items-center xl:absolute xl:top-[15%]">
                 <div className="flex w-full justify-center items-center ">
-                  <Confetti
-                    gravity={0.04}
-                    className="w-11/12 mx-auto h-full "
-                  ></Confetti>
+                  {status === "SUCCESS" && (
+                    <Confetti
+                      gravity={0.04}
+                      className="w-11/12 mx-auto h-full "
+                    ></Confetti>
+                  )}
                   <h1
                     // style={{ fontFamily: "Bluu" }}
                     className="z-20 text-3xl font-bellota-medium tracking-wide  mx-auto text-center  text-white "
@@ -375,7 +403,7 @@ function Contact() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Contact
+export default Contact;

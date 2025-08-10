@@ -7,7 +7,7 @@ import * as THREE from "three";
 import React, { useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
-
+import getModelPath from "./utils/getModelPath";
 type GLTFResult = GLTF & {
   nodes: {
     Object_10001: THREE.SkinnedMesh;
@@ -118,11 +118,12 @@ type ActionName =
   | "SKILL"
   | "WORK";
 type GLTFActions = Record<ActionName, THREE.AnimationAction>;
+const modelPath = "/static/wizard/MODEL-transformed.glb";
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials, animations } = useGLTF(
-    "../MODEL-transformed.glb"
+    getModelPath(modelPath)
   ) as GLTFResult;
   const { actions } = useAnimations<THREE.AnimationClip>(animations, group);
   return (
@@ -622,4 +623,4 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/../MODEL-transformed.glb");
+useGLTF.preload(getModelPath(modelPath));

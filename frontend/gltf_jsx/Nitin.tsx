@@ -7,6 +7,7 @@ import * as THREE from "three";
 import React, { useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import getModelPath from "../utils/getModelPath";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -169,13 +170,14 @@ type ActionName =
   | "STARTER"
   | "WORK";
 type GLTFActions = Record<ActionName, THREE.AnimationAction>;
+const modelPath = "/static/wizard/Nitin-transformed.glb";
 
 const eyesMat = <meshStandardMaterial color="#E7B192"></meshStandardMaterial>;
 console.log(eyesMat);
 export default function Nitin(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials, animations } = useGLTF(
-    "/../Nitin-transformed.glb"
+    getModelPath(modelPath)
   ) as GLTFResult;
   const { actions } = useAnimations<THREE.AnimationClip>(animations, group);
   return (
@@ -928,4 +930,4 @@ export default function Nitin(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/../Nitin-transformed.glb");
+useGLTF.preload(getModelPath(modelPath));

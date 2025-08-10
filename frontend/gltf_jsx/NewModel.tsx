@@ -10,6 +10,7 @@ import { GLTF } from "three-stdlib";
 import { useFrame } from "@react-three/fiber";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import getModelPath from "../utils/getModelPath";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -121,11 +122,12 @@ type ActionName =
   | "SKILL"
   | "WORK";
 type GLTFActions = Record<ActionName, THREE.AnimationAction>;
+const modelPath = "/static/wizard/MODEL-transformed.glb";
 
 export default function NewModel({ ...props }: JSX.IntrinsicElements["group"]) {
   const mageRef = useRef<THREE.Group | null>(null);
   const { nodes, materials, animations } = useGLTF(
-    "../MODEL-transformed.glb"
+    getModelPath(modelPath)
   ) as GLTFResult;
   const { actions } = useAnimations<THREE.AnimationClip>(animations, mageRef);
   console.log(animations, actions);
@@ -757,7 +759,7 @@ export default function NewModel({ ...props }: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/../MODEL-transformed.glb");
+useGLTF.preload(getModelPath(modelPath));
 
 function switchAnimations({
   mageRef,

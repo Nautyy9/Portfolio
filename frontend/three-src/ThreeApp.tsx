@@ -30,6 +30,13 @@ function ThreeApp() {
     color: { value: "#211414" },
   });
 
+  useEffect(() => {
+    const handleErrors = (event: any) => {
+      console.error("Three.js error:", event.error);
+    };
+    window.addEventListener("error", handleErrors);
+    return () => window.removeEventListener("error", handleErrors);
+  }, []);
   // useHelper(dlRef, THREE.DirectionalLightHelper, 1);
 
   return (
@@ -40,6 +47,8 @@ function ThreeApp() {
         </h1> */}
         <Leva collapsed />
         <Canvas
+          aria-label="3D Portfolio Scene"
+          role="img"
           shadows
           camera={{
             fov: 45,

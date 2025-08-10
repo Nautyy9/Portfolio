@@ -11,11 +11,13 @@ import {
   ThreeSkills,
   ThreeWork,
   ThreeWrapperComponent,
-  ThreeHome,
 } from "../three-components";
 const root = document.getElementById("root") as HTMLDivElement;
 const threeContainer = document.getElementById("three") as HTMLDivElement;
 
+console.log("pathname:", window.location.pathname);
+console.log("threeContainer:", threeContainer);
+console.log("root:", root);
 // Main App Router (for normal routes)
 const MainApp = () => (
   <ContextProvider>
@@ -23,8 +25,7 @@ const MainApp = () => (
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/underdevelopment" element={<UnderDevelopment />} />
-        <Route path="/three-js/*" element={null} />{" "}
-        {/* Reserve three-js path */}
+        <Route path="/threejs/*" element={null} /> {/* Reserve three-js path */}
       </Routes>
     </Router>
   </ContextProvider>
@@ -32,7 +33,7 @@ const MainApp = () => (
 
 // ThreeJS App Router (for /three-js routes)
 const ThreeJSApp = () => (
-  <Router basename="/three-js">
+  <Router basename="/threejs">
     <Routes>
       <Route path="/" element={<ThreeApp />}>
         <Route path="home" element={<ThreeWrapperComponent />} />
@@ -46,20 +47,12 @@ const ThreeJSApp = () => (
 );
 
 // Render the appropriate app based on route
-if (window.location.pathname.startsWith("/three-js")) {
-  if (threeContainer) {
-    ReactDOM.createRoot(threeContainer).render(
-      <React.StrictMode>
-        <ThreeJSApp />
-      </React.StrictMode>
-    );
-  }
-} else {
-  if (root) {
-    ReactDOM.createRoot(root).render(
-      <React.StrictMode>
-        <MainApp />
-      </React.StrictMode>
-    );
-  }
-}
+ReactDOM.createRoot(root).render(
+  <React.StrictMode>
+    {window.location.pathname.startsWith("/threejs") ? (
+      <ThreeJSApp />
+    ) : (
+      <MainApp />
+    )}
+  </React.StrictMode>
+);

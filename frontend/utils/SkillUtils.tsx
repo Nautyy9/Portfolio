@@ -4,10 +4,28 @@ import {
   useInView,
   useMotionValueEvent,
   useScroll,
-} from "framer-motion"
-import { useEffect, useRef, useState } from "react"
+} from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-import { AiOutlineArrowDown } from "react-icons/ai"
+import { AiOutlineArrowDown } from "react-icons/ai";
+import { imgTypes } from "../types/imageTypes";
+import {
+  cssImg,
+  expressImg,
+  htmlImg,
+  jsImg,
+  mongoImg,
+  nextImg,
+  nodeImg,
+  prismaImg,
+  reactImg,
+  reactqueryImg,
+  sanityImg,
+  socketImg,
+  threeImg,
+  tsImg,
+  firebaseImg,
+} from "../utils/imagesExporter";
 
 const cardVar = {
   hidden: { opacity: 0, scale: 0 },
@@ -21,7 +39,7 @@ const cardVar = {
       ease: "easeInOut",
     },
   }),
-}
+};
 
 function SkillUtils() {
   return (
@@ -49,7 +67,7 @@ function SkillUtils() {
         )
       )}
     </div>
-  )
+  );
 }
 
 function ScrollElem({
@@ -57,9 +75,9 @@ function ScrollElem({
   content,
   style,
 }: {
-  className: string
-  content: string
-  style: { x: MotionValue<number> }
+  className: string;
+  content: string;
+  style: { x: MotionValue<number> };
 }) {
   return (
     <motion.div
@@ -87,7 +105,7 @@ function ScrollElem({
         )
       )}
     </motion.div>
-  )
+  );
 }
 
 function ImageElem({
@@ -95,24 +113,26 @@ function ImageElem({
   src,
   className,
   index,
+  setSource,
 }: {
-  className: string
-  src: string
-  content: string
-  index: number
+  className: string;
+  src: string;
+  content: string;
+  index: number;
+  setSource?: React.Dispatch<React.SetStateAction<imgTypes>>;
 }) {
-  const imageRef = useRef<HTMLDivElement | null>(null)
-  const [shouldAnimate, setShouldAnimate] = useState(false)
+  const imageRef = useRef<HTMLDivElement | null>(null);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
   const { scrollYProgress } = useScroll({
     target: imageRef,
     offset: ["start end", "end end"],
-  })
+  });
 
   useMotionValueEvent(scrollYProgress, "change", (value) => {
     if (value === 1) {
-      setShouldAnimate(true)
+      setShouldAnimate(true);
     }
-  })
+  });
 
   return (
     <motion.div
@@ -125,13 +145,32 @@ function ImageElem({
     >
       <img
         src={src}
+        onError={() =>
+          setSource!(() => ({
+            htmlImg,
+            cssImg,
+            expressImg,
+            jsImg,
+            mongoImg,
+            nextImg,
+            nodeImg,
+            prismaImg,
+            reactImg,
+            reactqueryImg,
+            sanityImg,
+            socketImg,
+            threeImg,
+            tsImg,
+            firebaseImg,
+          }))
+        }
         alt=""
         className={`ml-1 mt-2 bg-white images shadow-md shadow-white ${className}`}
       />
       <h3 className="skill_text font-bellota text-xl">{content}</h3>
     </motion.div>
-  )
+  );
 }
 
-export default null
-export { SkillUtils, ScrollElem, ImageElem }
+export default null;
+export { SkillUtils, ScrollElem, ImageElem };

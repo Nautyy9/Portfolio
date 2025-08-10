@@ -10,6 +10,7 @@ import { GLTF } from "three-stdlib";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import getModelPath from "../utils/getModelPath";
 
 type innerType = {
   [x: string]: THREE.AnimationAction | null;
@@ -130,12 +131,13 @@ const eyesMesh = new THREE.MeshStandardMaterial({
   metalness: 10,
 });
 
+const modelPath = "/static/Animations/MODEL.glb";
 function Mage({ ...props }: MageType) {
   const {
     nodes,
     materials,
     animations: workAnimation,
-  } = useGLTF("/static/Animations/MODEL.glb") as GLTFResult;
+  } = useGLTF(getModelPath(modelPath)) as GLTFResult;
   const mageRef = useRef<THREE.Group | null>(null);
   const scroll = useScroll();
   const actionName_2 = "mixamo.com";
@@ -216,22 +218,21 @@ function Mage({ ...props }: MageType) {
             },
             "<"
           );
-        tl.current.to(
-          mageRef.current.position,
-          {
-            duration: 8,
-            y: -60,
-            overwrite: "auto",
-          },
-          "+=8"
-        ).to(
-          mageRef.current.position,
-          {
+        tl.current
+          .to(
+            mageRef.current.position,
+            {
+              duration: 8,
+              y: -60,
+              overwrite: "auto",
+            },
+            "+=8"
+          )
+          .to(mageRef.current.position, {
             duration: 2,
             y: -80,
             overwrite: "auto",
-          }
-        )
+          });
       }
     },
     { scope: mageRef }
@@ -833,9 +834,19 @@ function Mage({ ...props }: MageType) {
   );
 }
 
-useGLTF.preload("/static/Animations/MODEL.glb");
+useGLTF.preload(getModelPath(modelPath));
 
 export default Mage;
+
+const contactAnimPath = "/static/Animations/Bashful.fbx";
+const flyingAnimPath = "/static/Animations/Falling Idle.fbx";
+const skillAnimPath = "/static/Animations/Hiding Grab.fbx";
+const spellAnimPath = "/static/Animations/Standing 2H Cast Spell 01.fbx";
+const ballAnimPath = "/static/Animations/Standing Idle 04.fbx";
+const jumpAnimPath = "/static/Animations/Standing Jump.fbx";
+const attackAnimPath = "/static/Animations/Standing 2H Magic Attack 03.fbx";
+const lookbackAnimPath = "/static/Animations/Standing Idle 02.fbx";
+const idleAnimPath = "/static/Animations/Standing Idle.fbx";
 
 function Animations({
   workAnimation,
@@ -856,43 +867,35 @@ function Animations({
   );
 
   const { animations: contactAnimation } = useFBX(
-    "/static/Animations/Bashful.fbx"
+    getModelPath(contactAnimPath)
   );
   const { actions: contactAction } = useAnimations<THREE.AnimationClip>(
     contactAnimation,
     group
   );
-  const { animations: flyingAnimation } = useFBX(
-    "/static/Animations/Falling Idle.fbx"
-  );
+  const { animations: flyingAnimation } = useFBX(getModelPath(flyingAnimPath));
   const { actions: flyingAction } = useAnimations<THREE.AnimationClip>(
     flyingAnimation,
     group
   );
-  const { animations: skillAnimation } = useFBX(
-    "/static/Animations/Hiding Grab.fbx"
-  );
+  const { animations: skillAnimation } = useFBX(getModelPath(skillAnimPath));
   const { actions: skillAction } = useAnimations<THREE.AnimationClip>(
     skillAnimation,
     group
   );
-  const { animations: spellAnimation } = useFBX(
-    "/static/Animations/Standing 2H Cast Spell 01.fbx"
-  );
+  const { animations: spellAnimation } = useFBX(getModelPath(spellAnimPath));
 
   const { actions: spellAction } = useAnimations<THREE.AnimationClip>(
     spellAnimation,
     group
   );
 
-  const { animations: ballAnimation } = useFBX(
-    "/static/Animations/Standing Idle 04.fbx"
-  );
+  const { animations: ballAnimation } = useFBX(getModelPath(ballAnimPath));
   const { actions: ballAction } = useAnimations<THREE.AnimationClip>(
     ballAnimation,
     group
   );
-  const YOHO = useFBX("/static/Animations/Standing Jump.fbx");
+  const YOHO = useFBX(getModelPath(jumpAnimPath));
   YOHO.up = new THREE.Vector3(0, 0, 0);
   console.log(YOHO);
   const { animations: jumpAnimation } = YOHO;
@@ -900,23 +903,19 @@ function Animations({
     jumpAnimation,
     group
   );
-  const { animations: attackAnimation } = useFBX(
-    "/static/Animations/Standing 2H Magic Attack 03.fbx"
-  );
+  const { animations: attackAnimation } = useFBX(getModelPath(attackAnimPath));
   const { actions: attackAction } = useAnimations<THREE.AnimationClip>(
     attackAnimation,
     group
   );
   const { animations: lookbackAnimation } = useFBX(
-    "/static/Animations/Standing Idle 02.fbx"
+    getModelPath(lookbackAnimPath)
   );
   const { actions: lookbackAction } = useAnimations<THREE.AnimationClip>(
     lookbackAnimation,
     group
   );
-  const { animations: idleAnimation } = useFBX(
-    "/static/Animations/Standing Idle.fbx"
-  );
+  const { animations: idleAnimation } = useFBX(getModelPath(idleAnimPath));
   const { actions: idleAction } = useAnimations<THREE.AnimationClip>(
     idleAnimation,
     group

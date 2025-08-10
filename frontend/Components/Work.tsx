@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react"
-import { contextValue } from "../context/Context"
-import vanilaTilt from "vanilla-tilt"
+import { useEffect, useRef, useState } from "react";
+import { contextValue } from "../context/Context";
+import vanilaTilt from "vanilla-tilt";
 
-import DialogComponent from "./DialogComponent"
+import DialogComponent from "./DialogComponent";
 import {
   CssSvg,
   ExpressSvg,
@@ -17,19 +17,49 @@ import {
   FramerSvg,
   ReduxSvg,
   ReactQuerySvg,
-} from "../Assets/svgComponents"
+} from "../Assets/svgComponents";
+import { ErrorType } from "../types/imageTypes";
+import {
+  profile1Img,
+  profile2Img,
+  profile3Img,
+  profile4Img,
+  mukul1Img,
+  mukul2Img,
+  mukul3Img,
+  kabadi1Img,
+  kabadi2Img,
+  kabadi3Img,
+  finserve1Img,
+  finserve2Img,
+  finserve3Img,
+  finserve4Img,
+  pokemon1Img,
+  pokemon2Img,
+  pokemon3Img,
+  cartImg,
+} from "../utils/imagesExporter";
+
 function Work() {
-  const { work_ref, scrolldiv_ref } = contextValue()
-  const [minHeight, setMinHeight] = useState(false)
-  const [fullHeight, setFullHeight] = useState("")
-  const modalRef = useRef<HTMLDialogElement>(null)
-  const activeImg = useRef<HTMLImageElement>(null)
-  let imgdiv_ref = useRef<HTMLDivElement>(null)
-  let imgdiv2_ref = useRef<HTMLDivElement>(null)
-  let imgdiv3_ref = useRef<HTMLDivElement>(null)
-  let imgdiv4_ref = useRef<HTMLDivElement>(null)
-  let imgdiv5_ref = useRef<HTMLDivElement>(null)
-  let imgdiv6_ref = useRef<HTMLDivElement>(null)
+  const { work_ref, scrolldiv_ref } = contextValue();
+  const [minHeight, setMinHeight] = useState(false);
+  const [fullHeight, setFullHeight] = useState("");
+  const [error, setError] = useState<ErrorType>([
+    { finserve1: false, finserve2: false, finserve3: false },
+    { kabadi1: false, kabadi2: false, kabadi3: false },
+    { mukul1: false, mukul2: false, mukul3: false },
+    { poke1: false, poke2: false, poke3: false },
+    { profile1: false, profile2: false, profile3: false, profile4: false },
+    { cart1: false },
+  ]);
+  const modalRef = useRef<HTMLDialogElement>(null);
+  const activeImg = useRef<HTMLImageElement>(null);
+  let imgdiv_ref = useRef<HTMLDivElement>(null);
+  let imgdiv2_ref = useRef<HTMLDivElement>(null);
+  let imgdiv3_ref = useRef<HTMLDivElement>(null);
+  let imgdiv4_ref = useRef<HTMLDivElement>(null);
+  let imgdiv5_ref = useRef<HTMLDivElement>(null);
+  let imgdiv6_ref = useRef<HTMLDivElement>(null);
 
   // let main_ref = useRef<HTMLDivElement>(null);
 
@@ -41,9 +71,9 @@ function Work() {
       imgdiv4_ref?.current!,
       imgdiv5_ref?.current!,
       imgdiv6_ref?.current!,
-    ])
+    ]);
     // document.cookie = "name=nitin;value=suiiiii"
-  }, [vanilaTilt])
+  }, [vanilaTilt]);
 
   // const sections = ["S", "e", "c", "t", "i", "o", "n", "🙃", "4"];
   // useEffect(() => {
@@ -55,22 +85,22 @@ function Work() {
   useEffect(() => {
     if (work_ref?.current) {
       if (work_ref.current.style.height > "2100px") {
-        setFullHeight(work_ref.current.scrollHeight + "px")
-        setMinHeight(true)
+        setFullHeight(work_ref.current.scrollHeight + "px");
+        setMinHeight(true);
       }
     }
-  }, [work_ref?.current])
+  }, [work_ref?.current]);
   useEffect(() => {
     const yo: any = window.addEventListener("scroll", () => {
-      scrollRoll()
-    })
+      scrollRoll();
+    });
 
-    return () => window.removeEventListener("scroll", yo)
-  })
+    return () => window.removeEventListener("scroll", yo);
+  });
 
   function scrollRoll() {
     if (work_ref?.current) {
-      setFullHeight(work_ref.current.scrollHeight + "px")
+      setFullHeight(work_ref.current.scrollHeight + "px");
     }
   }
 
@@ -153,22 +183,48 @@ function Work() {
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src =
-                              "https://utfs.io/f/4fc36f64-29c3-4160-99e8-77799825edb7-hasoev.png"
-                          modalRef.current!.showModal()
+                            activeImg.current.src = error[0].finserve2
+                              ? finserve2Img
+                              : "https://utfs.io/f/4fc36f64-29c3-4160-99e8-77799825edb7-hasoev.png";
+                          modalRef.current!.showModal();
                         }}
-                        src="https://utfs.io/f/4fc36f64-29c3-4160-99e8-77799825edb7-hasoev.png"
+                        src={
+                          error[0].finserve2
+                            ? finserve2Img
+                            : "https://utfs.io/f/4fc36f64-29c3-4160-99e8-77799825edb7-hasoev.png"
+                        }
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample1"
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[0].finserve2 = true;
+                            return updated;
+                          })
+                        }
                       />
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current!.src =
-                              "https://utfs.io/f/88a9be46-cd8d-401a-9837-8ae12f34f292-hasoew.png"
-                          modalRef?.current!.showModal()
+                            activeImg.current!.src = error[0].finserve3
+                              ? finserve3Img
+                              : "https://utfs.io/f/88a9be46-cd8d-401a-9837-8ae12f34f292-hasoew.png";
+                          modalRef?.current!.showModal();
                         }}
-                        src="https://utfs.io/f/88a9be46-cd8d-401a-9837-8ae12f34f292-hasoew.png"
+                        src={
+                          error[0].finserve3
+                            ? `${finserve3Img}`
+                            : "https://utfs.io/f/88a9be46-cd8d-401a-9837-8ae12f34f292-hasoew.png"
+                        }
+                        onError={() =>
+                          setError(
+                            (prev: ErrorType) =>
+                              [
+                                { ...prev[0], finserve3: true },
+                                ...prev.slice(1),
+                              ] as ErrorType
+                          )
+                        }
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72 lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
@@ -187,9 +243,20 @@ function Work() {
                       }`}
                     >
                       <img
-                        src="https://utfs.io/f/ed19e93d-f8f8-4956-9ef7-98db20f77f0f-hasoeu.png"
+                        src={
+                          error[0].finserve1
+                            ? finserve1Img
+                            : "https://utfs.io/f/ed19e93d-f8f8-4956-9ef7-98db20f77f0f-hasoeu.png"
+                        }
                         className="h-full md+:hover:scale-125  transition-transform duration-200 ease-in-out z-50  w-full object-cover bg-contain"
                         alt="project-1"
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[0] = { ...updated[0], finserve1: true };
+                            return updated;
+                          })
+                        }
                       />
                     </div>
                   </a>
@@ -242,24 +309,48 @@ function Work() {
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src =
-                              "https://utfs.io/f/5478c008-4dc5-4892-883e-d6dc849c52b0-f0f0qn.png"
-                          modalRef.current!.showModal()
+                            activeImg.current.src = error[1].kabadi2
+                              ? kabadi2Img
+                              : "https://utfs.io/f/5478c008-4dc5-4892-883e-d6dc849c52b0-f0f0qn.png";
+                          modalRef.current!.showModal();
                         }}
-                        src="https://utfs.io/f/5478c008-4dc5-4892-883e-d6dc849c52b0-f0f0qn.png"
+                        src={
+                          error[1].kabadi2
+                            ? kabadi2Img
+                            : "https://utfs.io/f/5478c008-4dc5-4892-883e-d6dc849c52b0-f0f0qn.png"
+                        }
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample1"
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[1].kabadi2 = true;
+                            return updated;
+                          })
+                        }
                       />
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src =
-                              "https://utfs.io/f/71c48ae6-b239-46e8-946e-1990b3bc9eb3-f0f0qm.png"
-                          modalRef.current!.showModal()
+                            activeImg.current.src = error[1].kabadi3
+                              ? kabadi3Img
+                              : "https://utfs.io/f/71c48ae6-b239-46e8-946e-1990b3bc9eb3-f0f0qm.png";
+                          modalRef.current!.showModal();
                         }}
-                        src="https://utfs.io/f/71c48ae6-b239-46e8-946e-1990b3bc9eb3-f0f0qm.png"
+                        src={
+                          error[1].kabadi3
+                            ? kabadi3Img
+                            : "https://utfs.io/f/71c48ae6-b239-46e8-946e-1990b3bc9eb3-f0f0qm.png"
+                        }
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[1].kabadi3 = true;
+                            return updated;
+                          })
+                        }
                       />
                     </div>
                   </div>
@@ -277,9 +368,20 @@ function Work() {
                       }`}
                     >
                       <img
-                        src="https://utfs.io/f/c091e905-81d1-438e-a5fb-6922208c820e-vuus03.png"
+                        src={
+                          error[1].kabadi1
+                            ? kabadi1Img
+                            : "https://utfs.io/f/c091e905-81d1-438e-a5fb-6922208c820e-vuus03.png"
+                        }
                         className="h-full md+:hover:scale-125  transition-transform duration-200 ease-in-out z-50  w-full object-cover bg-contain"
                         alt="project-1"
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[1].kabadi1 = true;
+                            return updated;
+                          })
+                        }
                       />
                     </div>
                   </a>
@@ -335,22 +437,46 @@ function Work() {
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src =
-                              "https://utfs.io/f/Ld4uotbVd4ufP8erSdz2OzfpXNteUMLj0nolC3Gr1JBmbSgD"
-                          modalRef.current!.showModal()
+                            activeImg.current.src = error[2].mukul2
+                              ? mukul2Img
+                              : "https://utfs.io/f/Ld4uotbVd4ufP8erSdz2OzfpXNteUMLj0nolC3Gr1JBmbSgD";
+                          modalRef.current!.showModal();
                         }}
-                        src="https://utfs.io/f/Ld4uotbVd4ufP8erSdz2OzfpXNteUMLj0nolC3Gr1JBmbSgD"
+                        src={
+                          error[2].mukul2
+                            ? mukul2Img
+                            : "https://utfs.io/f/Ld4uotbVd4ufP8erSdz2OzfpXNteUMLj0nolC3Gr1JBmbSgD"
+                        }
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[2] = { ...updated[2], mukul2: true };
+                            return updated;
+                          })
+                        }
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample1"
                       />
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src =
-                              "https://utfs.io/f/Ld4uotbVd4ufavWq7nSLsweTK9BQ6ARS7PmUrqjCtvycJHdN"
-                          modalRef.current!.showModal()
+                            activeImg.current.src = error[2].mukul3
+                              ? mukul3Img
+                              : "https://utfs.io/f/Ld4uotbVd4ufavWq7nSLsweTK9BQ6ARS7PmUrqjCtvycJHdN";
+                          modalRef.current!.showModal();
                         }}
-                        src="https://utfs.io/f/Ld4uotbVd4ufavWq7nSLsweTK9BQ6ARS7PmUrqjCtvycJHdN"
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[2] = { ...updated[2], mukul3: true };
+                            return updated;
+                          })
+                        }
+                        src={
+                          error[2].mukul3
+                            ? mukul3Img
+                            : "https://utfs.io/f/Ld4uotbVd4ufavWq7nSLsweTK9BQ6ARS7PmUrqjCtvycJHdN"
+                        }
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
@@ -370,8 +496,19 @@ function Work() {
                       }`}
                     >
                       <img
-                        src="https://utfs.io/f/Ld4uotbVd4ufJhIPqaBaoGMjNAmrRcOPYLZkqyuSpnU3Q1C7"
+                        src={
+                          error[2].mukul1
+                            ? mukul1Img
+                            : "https://utfs.io/f/Ld4uotbVd4ufJhIPqaBaoGMjNAmrRcOPYLZkqyuSpnU3Q1C7"
+                        }
                         className="h-full md+:hover:scale-125  transition-transform duration-200 ease-in-out z-50  w-full object-cover bg-contain"
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[2].mukul1 = true;
+                            return updated;
+                          })
+                        }
                         alt="project-1"
                       />
                     </div>
@@ -431,22 +568,46 @@ function Work() {
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src =
-                              "https://utfs.io/f/Ld4uotbVd4ufc1Slt2bUFEQ1YADxCq3jLvluP2TSReHZh0yf"
-                          modalRef.current!.showModal()
+                            activeImg.current.src = error[3].poke2
+                              ? pokemon2Img
+                              : "https://utfs.io/f/Ld4uotbVd4ufc1Slt2bUFEQ1YADxCq3jLvluP2TSReHZh0yf";
+                          modalRef.current!.showModal();
                         }}
-                        src="https://utfs.io/f/Ld4uotbVd4ufc1Slt2bUFEQ1YADxCq3jLvluP2TSReHZh0yf"
+                        src={
+                          error[3].poke2
+                            ? pokemon2Img
+                            : "https://utfs.io/f/Ld4uotbVd4ufc1Slt2bUFEQ1YADxCq3jLvluP2TSReHZh0yf"
+                        }
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[3].poke2 = true;
+                            return updated;
+                          })
+                        }
                         alt="project_sample1"
                       />
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src =
-                              "https://utfs.io/f/Ld4uotbVd4ufw79uWGwxVrd4P6DZRotpgINOEc7imsuFKB0A"
-                          modalRef.current!.showModal()
+                            activeImg.current.src = error[3].poke3
+                              ? pokemon3Img
+                              : "https://utfs.io/f/Ld4uotbVd4ufw79uWGwxVrd4P6DZRotpgINOEc7imsuFKB0A";
+                          modalRef.current!.showModal();
                         }}
-                        src="https://utfs.io/f/Ld4uotbVd4ufw79uWGwxVrd4P6DZRotpgINOEc7imsuFKB0A"
+                        src={
+                          error[3].poke3
+                            ? pokemon3Img
+                            : "https://utfs.io/f/Ld4uotbVd4ufw79uWGwxVrd4P6DZRotpgINOEc7imsuFKB0A"
+                        }
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[3].poke3 = true;
+                            return updated;
+                          })
+                        }
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
@@ -466,7 +627,18 @@ function Work() {
                       }`}
                     >
                       <img
-                        src="https://utfs.io/f/Ld4uotbVd4ufy8YDlHjcJYBko9A4uZV2IPUbrLiHFnEGt8D7"
+                        src={
+                          error[3].poke1
+                            ? pokemon1Img
+                            : "https://utfs.io/f/Ld4uotbVd4ufy8YDlHjcJYBko9A4uZV2IPUbrLiHFnEGt8D7"
+                        }
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[3].poke1 = true;
+                            return updated;
+                          })
+                        }
                         className="h-full md+:hover:scale-125  transition-transform duration-200 ease-in-out z-50  w-full object-cover bg-contain"
                         alt="project-1"
                       />
@@ -531,22 +703,46 @@ function Work() {
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src =
-                              "https://utfs.io/f/ec489663-6b56-4c94-9db7-078e8b7a6f68-gkpzko.png"
-                          modalRef.current!.showModal()
+                            activeImg.current.src = error[4].profile3
+                              ? profile3Img
+                              : "https://utfs.io/f/ec489663-6b56-4c94-9db7-078e8b7a6f68-gkpzko.png";
+                          modalRef.current!.showModal();
                         }}
-                        src="https://utfs.io/f/ec489663-6b56-4c94-9db7-078e8b7a6f68-gkpzko.png"
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[4].profile3 = true;
+                            return updated;
+                          })
+                        }
+                        src={
+                          error[4].profile3
+                            ? profile3Img
+                            : "https://utfs.io/f/ec489663-6b56-4c94-9db7-078e8b7a6f68-gkpzko.png"
+                        }
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample1"
                       />
                       <img
                         onClick={() => {
                           if (activeImg.current)
-                            activeImg.current.src =
-                              "https://utfs.io/f/609b967f-aab5-403c-9392-de4e02deb969-gkpzkn.png"
-                          modalRef.current!.showModal()
+                            activeImg.current.src = error[4].profile4
+                              ? profile4Img
+                              : "https://utfs.io/f/609b967f-aab5-403c-9392-de4e02deb969-gkpzkn.png";
+                          modalRef.current!.showModal();
                         }}
-                        src="https://utfs.io/f/609b967f-aab5-403c-9392-de4e02deb969-gkpzkn.png"
+                        src={
+                          error[4].profile4
+                            ? profile4Img
+                            : "https://utfs.io/f/609b967f-aab5-403c-9392-de4e02deb969-gkpzkn.png"
+                        }
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[4].profile4 = true;
+                            return updated;
+                          })
+                        }
                         className=" h-24 w-24  cursor-pointer md+:h-32 md+:w-72  lg:h-28 lg:w-28 lg+:h-40 lg+:w-40 object-cover hover:shadow-lg md+:hover:scale-125 transition-transform duration-300 ease-in-out shadow-black "
                         alt="project_sample2"
                       />
@@ -568,12 +764,34 @@ function Work() {
                       }`}
                     >
                       <img
-                        src="https://utfs.io/f/2123d365-ffe8-4c59-afbb-c33210c35783-gkpzkm.png"
+                        src={
+                          error[4].profile1
+                            ? profile1Img
+                            : "https://utfs.io/f/2123d365-ffe8-4c59-afbb-c33210c35783-gkpzkm.png"
+                        }
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[4].profile1 = true;
+                            return updated;
+                          })
+                        }
                         className="my-3  bg-cover  md+:hover:scale-125 transition-transform duration-200 ease-in-out   w-full  h-[300px] "
                         alt="project-1"
                       />
                       <img
-                        src="https://utfs.io/f/c8825790-3c50-4a89-92c3-ac7862c5478b-gkpzkl.png"
+                        src={
+                          error[4].profile2
+                            ? profile2Img
+                            : "https://utfs.io/f/c8825790-3c50-4a89-92c3-ac7862c5478b-gkpzkl.png"
+                        }
+                        onError={() =>
+                          setError((prev: ErrorType) => {
+                            const updated = [...prev] as ErrorType;
+                            updated[4].profile2 = true;
+                            return updated;
+                          })
+                        }
                         className="hidden md+:block my-3 h-[300px] w-full   md+:hover:scale-125 transition-transform duration-200 ease-in-out    bg-cover"
                         alt="project-1"
                       />
@@ -642,7 +860,18 @@ function Work() {
                       }`}
                   >
                     <img
-                      src="https://utfs.io/f/aac69e3b-09ed-4b26-a023-87c3d651b64a-hvs538.png"
+                      src={
+                        error[5].cart1
+                          ? cartImg
+                          : "https://utfs.io/f/aac69e3b-09ed-4b26-a023-87c3d651b64a-hvs538.png"
+                      }
+                      onError={() =>
+                        setError((prev: ErrorType) => {
+                          const updated = [...prev] as ErrorType;
+                          updated[5].cart1 = true;
+                          return updated;
+                        })
+                      }
                       className="z-50 h-full  md+:hover:scale-125 transition-transform duration-200 ease-in-out   w-full object-cover bg-contain"
                       alt="project-1"
                     />
@@ -655,7 +884,7 @@ function Work() {
       </div>
       <DialogComponent modalRef={modalRef} activeImg={activeImg} />
     </div>
-  )
+  );
 }
 
-export default Work
+export default Work;
