@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "rewrites": [{ "source": "/(.*)", "destination": "/" }],
   "builds": {
     "src": "package.json",
@@ -7,4 +8,7 @@
       "nodeVersion": "22.x"
     }
   }
+=======
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+>>>>>>> 3f49a5176833afe0946a522942915877bda751c0
 }

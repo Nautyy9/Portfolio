@@ -43,7 +43,7 @@ export async function sendContactMail({
     `,
   };
   try {
-    transporter.verify(function (error: Error | null, success: boolean) {
+    transporter.verify(function (error, success) {
       if (error) {
         console.log("SMTP connection error:", error);
       } else {
@@ -51,10 +51,10 @@ export async function sendContactMail({
       }
     });
     const info = await transporter.sendMail(mailOptions);
-    // console.log("Email sent successfully:", info.response);
+    console.log("Email sent successfully:", info.response);
     return info;
   } catch (error) {
-    // console.error("Error sending email:", error);
+    console.error("Error sending email:", error);
     throw error; // rethrow to handle it in the calling function
   }
 }

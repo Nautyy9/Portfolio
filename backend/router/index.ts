@@ -3,6 +3,8 @@ import { t } from "../trpc";
 import { PrismaClient } from "@prisma/client";
 import { sendContactMail } from "../mailservice"; // 👈 Add this
 
+// 👈 Add this
+
 const prisma = new PrismaClient();
 
 const inputProcedure = t.procedure.input(

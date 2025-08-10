@@ -37,8 +37,13 @@
   "devDependencies": {
     "@types/dat.gui": "^0.7.7",
     "@types/node": "^22.15.3",
+<<<<<<< HEAD
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
+=======
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.0.9",
+>>>>>>> 3f49a5176833afe0946a522942915877bda751c0
     "@types/react-scroll": "^1.8.5",
     "@types/three": "^0.149.0",
     "@vitejs/plugin-react": "^3.0.0",
