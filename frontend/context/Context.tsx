@@ -1,4 +1,4 @@
-import { useAnimation } from "framer-motion";
+// import { useAnimation } from "framer-motion";
 import React, { createContext, useEffect, useRef, useContext } from "react";
 import { Event } from "three";
 
@@ -68,7 +68,7 @@ function ContextProvider({ children }: { children: React.ReactNode }) {
     }
   }
   function debounce(func: () => void) {
-    var timer: NodeJS.Timer;
+    let timer: ReturnType<typeof setTimeout> | null = null;
     return function () {
       if (timer) clearTimeout(timer);
       else {

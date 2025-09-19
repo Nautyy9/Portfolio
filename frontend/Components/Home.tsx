@@ -21,6 +21,8 @@ const textVar = {
   },
 } as Variants;
 
+const AnimatePresenceType = AnimatePresence as any;
+
 const innerText = {
   hidden: {
     scaleY: 0,
@@ -138,8 +140,8 @@ function Home() {
         id="home"
         className="relative bg-[#121212] inset-0 home min-h-[850px] h-screen shadow-md font-bold z-10  text-[#dfd3c3] overflow-hidden"
       >
-        <AnimatePresence mode="sync">
-          {!showText && (
+        <AnimatePresenceType mode="sync">
+          {!showText ? (
             <div
               ref={nameRef}
               className="  relative h-full w-11/12 md:w-5/6  mx-auto  "
@@ -260,9 +262,8 @@ function Home() {
                 </motion.div>
               </div>
             </div>
-          )}
-        </AnimatePresence>
-
+          ) : null}
+        </AnimatePresenceType>
         <RouteLink
           to="/threejs/home"
           className="  z-50 flex cursor-pointer animate-pulse hover:scale-125 duration-1000 xl:hidden absolute bottom-5 right-5"
@@ -270,7 +271,6 @@ function Home() {
           <span className="text-xl text-center m-auto">3D 😇 {"-->"}</span>
           <IoCubeOutline className=" w-[50px] h-[50px] text-blue-700" />
         </RouteLink>
-
         {showText && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -293,7 +293,6 @@ function Home() {
             </div>
           </motion.div>
         )}
-
         {showText && (
           <motion.div
             ref={backText}

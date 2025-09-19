@@ -43,7 +43,7 @@ export async function sendContactMail({
     `,
   };
   try {
-    transporter.verify(function (error, success) {
+    transporter.verify(function (error: Error | null, success: boolean) {
       if (error) {
         console.log("SMTP connection error:", error);
       } else {

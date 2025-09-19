@@ -11,7 +11,7 @@ datasource db {
 }
 
 model UserData {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   phoneNumber Int
   email       String @unique

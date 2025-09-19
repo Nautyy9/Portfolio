@@ -21,6 +21,12 @@ const client = createTRPCProxyClient<appRouterType>({
     loggerLink(),
     httpBatchLink({
       url: "http://localhost:3000/trpc",
+      fetch: (url, options) => {
+        return fetch(url, {
+          ...options,
+          credentials: "include", // ← Ensure this is set
+        });
+      },
     }),
   ],
 });
@@ -54,7 +60,17 @@ function Contact() {
   const contactRef = useRef<HTMLDivElement>(null);
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    if (
+      !nameRef.current?.value ||
+      !emailRef.current?.value ||
+      !phnRef.current?.value ||
+      !subRef.current?.value ||
+      !msgRef.current?.value
+    ) {
+      // setShowMessage("Please fill in all the values");
+      alert("Please fill in all the values");
+      return null;
+    }
     setFormDetials((prev: formDetailType) => ({
       ...prev,
       name: nameRef.current?.value,
@@ -74,16 +90,16 @@ function Contact() {
       message: msgRef.current?.value!,
     });
 
-    if (result.status === "SUCCESS") {
+    if (result!.status === "SUCCESS") {
       setShowConfetti(true);
       setStatus("SUCCESS");
-      setShowMessage(result.msg);
-    } else if (result.status === "ALREADY EXISTS") {
+      setShowMessage(result!.msg);
+    } else if (result!.status === "ALREADY EXISTS") {
       setStatus("ALREADY EXISTS");
-      setShowMessage(result.msg);
+      setShowMessage(result!.msg);
     } else {
       setStatus("ERROR");
-      setShowMessage(result.msg);
+      setShowMessage(result!.msg);
     }
   };
 
@@ -148,13 +164,13 @@ function Contact() {
       }
     };
   }
-  const wasteButton = async () => {
-    const api = await fetch("http://localhost:3000/button", {
-      method: "GET",
-    });
-    const data = await api.json();
-    console.log(JSON.parse(data), "data");
-  };
+  // const wasteButton = async () => {
+  //   const api = await fetch("http://localhost:3000/button", {
+  //     method: "GET",
+  //   });
+  //   const data = await api.json();
+  //   console.log(data, "data");
+  // };
   useEffect(() => {
     // console.log(contactRef.current?.offsetHeight);
     if (window.innerWidth <= 1780) {
@@ -177,17 +193,17 @@ function Contact() {
     <div
       ref={contactRef}
       id="contact"
-      className="min-h-[1280px] font-bellota  md+:min-h-[1080px] h-screen  bg-[#171717]  shadow-lg contact"
+      className="min-h-[1440px] sm:min-h-[1080px] font-bellota  md+:min-h-[1080px] h-screen  bg-[#171717]  shadow-lg contact"
     >
       <div className="flex flex-col xl:flex-row w-full h-full relative items-center justify-center gap-y-10 xl:gap-y-0 ">
         <div className="flex w-full lg+:w-1/2 justify-center  flex-col sm:flex-row xl:flex-col gap-y-10  xl:gap-y-60  ">
           <div className="flex flex-col gap-y-2 xs:gap-y-5 mx-auto  ">
-            <button
+            {/* <button
               onClick={() => wasteButton()}
               className="text-white border-2 border-white text-xl py-2 px-4 flex self-start sm:ml-[8%] hover:scale-110 hover:animate-pulse duration-300"
             >
               Waster button
-            </button>
+            </button> */}
             <h2
               style={{ fontFamily: "Bluu" }}
               className="font-semibold text-[#f9d5ca] text-4xl xs+:text-5xl"
@@ -251,10 +267,10 @@ function Contact() {
         </div>
         <div
           className={`z-30  h-max xl:h-4/5 flex flex-col  md:flex-row relative w-full px-10 xs:px-5 sm:px-0 xs:w-4/5 md:w-11/12 lg+:w-5/6 xl:w-full xs:mx-auto xl+:w-11/12   ${
-            showConfetti ? "bg-none" : "bg-gray-900/70"
+            !!showMessage ? "bg-none" : "bg-gray-900/70"
           } `}
         >
-          {!showConfetti ? (
+          {!!!showMessage ? (
             <>
               {" "}
               <div className=" w-2/3 lg:w-auto pt-10 md:pt-0 ">
@@ -394,7 +410,11 @@ function Contact() {
                     // style={{ fontFamily: "Bluu" }}
                     className="z-20 text-3xl font-bellota-medium tracking-wide  mx-auto text-center  text-white "
                   >
-                    {showMessage + "🙂"}
+                    {status === "SUCCESS"
+                      ? showMessage + "🙂"
+                      : status === "ALREADY EXISTS"
+                      ? showMessage + "😇"
+                      : showMessage + "☹️"}
                   </h1>
                 </div>
               </div>

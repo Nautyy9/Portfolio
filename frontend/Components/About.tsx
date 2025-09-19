@@ -80,7 +80,7 @@ function About() {
             className={
               hover
                 ? "border border-[#171717] card  duration-500 ease-in  cursor-pointer  pb-14 h-[550px] xs:h-[600px]  md:h-[800px]   min-[300px]:w-11/12 xs:w-5/6 sm:w-2/3 md+:w-full  min-[1100px]:w-11/12 xl:w-4/5 min-[1600px]:w-2/3 bg-white opacity-90 flex flex-col    rotate-45 shadow-lg shadow-gray-600 drop-shadow-md"
-                : "relative  px-6 md:px-0 min-[1700px]:px-6 pb-14 h-full xss:h-[550px] xs:h-[600px]  md:h-[800px]   min-[300px]:w-11/12 xs:w-5/6 sm:w-2/3 md+:w-full  min-[1100px]:w-11/12 xl:w-4/5 min-[1600px]:w-2/3  cursor-pointer transition-colors duration-500 ease-in bg-black/90 flex flex-col  rotate-45 shadow-lg shadow-gray-600 drop-shadow-md"
+                : "relative  px-6 md:px-0 min-[1700px]:px-6 pb-14 h-[550px] xs:h-[600px]  md:h-[800px]   min-[300px]:w-11/12 xs:w-5/6 sm:w-2/3 md+:w-full  min-[1100px]:w-11/12 xl:w-4/5 min-[1600px]:w-2/3  cursor-pointer transition-colors duration-500 ease-in bg-black/90 flex flex-col  rotate-45 shadow-lg shadow-gray-600 drop-shadow-md"
             }
           >
             {hover ? (

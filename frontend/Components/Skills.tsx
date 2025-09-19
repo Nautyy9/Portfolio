@@ -27,19 +27,19 @@ import {
 } from "../Assets/svgComponents/index";
 import { imgTypesSkills } from "types/imageTypes";
 
-const cardVar = {
-  hidden: { opacity: 0, scale: 0 },
-  animate: (val: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 1,
-      delay: 0.5 * val,
-      type: "spring",
-      ease: "easeInOut",
-    },
-  }),
-};
+// const cardVar = {
+//   hidden: { opacity: 0, scale: 0 },
+//   animate: (val: number) => ({
+//     opacity: 1,
+//     scale: 1,
+//     transition: {
+//       duration: 1,
+//       delay: 0.5 * val,
+//       type: "spring",
+//       ease: "easeInOut",
+//     },
+//   }),
+// };
 // const innerVar = {
 //   hidden: {
 //     scale: 0,
@@ -61,11 +61,11 @@ const springConfig = {
   damping: 60,
   restDelta: 0.01,
 };
-const newConfig = {
-  stiffness: 20,
-  damping: 60,
-  restDelta: 0.01,
-};
+// const newConfig = {
+//   stiffness: 20,
+//   damping: 60,
+//   restDelta: 0.01,
+// };
 
 const toggleVar = {
   initial: {
@@ -90,6 +90,8 @@ const iconVar = {
     opacity: 0,
   },
 };
+
+const AnimatePresenceType = AnimatePresence as any;
 
 function Skills() {
   // const sections = ["S", "e", "c", "t", "i", "o", "n", "🙃", "3"];
@@ -292,7 +294,7 @@ function Skills() {
 
   // * note for future don't have nested child inside skill component since gsap has trigger on it
   return (
-    <AnimatePresence mode="sync">
+    <AnimatePresenceType mode="sync">
       <div
         ref={skill_container}
         id="skills"
@@ -721,7 +723,7 @@ function Skills() {
           </motion.div>
         </div>
       </div>
-    </AnimatePresence>
+    </AnimatePresenceType>
   );
 }
 

@@ -8,7 +8,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import { AiOutlineArrowDown } from "react-icons/ai";
-import { imgTypes } from "../types/imageTypes";
+import { imgTypesSkills } from "../types/imageTypes";
 import {
   cssImg,
   expressImg,
@@ -119,7 +119,7 @@ function ImageElem({
   src: string;
   content: string;
   index: number;
-  setSource?: React.Dispatch<React.SetStateAction<imgTypes>>;
+  setSource?: React.Dispatch<React.SetStateAction<imgTypesSkills>>;
 }) {
   const imageRef = useRef<HTMLDivElement | null>(null);
   const [shouldAnimate, setShouldAnimate] = useState(false);

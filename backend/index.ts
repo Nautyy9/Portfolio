@@ -1,32 +1,40 @@
 import express from "express";
 const app = express();
-
+import CookieParser from "cookie-parser";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { appRouter } from "./router/index";
 import cors from "cors";
-// import { createContext } from "./context/index";
+// import { submissionLimiter } from "./rateLimiter";
+
+import { createContext } from "./context/index";
+import cookieParser from "cookie-parser";
 
 app.use(
   cors({
     origin: [
-      "http://127.0.0.1:5173",
+      "localhost:5173",
       "http://localhost:5173",
-      "https://nitinsfolio.vercel.app",
       "https://nitinnautiyal.site",
-      "http://192.168.137.1:5173",
-      "http://192.168.1.10:5173",
-    ],
+    ], // Replace with your frontend URL
+    credentials: true,
   })
 );
+app.use(cookieParser());
+app.use(express.json());
 
-app.get("/button", (req, res) => {
-  console.log("here");
-  return res.send(`${req.ip}`);
-});
+// Ensure data is loaded before accepting requests
+// loadData().then(() => {
+//   app.listen(3000, () => {
+//     console.log("Server started with rate limiting");
+//   });
+// });
+//! rate limiter for button click
+
 app.use(
   "/trpc",
   createExpressMiddleware({
     router: appRouter,
+    createContext,
   })
 );
 
