@@ -1,8 +1,6 @@
 import { Request } from "express";
 import fs from "fs/promises";
 import path from "path";
-import { decryptToken, setEncryptedToken } from "./token";
-import { tr } from "zod/v4/locales";
 
 const storagePath = path.join(process.cwd(), "rate-limit-data.json");
 

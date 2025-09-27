@@ -1,3 +1,3 @@
-import {appRouter} from './router/index'
+import { mergedRouter } from "./router";
 
-export type appRouterType = typeof appRouter
+export type mergedRouterType = typeof mergedRouter;

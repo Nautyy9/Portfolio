@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 import CookieParser from "cookie-parser";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { appRouter } from "./router/index";
+import { mergedRouter } from "./router";
 import cors from "cors";
 // import { submissionLimiter } from "./rateLimiter";
 
@@ -12,10 +12,10 @@ import cookieParser from "cookie-parser";
 app.use(
   cors({
     origin: [
-      "localhost:5173",
+      // "localhost:5173/",
       "http://localhost:5173",
       "https://nitinnautiyal.site",
-    ], // Replace with your frontend URL
+    ],
     credentials: true,
   })
 );
@@ -28,12 +28,17 @@ app.use(express.json());
 //     console.log("Server started with rate limiting");
 //   });
 // });
+
+app.get("/", (req, res) => {
+  // console.log("hello");
+  res.status(200).send("hi");
+});
 //! rate limiter for button click
 
 app.use(
   "/trpc",
   createExpressMiddleware({
-    router: appRouter,
+    router: mergedRouter,
     createContext,
   })
 );

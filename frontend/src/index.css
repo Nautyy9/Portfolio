@@ -169,32 +169,20 @@ body {
   background: var(--primary);
   background-image: var(--image_light);
 }
-#home {
-  background: black;
-  background-image: var(--image_dark_big_screen)
-}
-#contact {
+#home, #contact, #skills {
   background: black;
   background-image: var(--image_dark_big_screen);
-}
-#skills {
-  background: #000000;
-  background-image: var(--image_dark_big_screen);
+
 }
 
-@media (max-width: 1000px) {
-  #skills {
-  background: #000000;
-  background-image: var(--image_dark_small_screen)
-}
-#home {
-  background: #000000;
-  background-image: var(--image_dark_small_screen);
-}
-#contact {
-  background: black;
-  background-image: var(--image_dark_small_screen)
-}
+@media (max-width: 920px) {
+  #home, #skills, #contact {
+    background: #000000;
+    background-image: var(--image_dark_small_screen);
+      /* background-attachment: fixed;  */
+    background-repeat: repeat;
+    background-size: cover;
+  }
 } 
 
 #header_dropdown {

@@ -104,7 +104,7 @@ export async function verifyToken(req: Request): Promise<{
   if (!token && newUser && !transferredCount)
     return {
       isValid: false,
-      remaining: remaining ?? 0,
+      remaining: remaining ?? 2,
       rateLimitExceeded: attemptsExceeded,
     };
   if (!newUser && transferredCount) {
@@ -123,7 +123,7 @@ export async function verifyToken(req: Request): Promise<{
     if (tokenAge > 24 * 60 * 60 * 1000) {
       return {
         isValid: true,
-        remaining: remaining ?? 0,
+        remaining: remaining ?? 2,
         rateLimitExceeded: attemptsExceeded,
       };
     }

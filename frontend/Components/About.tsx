@@ -86,11 +86,11 @@ function About() {
             {hover ? (
               <div className="w-full h-full relative ">
                 <a
-                  href="/assets/Nitin_s_Resume_New.pdf"
+                  href="/assets/Nitin_s_Resume.pdf"
                   download="nitin_resume.pdf"
                 >
                   <img
-                    src="/assets/resume_image.jpeg"
+                    src="/assets/resume_preview.png"
                     className="text-white object-fill bg-cover absolute h-full w-full"
                     alt="img"
                   />
@@ -107,7 +107,7 @@ function About() {
             ) : (
               <div className="h-full ">
                 <a
-                  href="/assets/Nitin's Resume.pdf"
+                  href="/assets/Nitin_s Resume.pdf"
                   download="nitin_resume.pdf"
                 >
                   <div className=" flex  items-center relative">

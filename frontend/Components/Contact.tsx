@@ -13,10 +13,10 @@ import Confetti from "react-confetti";
 // import emailjs from "@emailjs/browser";
 // import { envClientSchema } from "../env";
 import { createTRPCProxyClient, httpBatchLink, loggerLink } from "@trpc/client";
-import { appRouterType } from "../../backend/types";
+import { mergedRouterType } from "../../backend/types";
 import { set } from "zod";
 
-const client = createTRPCProxyClient<appRouterType>({
+const client = createTRPCProxyClient<mergedRouterType>({
   links: [
     loggerLink(),
     httpBatchLink({
@@ -82,7 +82,7 @@ function Contact() {
 
     // const result = client.stringOut.query()
 
-    const result = await client.fields.mutate({
+    const result = await client.contact.fields.mutate({
       name: nameRef.current?.value!,
       email: emailRef.current?.value!,
       phoneNumber: parseInt(phnRef.current?.value!),
